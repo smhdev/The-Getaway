@@ -2,6 +2,7 @@ package FrontEnd;
 
 import MessageOfTheDay.MessageOfTheDay;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -107,6 +108,12 @@ public class MenuScreenController extends StateLoad {
     public void onHowToPlay() {
         wl = new WindowLoader(newGameButton);
         wl.load("/HowToPlay/HowToPlay", getInitData());
+        MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+    }
+
+    public void onLevelEditor() {
+        //wl = new WindowLoader(newGameButton);
+        //wl.load("/HowToPlay/HowToPlay", getInitData());
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
     }
 }
