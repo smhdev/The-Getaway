@@ -68,8 +68,7 @@ public class SettingsController extends StateLoad {
 	 */
 	public void onBackButton() throws IOException {
 		String config = String.format("%f %f" ,
-				background.getValue(),
-				sfx.getValue());
+				background.getValue(), sfx.getValue());
 		File configFile = new File("SaveData\\config.txt");
 		FileWriter configWriter = new FileWriter(configFile);
 		configWriter.write(config);

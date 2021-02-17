@@ -117,8 +117,8 @@ public class MenuScreenController extends StateLoad {
      * Opens the level editor window
      */
     public void onLevelEditor() {
-        //wl = new WindowLoader(newGameButton);
-        //wl.load("/HowToPlay/HowToPlay", getInitData());
+        wl = new WindowLoader(newGameButton);
+        wl.load("LevelEditorMenu", getInitData());
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 
     }
