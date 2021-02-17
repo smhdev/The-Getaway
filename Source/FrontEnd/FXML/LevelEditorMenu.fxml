@@ -8,21 +8,86 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0"
-            stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-position: center; -fx-background-size: cover;" stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="LEVEL EDITOR" textAlignment="CENTER" wrappingWidth="568.55078125" BorderPane.alignment="CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="LEVEL EDITOR" textAlignment="CENTER" wrappingWidth="568.55078125" BorderPane.alignment="BOTTOM_CENTER">
          <BorderPane.margin>
-            <Insets top="20.0" />
+            <Insets top="50.0" />
          </BorderPane.margin>
       </Text>
    </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <FlowPane alignment="CENTER" prefHeight="63.0" prefWidth="574.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Boards:" textAlignment="CENTER" wrappingWidth="235.0">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox id="selectGameBoard" prefHeight="45.0" prefWidth="250.0" />
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="574.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="235.0">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Text>
+                  <TextField id="boardNameIn" fx:id="nameIn" prefHeight="39.0" prefWidth="253.0" promptText="Game Name">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" layoutX="10.0" layoutY="312.0" prefHeight="63.0" prefWidth="574.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Width:" textAlignment="CENTER" wrappingWidth="235.0">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Text>
+                  <TextField id="boardWidthIn" fx:id="widthIn" prefHeight="39.0" prefWidth="253.0" promptText="10">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </FlowPane>
+            <FlowPane alignment="CENTER" layoutX="10.0" layoutY="344.0" prefHeight="63.0" prefWidth="574.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" textAlignment="CENTER" wrappingWidth="235.0">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Text>
+                  <TextField id="boardHeightIn" fx:id="heightIn" prefHeight="39.0" prefWidth="253.0" promptText="10">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
+   </center>
    <bottom>
-      <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" text="Exit" textAlignment="CENTER" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="20.0" />
-         </BorderPane.margin>
-      </Button>
+      <FlowPane alignment="TOP_CENTER" prefHeight="178.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#onBackButton" text="Exit" textAlignment="CENTER">
+               <FlowPane.margin>
+                  <Insets right="20.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button fx:id="backButton1" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBackButton" style="-fx-background-color: #bfa638;" text="Start" textAlignment="CENTER" textFill="#bfa638">
+               <FlowPane.margin>
+                  <Insets left="20.0" />
+               </FlowPane.margin>
+            </Button>
+         </children>
+      </FlowPane>
    </bottom>
 </BorderPane>
