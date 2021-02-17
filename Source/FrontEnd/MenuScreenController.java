@@ -16,7 +16,9 @@ import java.util.ResourceBundle;
 /**
  * Use to control the Menu screen scene.
  *
- * @author David Langmaid
+ * @author David Langmaid, Liam
+ * @version 1.1
+ * @since 1
  */
 public class MenuScreenController extends StateLoad {
 
