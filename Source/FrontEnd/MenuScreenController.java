@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 
 import java.io.File;
@@ -111,9 +112,15 @@ public class MenuScreenController extends StateLoad {
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
     }
 
+    /**
+     * Called when level editor button is clicked
+     * Opens the level editor window
+     */
     public void onLevelEditor() {
         //wl = new WindowLoader(newGameButton);
         //wl.load("/HowToPlay/HowToPlay", getInitData());
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+
     }
+
 }

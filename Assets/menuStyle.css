@@ -12,8 +12,6 @@
 .button:hover{
     -fx-border-color: white;
     -fx-border-width: 3px;
-    -fx-margin-top: 1px;
-    -fx-margin-bottom: 1px;
 }
 
 .text {

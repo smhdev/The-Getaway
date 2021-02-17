@@ -34,40 +34,48 @@
                   </RadialGradient>
                </fill>
             </Text>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="397.0" prefWidth="979.0" spacing="5.0">
                <children>
-                  <Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="25.0" prefWidth="100.0" text="New Game" textAlignment="CENTER" textFill="#009c05">
+                  <Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="36.0" prefWidth="100.0" text="New Game" textAlignment="CENTER" textFill="#009c05">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="LoadGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLoadGame" prefHeight="25.0" prefWidth="100.0" text="Load Game" textAlignment="CENTER" textFill="#009c05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="LevelEditorButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLevelEditor" prefHeight="25.0" prefWidth="100.0" text="Level Editor" textAlignment="CENTER" textFill="#009e05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="howToPlay" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onHowToPlay" prefHeight="25.0" prefWidth="100.0" text="How to Play" textAlignment="CENTER" textFill="#009c05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="profilesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlayerProfiles" prefHeight="25.0" prefWidth="100.0" text="Player Profile" textAlignment="CENTER" textFill="#009e05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="Leaderboardbutton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLeaderBoard" prefHeight="25.0" prefWidth="100.0" text="Leaderboard" textAlignment="CENTER" textFill="#009e05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSettings" prefHeight="25.0" prefWidth="100.0" text="Settings" textAlignment="CENTER" textFill="#009e05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                   <Button fx:id="quitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onQuitButton" prefHeight="25.0" prefWidth="100.0" text="Quit" textAlignment="CENTER" textFill="#009e05">
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets top="25.0" />
