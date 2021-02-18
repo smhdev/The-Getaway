@@ -10,15 +10,16 @@ import java.util.HashMap;
 
 public class IniBoard {
     private int xSize,ySize; // Size of the board
-    private int playerNum; // Number of players on the board
+    //private int playerNum; // Number of players on the board
     private Coordinate[] playerPos; // Position for the players
     private FloorTile[][] fixedTiles; // Tiles on the board
     private HashMap<TileType, Integer> silkBagArray; // Number of elements at the silkbag
 
     public IniBoard(){
-        playerNum = 4;
+        //playerNum = 4;
+        //playerPos = new Coordinate[playerNum];// By default, might be changed
+        playerPos = new Coordinate[4];// By default, might be changed
         silkBagArray = new HashMap<>();
-        playerPos = new Coordinate[playerNum];// By default, might be changed
         for (TileType tileType : TileType.values()) {
             silkBagArray.put(tileType, 0);
         }
@@ -57,7 +58,7 @@ public class IniBoard {
         this.ySize = ySize;
     }
 
-    public void setPlayerNum(int playerNum){
+    /*public void setPlayerNum(int playerNum){
         this.playerNum = playerNum;
-    }
+    }*/
 }
