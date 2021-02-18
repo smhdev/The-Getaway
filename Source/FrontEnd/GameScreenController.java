@@ -32,6 +32,7 @@ import static BackEnd.TileType.*;
 /***
  * Use to control the GameScreen scene.
  * @author Chrisitan Sanger
+ * @author Sam Harry (Version 1.1)
  */
 public class GameScreenController extends StateLoad {
 
@@ -80,12 +81,15 @@ public class GameScreenController extends StateLoad {
 	private StackPane boardArea;
 	@FXML
 	private Text profileName;
+	@FXML
+	private Text gameStateText;
 
 	private int width;
 	private int height;
 	public Phase phase;
 	private GameLogic gameLogic;
 	public static int tileWidth;
+	private Profile[] profiles = new Profile[4];
 
 	/***
 	 * Gets all resources for gameScreen
@@ -130,12 +134,12 @@ public class GameScreenController extends StateLoad {
 	 */
 	private void mainLoop() throws IOException {
 		// Update current player
-		Profile[] profiles = new Profile[4];
+
 		for (int i = 0; i < gameLogic.getNumberOfPlayers(); i++) {
 			profiles[i] = Profile.readProfile(getInitData().get("Profile" + (i)));
 		}
 		profile.getChildren().add(Assets.getProfile(profiles[gameLogic.getPlayersTurn()]));
-		profileName.setText(profiles[gameLogic.getPlayersTurn()].getName());
+		profileName.setText(profiles[gameLogic.getPlayersTurn()].getName()); //sets the current players turn to text
 		try {
 			updateBoard();
 		} catch (Exception e) {
@@ -156,9 +160,11 @@ public class GameScreenController extends StateLoad {
 				});
 				drawButton.setText("Draw");
 				drawButton.setVisible(true);
+				gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", you must draw a card");
 				break;
 			case FLOOR:
 				try {
+					gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", you must place a floor tile");
 					setupFloorPhase();
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -488,6 +494,7 @@ public class GameScreenController extends StateLoad {
 		cards.getChildren().clear();
 		ActionTile[] tiles = gameLogic.getActionCards();
 		// Add a skip button
+
 		drawButton.setText("Skip");
 		drawButton.setVisible(true);
 		drawButton.setOnAction(e1 -> {
@@ -512,8 +519,8 @@ public class GameScreenController extends StateLoad {
 			});
 			cards.getChildren().add(drawnCard);
 		}
-
 		for (ActionTile tile : tiles) {
+			gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", you can use an action card!");
 			final Node vCard = Assets.createCard(tile);
 			vCard.setOnMouseClicked((e) -> {
 			});
@@ -658,6 +665,7 @@ public class GameScreenController extends StateLoad {
 		Coordinate[] validLocations = gameLogic.getMoveLocations();
 		if (validLocations.length == 0) {
 			// No where to move;
+			gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", you cannot move! End your turn");
 			gameLogic.move(gameLogic.getPlayerLocations()[gameLogic.getPlayersTurn()]);
 			mainLoop();
 		}
@@ -667,6 +675,8 @@ public class GameScreenController extends StateLoad {
 			// Move to correct location.
 			pointer.setTranslateX(coordinate.getX() * tileWidth);
 			pointer.setTranslateY(coordinate.getY() * tileWidth);
+			gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", select a location to " +
+					"move to");
 			pointer.setOnMouseClicked(e -> {
 				Node currentPlayer = players.getChildren().get(gameLogic.getPlayersTurn());
 				try {
@@ -699,6 +709,7 @@ public class GameScreenController extends StateLoad {
 	 * Called when Draw button is pressed
 	 */
 	public void onDrawButton() throws IOException {
+		gameStateText.setText(null); //sets the current player draw tile text to nothing
 		gameLogic.draw();
 		DRAW_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 		mainLoop();
@@ -755,6 +766,10 @@ public class GameScreenController extends StateLoad {
 			System.out.println("Game NOT saved");
 		}
 		System.out.println("Game Saved");
+	}
+
+	public void onAboutButton() {
+
 	}
 
 
