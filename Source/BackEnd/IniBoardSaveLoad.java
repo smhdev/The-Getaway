@@ -1,6 +1,7 @@
 package BackEnd;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -150,7 +151,92 @@ public class IniBoardSaveLoad {
     }
 
     // Writes data to file
-    public static void writeIniBoard(String path) {
+    public static void writeIniBoard(String path, IniBoard boardToSave) {
+        IniBoard result = null;
+        File file = null;
+        FileWriter writer = null;
 
+        try{
+            file = new File(path);
+            writer = new FileWriter(file);
+
+            // Write all the required data
+
+            // Write board size
+            writer.write(boardToSave.getXSize() + " " + boardToSave.getYSize() + "\r\n");
+
+            // And the rest of the info
+            writePlayerPos(writer, boardToSave);
+            writeSilkBagContent(writer, boardToSave);
+            writeTiles(writer, boardToSave);
+
+
+            writer.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    // Writes players into the file
+    private static void writePlayerPos(FileWriter writer, IniBoard board) throws IOException {
+        Coordinate coor;
+
+        for (int i = 0; i < FileReader.MAX_NUM_OF_PLAYERS; i++){
+            coor = board.getPlayerSpawnPoint(i);
+            writer.write(coor.toString() + " Player" + i + "\r\n");
+        }
+    }
+
+    // Writes silk bag content into the file
+    private static void writeSilkBagContent(FileWriter writer, IniBoard board) throws IOException{
+        int numOfElems;
+
+        for (TileType tileType : TileType.values()){
+            numOfElems = board.getNumOfTileTypes(tileType);
+            writer.write(numOfElems + " " + tileType.toString() + "\r\n");
+        }
+    }
+
+    // Writes tiles into the file
+    private static void writeTiles(FileWriter writer, IniBoard board) throws IOException{
+        ArrayList<FloorTile> fixedTiles = new ArrayList<>();
+        ArrayList<FloorTile> nonFixedTiles = new ArrayList<>();
+
+        for (FloorTile floorTile : board.getTileArray()){
+            if (floorTile.isFixed()){
+                fixedTiles.add(floorTile);
+            }else{
+                nonFixedTiles.add(floorTile);
+            }
+        }
+        writeTileArray(writer, fixedTiles);
+        writeTileArray(writer, nonFixedTiles);
+
+    }
+
+    // Writes tile arrays into the file with their size at the beginning
+    private static void writeTileArray(FileWriter writer, ArrayList<FloorTile> tiles) throws IOException{
+        TileType tileType;
+        Coordinate tilePosition;
+        Rotation tileRotation;
+        int tileRotationInt = 0;
+        String output;
+
+        writer.write(tiles.size() + "\r\n");
+
+        for (FloorTile floorTile : tiles){
+            tileType = floorTile.getType();
+            tilePosition = floorTile.getLocation();
+            tileRotation = floorTile.getRotation();
+
+            // Transform value rotation into integer
+            for (int i = 0; i < Rotation.values().length; i++){
+                if (tileRotation == Rotation.values()[i]){
+                    tileRotationInt = i;
+                }
+            }
+            output = String.format("%s %d %d %d\r\n", tileType.toString(), tilePosition.getX(), tilePosition.getY(), tileRotationInt);
+            writer.write(output);
+        }
     }
 }

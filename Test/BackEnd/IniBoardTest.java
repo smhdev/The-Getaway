@@ -14,4 +14,12 @@ public class IniBoardTest {
         String path = "./CustomGameBoards/CustomBoard.txt";
         IniBoard board = IniBoardSaveLoad.readIniBoard(path);
     }
+
+    @Test
+    void checkSaveSystem() {
+        String pathF = "./CustomGameBoards/CustomBoard.txt";
+        IniBoard board = IniBoardSaveLoad.readIniBoard(pathF);
+        String path = "./CustomGameBoards/CustomBoard2.txt";
+        IniBoardSaveLoad.writeIniBoard(path, board);
+    }
 }

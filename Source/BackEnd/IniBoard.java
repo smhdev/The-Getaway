@@ -14,22 +14,22 @@ public class IniBoard {
     private Coordinate[] playerPos; // Position for the players
     //private FloorTile[][] tiles; // Tiles on the board
     private ArrayList<FloorTile> tiles; // Tiles on the board
-    private HashMap<TileType, Integer> silkBagArray; // Number of elements at the silkbag
+    private HashMap<TileType, Integer> silkBagMap; // Number of elements at the silkbag
 
     public IniBoard() {
         playerPos = new Coordinate[FileReader.MAX_NUM_OF_PLAYERS];// By default, might be changed
-        silkBagArray = new HashMap<>();
+        silkBagMap = new HashMap<>();
         for (TileType tileType : TileType.values()) {
-            silkBagArray.put(tileType, 0);
+            silkBagMap.put(tileType, 0);
         }
     }
 
-    public IniBoard(int xSize, int ySize, Coordinate[] playerPos, ArrayList<FloorTile> tiles, HashMap<TileType, Integer> silkBagArray) {
+    public IniBoard(int xSize, int ySize, Coordinate[] playerPos, ArrayList<FloorTile> tiles, HashMap<TileType, Integer> silkBagMap) {
         this.xSize = xSize;
         this.ySize = ySize;
         this.playerPos = playerPos;
         this.tiles = tiles;
-        this.silkBagArray = silkBagArray;
+        this.silkBagMap = silkBagMap;
     }
 
     /*
@@ -54,12 +54,16 @@ public class IniBoard {
         return null;
     }
 
-    public ArrayList<FloorTile> getTileAt() {
+    public int getNumOfElems(TileType tileType){
+        return silkBagMap.get(tileType);
+    }
+
+    public ArrayList<FloorTile> getTileArray() {
         return tiles;
     }
 
     public int getNumOfTileTypes(TileType tileType) {
-        return silkBagArray.get(tileType);
+        return silkBagMap.get(tileType);
     }
 
     public void setXSize(int xSize) {
@@ -68,5 +72,9 @@ public class IniBoard {
 
     public void setYSize(int ySize) {
         this.ySize = ySize;
+    }
+
+    public Coordinate getPlayerSpawnPoint(int playerNum){
+        return playerPos[playerNum];
     }
 }
