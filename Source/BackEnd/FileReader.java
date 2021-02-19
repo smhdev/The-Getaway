@@ -24,7 +24,7 @@ public class FileReader {
     of different tile types.
      */
     private static final int NUM_OF_TILE_TYPES = TileType.values().length;
-    private static final int MAX_NUM_OF_PLAYERS = 4;
+    public static final int MAX_NUM_OF_PLAYERS = 4;
 
     /**
      * This method takes in the given level format file,
