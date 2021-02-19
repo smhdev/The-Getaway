@@ -71,7 +71,7 @@ public class SettingsController extends StateLoad {
 	public void onBackButton() throws IOException {
 		File configFile = new File("SaveData\\config.txt");
 		FileWriter configWriter = new FileWriter(configFile);
-		configWriter.write(config);
+		configWriter.write(String.valueOf(configFile));
 		configWriter.flush();
 		configWriter.close();
 		WindowLoader wl = new WindowLoader(backButton);
