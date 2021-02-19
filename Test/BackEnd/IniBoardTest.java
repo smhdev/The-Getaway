@@ -11,7 +11,7 @@ public class IniBoardTest {
 
     @Test
     void checkLoadSystem() {
-        String path = "./Gameboards/Gameboard1.txt";
+        String path = "./CustomGameBoards/CustomBoard.txt";
         IniBoard board = IniBoardSaveLoad.readIniBoard(path);
     }
 }

@@ -1,6 +1,6 @@
 package BackEnd;
 
-import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -12,7 +12,8 @@ import java.util.HashMap;
 public class IniBoard {
     private int xSize, ySize; // Size of the board
     private Coordinate[] playerPos; // Position for the players
-    private FloorTile[][] fixedTiles; // Tiles on the board
+    //private FloorTile[][] tiles; // Tiles on the board
+    private ArrayList<FloorTile> tiles; // Tiles on the board
     private HashMap<TileType, Integer> silkBagArray; // Number of elements at the silkbag
 
     public IniBoard() {
@@ -23,11 +24,11 @@ public class IniBoard {
         }
     }
 
-    public IniBoard(int xSize, int ySize, Coordinate[] playerPos, FloorTile[][] fixedTiles, HashMap<TileType, Integer> silkBagArray) {
+    public IniBoard(int xSize, int ySize, Coordinate[] playerPos, ArrayList<FloorTile> tiles, HashMap<TileType, Integer> silkBagArray) {
         this.xSize = xSize;
         this.ySize = ySize;
         this.playerPos = playerPos;
-        this.fixedTiles = fixedTiles;
+        this.tiles = tiles;
         this.silkBagArray = silkBagArray;
     }
 
@@ -43,12 +44,18 @@ public class IniBoard {
         return ySize;
     }
 
+    // Returns tile on the requested position if such exist and false otherwise
     public FloorTile getTileAt(int i, int j) {
-        return fixedTiles[i][j];
+        for (FloorTile tile : tiles){
+           if (tile.getLocation().getX() == i && tile.getLocation().getY() == j){
+               return tile;
+           }
+        }
+        return null;
     }
 
-    public FloorTile[][] getFixedTiles() {
-        return fixedTiles;
+    public ArrayList<FloorTile> getTileAt() {
+        return tiles;
     }
 
     public int getNumOfTileTypes(TileType tileType) {

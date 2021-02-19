@@ -2,6 +2,7 @@ package BackEnd;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -40,8 +41,8 @@ public class IniBoardSaveLoad {
         // Silk bag content
         HashMap<TileType, Integer> silkBagContent = getSilkBagContent(in);
 
-        // Fixed tile positions
-        FloorTile[][] fixedTiles = getFixedTiles(in, xSize, ySize);
+        // Tile positions
+        ArrayList<FloorTile> fixedTiles = getTiles(in, xSize, ySize);
 
         //Generate such IniBoard
         result = new IniBoard(xSize, ySize, playerPoses, fixedTiles, silkBagContent);
@@ -87,39 +88,63 @@ public class IniBoardSaveLoad {
     }
 
     // Gets matrix with fixed tiles on the board
-    private static FloorTile[][] getFixedTiles(Scanner in, int xSize, int ySize) {
-        FloorTile[][] result = new FloorTile[xSize][ySize];
+    private static ArrayList<FloorTile> getTiles(Scanner in, int xSize, int ySize) {
+        ArrayList<FloorTile> result = new ArrayList<FloorTile>();
         int numOfTiles = in.nextInt();
 
         System.out.println("Number of tiles to add : " + numOfTiles);
 
         // Parse every fixed tile and add it to the matrix
-        String tileTypeString;
         FloorTile tileToAdd;
+
+        System.out.println("Fixed tiles");
+        for (int i = 0; i < numOfTiles; i++) {
+            tileToAdd = getFloorTile(in);
+            result.add(tileToAdd);
+        }
+
+        // Parse every fixed tile and add it to the matrix
+        int numOfUnfixedTiles;
+        tileToAdd = null;
+
+        System.out.println("Unfixed tiles");
+        if (in.hasNextInt()){
+            numOfUnfixedTiles = in.nextInt();
+            for (int i = 0; i < numOfUnfixedTiles; i++){
+                tileToAdd = getFloorTile(in);
+                tileToAdd.setFixedBool(false);
+                result.add(tileToAdd);
+            }
+        }
+
+        return result;
+    }
+
+    // Gets tile from the file
+    private static FloorTile getFloorTile(Scanner in){
+        String tileTypeString;
         TileType tileType;
         int xPos, yPos, rotationState;
         Coordinate location;
         Rotation rotation;
+        FloorTile result = null;
 
-        for (int i = 0; i < numOfTiles; i++) {
-            tileTypeString = in.next().toUpperCase();
-            tileType = TileType.valueOf(tileTypeString);
+        tileTypeString = in.next().toUpperCase();
+        tileType = TileType.valueOf(tileTypeString);
 
-            xPos = in.nextInt();
-            yPos = in.nextInt();
-            location = new Coordinate(xPos, yPos);
-            rotationState = in.nextInt();
-            rotation = Rotation.values()[rotationState];
+        xPos = in.nextInt();
+        yPos = in.nextInt();
+        location = new Coordinate(xPos, yPos);
+        rotationState = in.nextInt();
+        rotation = Rotation.values()[rotationState];
 
-            tileToAdd = new FloorTile(tileType);
-            tileToAdd.setLocation(location);
-            tileToAdd.setRotation(rotation);
+        result = new FloorTile(tileType);
+        result.setLocation(location);
+        result.setRotation(rotation);
+        result.setFixedBool(true);
 
-            result[xPos][yPos] = tileToAdd;
-
-            String debugMess = String.format("Tile %s with position [%d,%d] and rotation %s added", tileTypeString, xPos, yPos, rotation);
-            System.out.println(debugMess);
-        }
+        String debugMess = String.format("Tile %s with position [%d,%d] and rotation %s added", tileTypeString, xPos, yPos, rotation);
+        System.out.println(debugMess);
 
         return result;
     }

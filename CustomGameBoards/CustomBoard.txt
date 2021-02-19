@@ -21,3 +21,9 @@ T_Shape 5 3 1
 T_Shape 2 6 3
 Corner 5 6 0
 Goal 5 5 0
+5
+Corner 1 1 1
+Corner 1 2 3
+Straight 3 3 0
+T_Shape 4 4 2
+Corner 6 6 0
