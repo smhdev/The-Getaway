@@ -46,7 +46,8 @@ public class SettingsController extends StateLoad {
 	 * updated the current sound level
 	 */
 	public void onBackgroundChange() {
-		System.out.println(background.getValue());
+		System.out.print("Background volume changed to " + background.getValue());
+		System.out.println(" (Actual BGM volume is " + background.getValue() / 200 + ")");
 		Main.setVolume(background.getValue());
 		getInitData().put("BackgroundVol", ((int) background.getValue()) + "");
 	}
@@ -55,6 +56,7 @@ public class SettingsController extends StateLoad {
 	 * updated the current SFX sound level
 	 */
 	public void onSFXChange() {
+		System.out.println("SFX volume volume changed to " + sfx.getValue());
 		TEST_AUDIO.setVolume(sfx.getValue());
 		if (!TEST_AUDIO.isPlaying()) {
 			TEST_AUDIO.play();
@@ -70,6 +72,7 @@ public class SettingsController extends StateLoad {
 		String config = String.format("%f %f" ,
 				background.getValue(),
 				sfx.getValue());
+		System.out.println("Saving config: " + config);
 		File configFile = new File("SaveData\\config.txt");
 		FileWriter configWriter = new FileWriter(configFile);
 		configWriter.write(config);

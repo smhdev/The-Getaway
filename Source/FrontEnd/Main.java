@@ -61,6 +61,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         playMusic();
+        Main.setVolume(backgroundVol);
 
         initData.put("BackgroundVol", String.valueOf(backgroundVol));
         initData.put("SFXVol", String.valueOf(sfxVol));
