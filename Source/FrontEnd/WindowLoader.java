@@ -1,12 +1,12 @@
 package FrontEnd;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -15,9 +15,13 @@ import java.util.*;
  * @author Christian Sanger
  */
 public class WindowLoader {
+
     private static final String fileLocation = "FrontEnd\\FXML\\";
-    // Reference to the primary stage
-    private static Stage w;
+    private static Stage w; // Reference to the primary stage
+
+    Rectangle2D inSize = Screen.getPrimary().getBounds(); //Gets the size of the scree
+	double height = inSize.getHeight() * 0.8; //Stage height - initially 80%
+	double width = inSize.getWidth() * 0.8; //Stage Width - initially 80%
 
     /***
      * Creates a window loader that changes the scene shown to the user.
@@ -25,6 +29,8 @@ public class WindowLoader {
      */
     public WindowLoader(Node window) {
         w = (Stage) window.getScene().getWindow();
+        height = w.getHeight();
+		width = w.getWidth();
     }
 
 	/**
@@ -62,9 +68,13 @@ public class WindowLoader {
 		} else {
 			if (w.getScene() == null) {
 				w.setFullScreen(false);
+				w.setHeight(height);
+				w.setWidth(width);
 				w.setScene(new Scene(root));
 			} else {
 				w.setFullScreen(false);
+				w.setHeight(height);
+				w.setWidth(width);
 				w.getScene().setRoot(root);
 			}
 		}
