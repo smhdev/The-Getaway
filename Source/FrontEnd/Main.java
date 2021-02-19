@@ -53,7 +53,7 @@ public class Main extends Application {
         }
 
         Main.setVolume(backgroundVol);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.setTitle("The Getaway");
         primaryStage.getIcons().add(new Image("player2.png"));
         primaryStage.setResizable(true);
