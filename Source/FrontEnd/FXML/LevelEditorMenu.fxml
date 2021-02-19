@@ -95,11 +95,6 @@
                   </TextField>
                </children>
             </FlowPane>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Boards:" textAlignment="CENTER" wrappingWidth="235.0">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Text>
          </children>
       </VBox>
    </center>
