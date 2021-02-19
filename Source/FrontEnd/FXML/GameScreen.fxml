@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.GameScreenController" style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;">
+<BorderPane style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.GameScreenController">
     <center>
         <StackPane fx:id="boardArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
             <BorderPane.margin>
@@ -24,21 +24,17 @@
             <Pane fx:id="fixed" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
             <Pane fx:id="players" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
             <Pane fx:id="controls" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
-            <VBox fx:id="confirmation" alignment="CENTER" cache="true" fillWidth="false" maxHeight="-Infinity"
-                  maxWidth="-Infinity" mouseTransparent="true" spacing="5.0"
-                  style="-fx-background-color: indianred; -fx-border-radius: 50;" visible="false"
-                  StackPane.alignment="CENTER">
+            <VBox fx:id="confirmation" alignment="CENTER" cache="true" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" mouseTransparent="true" spacing="5.0" style="-fx-background-color: indianred; -fx-border-radius: 50;" visible="false" StackPane.alignment="CENTER">
                 <opaqueInsets>
-                    <Insets/>
+                    <Insets />
                 </opaqueInsets>
                 <padding>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                 </padding>
-                <Label alignment="CENTER" text="Some changes haven't been saved&#10;would you like the save now?"
-                       textAlignment="CENTER"/>
+                <Label alignment="CENTER" text="Some changes haven't been saved&#10;would you like the save now?" textAlignment="CENTER" />
                 <HBox alignment="CENTER">
-                    <Button mnemonicParsing="false" onAction="#onNo" text="No"/>
-                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#onYes" text="Yes"/>
+                    <Button mnemonicParsing="false" onAction="#onNo" text="No" />
+                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#onYes" text="Yes" />
                 </HBox>
             </VBox>
         </StackPane>
@@ -60,15 +56,15 @@
         <ScrollPane BorderPane.alignment="CENTER">
             <VBox alignment="TOP_CENTER" spacing="20.0">
                 <padding>
-                    <Insets top="20.0"/>
+                    <Insets top="20.0" />
                 </padding>
-                <Pane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0"
-                      prefWidth="100.0" style="-fx-background-color: #F0F;"/>
-                <Text fx:id="profileName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"/>
-                <Button fx:id="drawButton" mnemonicParsing="false" onAction="#onDrawButton" text="Draw"/>
+                <Pane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #F0F;" />
+                <Text fx:id="profileName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Button fx:id="drawButton" mnemonicParsing="false" onAction="#onDrawButton" text="Draw" />
+            <Text fx:id="gameStateText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                 <VBox fx:id="cards" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" spacing="20.0">
                     <padding>
-                        <Insets top="20.0"/>
+                        <Insets top="20.0" />
                     </padding>
                 </VBox>
             </VBox>
