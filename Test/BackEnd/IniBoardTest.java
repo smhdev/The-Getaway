@@ -2,6 +2,8 @@ package BackEnd;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 public class IniBoardTest {
 
     @Test
@@ -21,5 +23,8 @@ public class IniBoardTest {
         IniBoard board = IniBoardSaveLoad.readIniBoard(pathF);
         String path = "./CustomGameBoards/CustomBoard2.txt";
         IniBoardSaveLoad.writeIniBoard(path, board);
+
+        /*File file = new File(path);
+        file.delete();*/
     }
 }

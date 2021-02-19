@@ -10,6 +10,9 @@ import java.util.HashMap;
  */
 
 public class IniBoard {
+    private static final int DEFAULT_X_SIZE = 10; // To those values will be set size of the board by default
+    private static final int DEFAULT_Y_SIZE = 10;
+
     private int xSize, ySize; // Size of the board
     private Coordinate[] playerPos; // Position for the players
     //private FloorTile[][] tiles; // Tiles on the board
@@ -17,7 +20,10 @@ public class IniBoard {
     private HashMap<TileType, Integer> silkBagMap; // Number of elements at the silkbag
 
     public IniBoard() {
-        playerPos = new Coordinate[FileReader.MAX_NUM_OF_PLAYERS];// By default, might be changed
+        xSize = DEFAULT_X_SIZE;
+        ySize = DEFAULT_Y_SIZE;
+        tiles = new ArrayList<>();
+        playerPos = new Coordinate[FileReader.MAX_NUM_OF_PLAYERS];
         silkBagMap = new HashMap<>();
         for (TileType tileType : TileType.values()) {
             silkBagMap.put(tileType, 0);
