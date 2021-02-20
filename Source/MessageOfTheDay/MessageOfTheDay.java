@@ -9,80 +9,90 @@ import java.net.*;
  * @author Christian Sanger
  */
 public class MessageOfTheDay {
-	private static final int A_NUM = 'A';
-	private static final int Z_NUM = 'Z';
+	static final String PUZZLE_URL = "http://cswebcat.swansea.ac.uk/puzzle";
+	static final String MESS_URL = "http://cswebcat.swansea.ac.uk/message?solution=";
 
-	/**
-	 * Reads in the MoTD string
-	 * @return the string that need to be converted
-	 * @throws Exception if URL can't be accessed
-	 */
-	private static String readInMOTD() throws Exception {
-		URL motdURL = new URL("http://cswebcat.swansea.ac.uk/puzzle");
-		URLConnection conn = motdURL.openConnection();
-		InputStream message = conn.getInputStream();
-		BufferedReader readIn = new BufferedReader(new InputStreamReader(message));
-		String puzzle = readIn.readLine();
-		readIn.close();
-		return (puzzle);
+	
+	public MessageOfTheDay() {
+		//Nothing to do here
 	}
-
+	/**
+	 * Gets the message 
+	 * @return mess the message of the day
+	 * @throws Exception in case the getURL fails
+	 */
+	static public String puzzle() throws Exception{
+		    String mess = "";
+		    
+		    //First get puzzle
+		    try { 
+		      String puzzle = getURL(PUZZLE_URL);
+			  String key = solvePuzzle(puzzle);
+			  mess = getURL(MESS_URL+key);
+		    }
+		    catch(Exception e) {
+		    	throw e;
+		    }
+			return mess;
+		}
+		
+	/**
+	 * Gets the Url that contains the message of the day
+	 * @param url the url with the message
+	 * @return the result from the call
+	 * @throws Exception if a network error occurs
+	 */
+		static public String getURL(String url) throws Exception{
+			String res = "";
+			try {
+	  		  URL serv = new URL(url);
+	  		  BufferedReader in = new BufferedReader(
+	  		    new InputStreamReader(serv.openStream()));
+	          String inputLine;
+	  	      while ((inputLine = in.readLine()) != null) {
+	  	        //System.out.println(inputLine);
+	  	        res += inputLine;
+	  	        
+	  	      }
+	  	      in.close();
+	  	      return res;
+			}
+			catch(Exception e) {
+				throw e;
+			}
+		}
 	/**
 	 * Solves the puzzle
-	 * @param Message the encrypted message
-	 * @return the unencrypted message
+	 * @param puz the puzzle
+	 * @return the key solution
 	 */
-	private static String processMOTD(String Message) {
-		char[] puzzle = Message.toCharArray();
-		for(int i = 0; i < Message.length(); i++) {
-			int charNum;
-			// apply shifting.
-			if (i % 2 == 0) {
-				charNum = puzzle[i] - i - 1;
-			} else {
-				charNum = puzzle[i] + i + 1;
+		static public String solvePuzzle(String puz) {
+			String sol = "";
+			char n = ' ';
+			
+			for(int i=0;i<puz.length();i++) {
+			  int shift = i+1;
+			  if (i%2==0) { //go backwards
+				  n = (char) ( puz.charAt(i) - shift);
+				  if(n<'A') {
+					  n = (char) ( puz.charAt(i) + (26 - shift));
+				  }
+			  }
+			  else { //go forward
+				  n = (char) ( puz.charAt(i) + shift);
+				  if(n>'Z') {
+					  n = (char) ( puz.charAt(i) - (26 - shift));
+				  }
+			  }
+			  sol+=n;
 			}
-			// bring back in range of A-Z
-			while (charNum < A_NUM) {
-				charNum += 26;
-			}
-			while (charNum > Z_NUM) {
-				charNum -= 26;
-			}
-			puzzle[i] = (char) charNum;
+			//last add the length
+			sol = "CS-230"+ sol;
+			sol+=(sol.length());
+			
+			return sol;		
 		}
-		String result = "CS-230" + String.valueOf(puzzle);
-		return result + result.length();
-	}
 
-	/**
-	 * Uses unencrypted message to get final message from server
-	 * @param MOTD unencrypted message
-	 * @return final Message of the day.
-	 * @throws IOException if URL or message incorrect.
-	 */
-	private static String confirmMOTD(String MOTD) throws IOException {
-		StringBuilder output = new StringBuilder();
-		System.out.println("http://cswebcat.swansea.ac.uk/message?solution=" + MOTD);
-		URL solutionCheckURL = new URL("http://cswebcat.swansea.ac.uk/message?solution=" + MOTD);
-		URLConnection conn = solutionCheckURL.openConnection();
-		InputStream message = conn.getInputStream();
-		BufferedReader readIn = new BufferedReader(new InputStreamReader(message));
-		output.append(readIn.readLine());
-		readIn.close();
-		return (output.toString());
-	}
-
-	/**
-	 * Reads the message of the day from the server
-	 * @return message from server
-	 * @throws Exception if error in solving puzzle
-	 */
-	public static String puzzle() throws Exception {
-		String toSolve = readInMOTD();
-		String solved = processMOTD(toSolve);
-		return confirmMOTD(solved);
-	}
 
 }
 
