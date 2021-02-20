@@ -1,7 +1,6 @@
 package BackEnd;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  *  Controls custom game board editor by providing required functionality
@@ -29,12 +28,12 @@ import java.io.FileNotFoundException;
 public class GameboardEditor {
     private static final String DEFAULT_NAME = "CustomBoard";
 
-    private IniBoard board;
+    private CustomBoard board;
     private String fileName;
 
     // Default constructor, creates default version of the board
     public GameboardEditor(){
-        board = new IniBoard();
+        board = new CustomBoard();
     }
 
     /*

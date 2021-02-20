@@ -13,11 +13,11 @@ import java.util.Scanner;
  * @author s0s10
  */
 
-public class IniBoardSaveLoad {
+public class CustomBoardSaveLoad {
 
     // Reads required data
-    public static IniBoard readIniBoard(String path) {
-        IniBoard result = null;
+    public static CustomBoard readIniBoard(String path) {
+        CustomBoard result = null;
         File file = null;
         Scanner in = null;
 
@@ -46,7 +46,7 @@ public class IniBoardSaveLoad {
         ArrayList<FloorTile> fixedTiles = getTiles(in, xSize, ySize);
 
         //Generate such IniBoard
-        result = new IniBoard(xSize, ySize, playerPoses, fixedTiles, silkBagContent);
+        result = new CustomBoard(xSize, ySize, playerPoses, fixedTiles, silkBagContent);
 
         in.close();
         return result;
@@ -151,8 +151,8 @@ public class IniBoardSaveLoad {
     }
 
     // Writes data to file
-    public static void writeIniBoard(String path, IniBoard boardToSave) {
-        IniBoard result = null;
+    public static void writeIniBoard(String path, CustomBoard boardToSave) {
+        CustomBoard result = null;
         File file = null;
         FileWriter writer = null;
 
@@ -178,7 +178,7 @@ public class IniBoardSaveLoad {
     }
 
     // Writes players into the file
-    private static void writePlayerPos(FileWriter writer, IniBoard board) throws IOException {
+    private static void writePlayerPos(FileWriter writer, CustomBoard board) throws IOException {
         Coordinate coor;
 
         for (int i = 0; i < FileReader.MAX_NUM_OF_PLAYERS; i++){
@@ -188,7 +188,7 @@ public class IniBoardSaveLoad {
     }
 
     // Writes silk bag content into the file
-    private static void writeSilkBagContent(FileWriter writer, IniBoard board) throws IOException{
+    private static void writeSilkBagContent(FileWriter writer, CustomBoard board) throws IOException{
         int numOfElems;
 
         for (TileType tileType : TileType.values()){
@@ -198,7 +198,7 @@ public class IniBoardSaveLoad {
     }
 
     // Writes tiles into the file
-    private static void writeTiles(FileWriter writer, IniBoard board) throws IOException{
+    private static void writeTiles(FileWriter writer, CustomBoard board) throws IOException{
         ArrayList<FloorTile> fixedTiles = new ArrayList<>();
         ArrayList<FloorTile> nonFixedTiles = new ArrayList<>();
 

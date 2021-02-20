@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author s0s10
  */
 
-public class IniBoard {
+public class CustomBoard {
     private static final int DEFAULT_X_SIZE = 10; // To those values will be set size of the board by default
     private static final int DEFAULT_Y_SIZE = 10;
 
@@ -19,7 +19,7 @@ public class IniBoard {
     private ArrayList<FloorTile> tiles; // Tiles on the board
     private HashMap<TileType, Integer> silkBagMap; // Number of elements at the silkbag
 
-    public IniBoard() {
+    public CustomBoard() {
         xSize = DEFAULT_X_SIZE;
         ySize = DEFAULT_Y_SIZE;
         tiles = new ArrayList<>();
@@ -30,7 +30,7 @@ public class IniBoard {
         }
     }
 
-    public IniBoard(int xSize, int ySize, Coordinate[] playerPos, ArrayList<FloorTile> tiles, HashMap<TileType, Integer> silkBagMap) {
+    public CustomBoard(int xSize, int ySize, Coordinate[] playerPos, ArrayList<FloorTile> tiles, HashMap<TileType, Integer> silkBagMap) {
         this.xSize = xSize;
         this.ySize = ySize;
         this.playerPos = playerPos;

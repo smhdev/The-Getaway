@@ -2,27 +2,25 @@ package BackEnd;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
-public class IniBoardTest {
+public class CustomBoardTest {
 
     @Test
     void checkIniBoard() {
-        IniBoard board = new IniBoard();
+        CustomBoard board = new CustomBoard();
     }
 
     @Test
     void checkLoadSystem() {
         String path = "./CustomGameBoards/CustomBoard.txt";
-        IniBoard board = IniBoardSaveLoad.readIniBoard(path);
+        CustomBoard board = CustomBoardSaveLoad.readIniBoard(path);
     }
 
     @Test
     void checkSaveSystem() {
         String pathF = "./CustomGameBoards/CustomBoard.txt";
-        IniBoard board = IniBoardSaveLoad.readIniBoard(pathF);
+        CustomBoard board = CustomBoardSaveLoad.readIniBoard(pathF);
         String path = "./CustomGameBoards/CustomBoard2.txt";
-        IniBoardSaveLoad.writeIniBoard(path, board);
+        CustomBoardSaveLoad.writeIniBoard(path, board);
 
         /*File file = new File(path);
         file.delete();*/
