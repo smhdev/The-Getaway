@@ -47,7 +47,7 @@
                     <MenuItem mnemonicParsing="false" onAction="#onQuitButton" text="Quit" />
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="aboutMenuButton" mnemonicParsing="false" onAction="#onAboutMenuButton" text="About" />
                 </Menu>
             </MenuBar>
         </VBox>

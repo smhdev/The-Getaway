@@ -6,6 +6,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.effect.Bloom;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
@@ -768,8 +769,17 @@ public class GameScreenController extends StateLoad {
 		System.out.println("Game Saved");
 	}
 
-	public void onAboutButton() {
-
+	public void onAboutMenuButton() {
+		try {
+			gameLogic.saveGame();
+			WindowLoader wl = new WindowLoader(drawButton);
+			wl.load("/HowToPlay/InGameHowToPlay/InGameHowToPlay", getInitData());
+			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Game NOT saved");
+		}
+		System.out.println("Game Saved");
 	}
 
 
