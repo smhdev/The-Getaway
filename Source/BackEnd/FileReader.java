@@ -138,7 +138,7 @@ public class FileReader {
         boolean nonFixed = false;
         Random rd = new Random();
         String unFix;
-        File input = new File("CustomLevels\\" + filename);
+        File input = new File("CustomGameBoards\\" + filename);
         if (!input.exists()) {
             throw new FileNotFoundException(filename);
         }
@@ -198,13 +198,14 @@ public class FileReader {
                     rand = rd.nextInt(3);
                     FloorTile tile = new FloorTile(STRAIGHT);
                     tile.setRotation(Rotation.values()[r.nextInt(4)]);
+                    Coordinate coord = new Coordinate(x, y);
                     switch (rand) {
                         case 0:
-                            gameboard.placeTile(tile, x, y);
+                            gameboard.placeTile(tile, coord);
                         case 1:
-                            gameboard.placeTile(tile, x, y);
+                            gameboard.placeTile(tile, coord);
                         case 2:
-                            gameboard.placeTile(tile, x, y);
+                            gameboard.placeTile(tile, coord);
                     }
                 }
             }
