@@ -129,6 +129,17 @@ public class FileReader {
     }
 
     /**
+     * This method takes in the custom given level format file, and checks to see that the file exists.
+     *
+     * @param gameBoard The name of the level file format text file.
+     * @return in The scanner that iterates through the file.
+     * @throws Exception if cannot create gameSetup
+     */
+    public static Pair<Gameboard, Player[]> customGameSetup(String gameBoard) throws Exception {
+        return customGameSetup(gameBoard, (new Random()).nextInt());
+    }
+
+    /**
      * This method takes in the given level format file, and checks to see that the file exists.
      *
      * @param gameBoard The name of the level file format text file.
