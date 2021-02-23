@@ -1,6 +1,3 @@
-@font-face {
-    src: url("Assets/Skyfall.ttf");
-}
 
 .button{
     -fx-background-color: #333;
@@ -29,7 +26,7 @@
 }
 
 .WindowName {
-    -fx-font-family: "Skyfall";
+    -fx-font-family: "Impact";
     -fx-font-size: 90px;
     -fx-fill: #b5b500;
 }

@@ -6,7 +6,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -54,11 +53,11 @@ public class Main extends Application {
         }
 
         Main.setVolume(backgroundVol);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.setTitle("The Getaway");
         primaryStage.getIcons().add(new Image("player2.png"));
-        primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setResizable(true);
+        primaryStage.initStyle(StageStyle.DECORATED);
 
         playMusic();
         Main.setVolume(backgroundVol);
