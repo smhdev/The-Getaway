@@ -20,7 +20,7 @@ import java.io.File;
     // Fix/unfix them
     // Rotate them
     // Change their position
-    // Control max num of the goal tiles
+    // Control min/max num of the goal tiles
 
     // Set players position
     // Set number of every element on the board
