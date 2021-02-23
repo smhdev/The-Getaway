@@ -4,11 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.media.AudioClip;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.EventListener;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -111,6 +109,11 @@ public class LevelEditorMenuController extends StateLoad{
 
         //Take you to level editor
 
+
+        WindowLoader wl = new WindowLoader(backButton);
+        wl.load("LevelEditor", getInitData());
+        RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+
     }
 
     /**
@@ -154,11 +157,7 @@ public class LevelEditorMenuController extends StateLoad{
             System.out.println("NOT a int input");
         }
 
-        if (numIn >= MIN_IN && numIn <= MAX_IN){
-            return true;
-        }
-
-        return false;
+        return numIn >= MIN_IN && numIn <= MAX_IN;
     }
 
     /**
@@ -166,10 +165,20 @@ public class LevelEditorMenuController extends StateLoad{
      * @param nameIn The name of the new board level
      * @return True if the name is unique, else False
      */
-    private boolean correctBoardName(String nameIn) {
+    private boolean correctBoardName(String nameIn) throws NullPointerException{
         String[] gameBoards;
         File gameBoardLocation = new File("Gameboards");
         gameBoards = gameBoardLocation.list();
+
+        // If String is empty
+        if (nameIn.equalsIgnoreCase("")) {
+            return false;
+        }
+
+        //If true its a existing board so it already exists
+        if (!levelEditorOption) {
+            return true;
+        }
 
         for (String board : gameBoards) {
             board = board.substring(0, board.length() - 4);
