@@ -73,6 +73,14 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <FlowPane.margin>
+                                    <Insets />
+                                 </FlowPane.margin>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -86,6 +94,14 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <FlowPane.margin>
+                                    <Insets />
+                                 </FlowPane.margin>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -99,6 +115,14 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <FlowPane.margin>
+                                    <Insets />
+                                 </FlowPane.margin>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -112,6 +136,14 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <FlowPane.margin>
+                                    <Insets />
+                                 </FlowPane.margin>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                      </children>
@@ -137,6 +169,11 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -150,6 +187,11 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -163,6 +205,11 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -176,6 +223,11 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
+                              <Slider>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Slider>
                            </children>
                         </FlowPane>
                      </children>
