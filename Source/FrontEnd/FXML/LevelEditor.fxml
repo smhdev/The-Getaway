@@ -52,106 +52,130 @@
                         </Text>
                      </children>
                   </FlowPane>
-                  <VBox alignment="CENTER" prefHeight="227.0" prefWidth="361.0">
+                  <VBox alignment="CENTER" prefHeight="190.0" prefWidth="359.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                            <font>
                               <Font name="Impact" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="5.0" top="10.0" />
                            </VBox.margin>
                         </Text>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="straightTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="straightTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="conerTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="conerTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="tshapeTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="tshapeTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="goalTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="goalTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="218.0" prefWidth="361.0">
+                  <VBox alignment="CENTER" prefHeight="190.0" prefWidth="359.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Action Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                            <font>
                               <Font name="Impact" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="5.0" top="10.0" />
                            </VBox.margin>
                         </Text>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="fireTile" alignment="CENTER" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="fireTile" alignment="CENTER" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="iceTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="iceTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Double Move" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="doublemoveTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="doublemoveTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Backtrack" textAlignment="CENTER" wrappingWidth="128.466796875">
                                  <font>
-                                    <Font name="Impact" size="18.0" />
+                                    <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="backtrackTile" prefHeight="23.0" prefWidth="50.0" promptText="10" />
+                              <TextField fx:id="backtrackTile" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
                            </children>
                         </FlowPane>
                      </children>
@@ -166,7 +190,7 @@
                               <Font name="Impact" size="35.0" />
                            </font>
                            <FlowPane.margin>
-                              <Insets top="20.0" />
+                              <Insets top="25.0" />
                            </FlowPane.margin>
                         </Text>
                      </children>
@@ -177,6 +201,9 @@
                            <VBox.margin>
                               <Insets bottom="15.0" top="10.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. " textAlignment="CENTER" wrappingWidth="354.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. " textAlignment="CENTER" wrappingWidth="354.0" />
