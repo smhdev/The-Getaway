@@ -26,8 +26,8 @@ class FileReaderTest {
 		assertEquals(9, gameboard.getWidth());
 		assertEquals(9, gameboard.getHeight());
 
-		assertEquals("Corner",gameboard.
-		assertEquals("Straight",gameboard.tileAt(new Coordinate(2,2)).toString());
-		assertEquals("T_Shape",gameboard.tileAt(new Coordinate(3,3)).toString());
+		assertEquals("CORNER", gameboard.tileAt(new Coordinate(1, 1)).getType().toString());
+		assertEquals("STRAIGHT", gameboard.tileAt(new Coordinate(3, 3)).getType().toString());
+		assertEquals("T_SHAPE", gameboard.tileAt(new Coordinate(4, 4)).getType().toString());
 	}
 }
