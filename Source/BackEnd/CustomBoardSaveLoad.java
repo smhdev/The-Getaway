@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Class to save and load iniBoard class and use it for the board editor
  *
- * @author s0s10
+ * @author Mikhail Okrugov
  */
 
 public class CustomBoardSaveLoad {
@@ -109,9 +109,9 @@ public class CustomBoardSaveLoad {
         tileToAdd = null;
 
         System.out.println("Unfixed tiles");
-        if (in.hasNextInt()){
+        if (in.hasNextInt()) {
             numOfUnfixedTiles = in.nextInt();
-            for (int i = 0; i < numOfUnfixedTiles; i++){
+            for (int i = 0; i < numOfUnfixedTiles; i++) {
                 tileToAdd = getFloorTile(in);
                 tileToAdd.setFixedBool(false);
                 result.add(tileToAdd);
@@ -122,7 +122,7 @@ public class CustomBoardSaveLoad {
     }
 
     // Gets tile from the file
-    private static FloorTile getFloorTile(Scanner in){
+    private static FloorTile getFloorTile(Scanner in) {
         String tileTypeString;
         TileType tileType;
         int xPos, yPos, rotationState;
@@ -156,7 +156,7 @@ public class CustomBoardSaveLoad {
         File file = null;
         FileWriter writer = null;
 
-        try{
+        try {
             file = new File(path);
             writer = new FileWriter(file);
 
@@ -172,7 +172,7 @@ public class CustomBoardSaveLoad {
 
 
             writer.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -181,31 +181,31 @@ public class CustomBoardSaveLoad {
     private static void writePlayerPos(FileWriter writer, CustomBoard board) throws IOException {
         Coordinate coor;
 
-        for (int i = 0; i < FileReader.MAX_NUM_OF_PLAYERS; i++){
+        for (int i = 0; i < FileReader.MAX_NUM_OF_PLAYERS; i++) {
             coor = board.getPlayerSpawnPoint(i);
             writer.write(coor.toString() + " Player" + i + "\r\n");
         }
     }
 
     // Writes silk bag content into the file
-    private static void writeSilkBagContent(FileWriter writer, CustomBoard board) throws IOException{
+    private static void writeSilkBagContent(FileWriter writer, CustomBoard board) throws IOException {
         int numOfElems;
 
-        for (TileType tileType : TileType.values()){
+        for (TileType tileType : TileType.values()) {
             numOfElems = board.getNumOfTileTypes(tileType);
             writer.write(numOfElems + " " + tileType.toString() + "\r\n");
         }
     }
 
     // Writes tiles into the file
-    private static void writeTiles(FileWriter writer, CustomBoard board) throws IOException{
+    private static void writeTiles(FileWriter writer, CustomBoard board) throws IOException {
         ArrayList<FloorTile> fixedTiles = new ArrayList<>();
         ArrayList<FloorTile> nonFixedTiles = new ArrayList<>();
 
-        for (FloorTile floorTile : board.getTileArray()){
-            if (floorTile.isFixed()){
+        for (FloorTile floorTile : board.getTileArray()) {
+            if (floorTile.isFixed()) {
                 fixedTiles.add(floorTile);
-            }else{
+            } else {
                 nonFixedTiles.add(floorTile);
             }
         }
@@ -215,23 +215,25 @@ public class CustomBoardSaveLoad {
     }
 
     // Writes tile arrays into the file with their size at the beginning
-    private static void writeTileArray(FileWriter writer, ArrayList<FloorTile> tiles) throws IOException{
+    private static void writeTileArray(FileWriter writer, ArrayList<FloorTile> tiles) throws IOException {
         TileType tileType;
         Coordinate tilePosition;
         Rotation tileRotation;
         int tileRotationInt = 0;
         String output;
 
-        writer.write(tiles.size() + "\r\n");
+        if (tiles.size() != 0) {
+            writer.write(tiles.size() + "\r\n");
+        }
 
-        for (FloorTile floorTile : tiles){
+        for (FloorTile floorTile : tiles) {
             tileType = floorTile.getType();
             tilePosition = floorTile.getLocation();
             tileRotation = floorTile.getRotation();
 
             // Transform value rotation into integer
-            for (int i = 0; i < Rotation.values().length; i++){
-                if (tileRotation == Rotation.values()[i]){
+            for (int i = 0; i < Rotation.values().length; i++) {
+                if (tileRotation == Rotation.values()[i]) {
                     tileRotationInt = i;
                 }
             }

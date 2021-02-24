@@ -6,12 +6,12 @@ import java.util.HashMap;
 /**
  * Class which represents not generated board for the game
  *
- * @author s0s10
+ * @author Mikhail Okrugov
  */
 
 public class CustomBoard {
-    private static final int DEFAULT_X_SIZE = 10; // To those values will be set size of the board by default
-    private static final int DEFAULT_Y_SIZE = 10;
+    public static final int DEFAULT_X_SIZE = 10; // To those values will be set size of the board by default
+    public static final int DEFAULT_Y_SIZE = 10;
 
     private int xSize, ySize; // Size of the board
     private Coordinate[] playerPos; // Position for the players
@@ -82,5 +82,26 @@ public class CustomBoard {
 
     public Coordinate getPlayerSpawnPoint(int playerNum){
         return playerPos[playerNum];
+    }
+
+    public void setPlayerSpawnPoint(int playerNum, Coordinate position){
+        if (checkPosition(position)){
+            playerPos[playerNum] = position;
+        }else {
+            System.out.println("Such position isn't possible");
+        }
+    }
+
+    // Checks if such coordinate is valid
+    public static boolean checkPosition(Coordinate position){
+        boolean yCheck = position.getY() > -1 && position.getY() < DEFAULT_Y_SIZE;
+        boolean xCheck = position.getX() > -1 && position.getX() < DEFAULT_X_SIZE;
+
+        return xCheck && yCheck;
+    }
+
+    // Changes the number of the elements at the silkbag
+    public void setSilkBagMapElement(TileType tileType, int amount){
+        silkBagMap.replace(tileType, amount);
     }
 }
