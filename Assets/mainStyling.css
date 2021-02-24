@@ -11,6 +11,8 @@
     -fx-border-width: 1px;
 }
 
+
+
 .text {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
@@ -25,11 +27,13 @@
     -fx-font-size: 20;
 }
 
+
 .WindowName {
     -fx-font-family: "Impact";
     -fx-font-size: 90px;
     -fx-fill: #b5b500;
 }
+
 
 .MessageOfTheDay {
     -fx-text-fill: whitesmoke;
@@ -52,6 +56,7 @@
     -fx-font-size: 15;
 }
 
+
 .choice-box{
     -fx-background-color: #333;
     -fx-mark-color: white ;
@@ -65,6 +70,8 @@
     -fx-background-color: black ;
 }
 
+
+
 .menu-bar {
     -fx-background-color: #333;
 }
@@ -74,7 +81,9 @@
 
 .menu-item {
     -fx-background-color: #333;
+    -fx-font-family: Impact;
 }
+
 .menu .menu-item:focused {
     -fx-background-color: black;
 }
@@ -82,6 +91,9 @@
     -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
     -fx-background-color: #333;
 }
+
+
+
 .list-cell:even:filled:selected:focused, .list-cell:even:filled:selected {
     -fx-background-color: linear-gradient(#333 0%, #b5b500 100%);
     -fx-text-fill: white;
@@ -96,6 +108,9 @@
 .list-cell:odd {
     -fx-background-color: #222;
 }
+
+
+
 .table-view{
     -fx-background-color: transparent;
 }
