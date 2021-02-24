@@ -2,6 +2,7 @@ package FrontEnd;
 
 import BackEnd.*;
 import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -91,6 +92,7 @@ public class GameScreenController extends StateLoad {
 	private GameLogic gameLogic;
 	public static int tileWidth;
 	private Profile[] profiles = new Profile[4];
+	private double[] playerRotations = {0, 0, 0, 0};
 
 	/***
 	 * Gets all resources for gameScreen
@@ -306,12 +308,15 @@ public class GameScreenController extends StateLoad {
 			int x = ((int) player.getTranslateX()) / tileWidth;
 			int y = ((int) player.getTranslateY()) / tileWidth;
 			TranslateTransition smooth = new TranslateTransition();
+			RotateTransition rotate = new RotateTransition();
 			smooth.setNode(player);
+			rotate.setNode(player);
 			smooth.setDuration(new Duration(200));
 			switch (direction) {
 				case RIGHT:
 					if (y == location) {
 						if (x >= width - 1) {
+
 							smooth.setToX(0);
 							smooth.setDuration(new Duration(600));
 							//tiles.getChildren().remove(player);
@@ -448,8 +453,11 @@ public class GameScreenController extends StateLoad {
 			ImageView playerView = Assets.getPlayer(i);
 			playerView.setTranslateX(location.getX() * tileWidth);
 			playerView.setTranslateY(location.getY() * tileWidth);
+			playerView.setRotate(playerRotations[i]);
 			players.getChildren().add(playerView);
 		}
+
+
 	}
 
 	/**
@@ -553,6 +561,7 @@ public class GameScreenController extends StateLoad {
 								Node fakePlayer = Assets.getPlayer(i);
 								fakePlayer.setTranslateX(gameLogic.getPlayerLocations()[i].getX() * tileWidth);
 								fakePlayer.setTranslateY(gameLogic.getPlayerLocations()[i].getY() * tileWidth);
+								fakePlayer.setRotate(playerRotations[playerNumber]);
 								fakePlayer.setEffect(new Bloom(0.1));
 								controls.getChildren().add(fakePlayer);
 								// Set them into an active button
@@ -663,11 +672,18 @@ public class GameScreenController extends StateLoad {
 	}
 
 	private void setupMovePhase() throws Exception {
+
+		TranslateTransition walk = new TranslateTransition();
+		RotateTransition rotate = new RotateTransition();
+		int currentPlayer = gameLogic.getPlayersTurn();
+		Coordinate initLocation = gameLogic.getPlayerLocations()[currentPlayer];
+
 		Coordinate[] validLocations = gameLogic.getMoveLocations();
 		if (validLocations.length == 0) {
 			// No where to move;
-			gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", you cannot move! End your turn");
-			gameLogic.move(gameLogic.getPlayerLocations()[gameLogic.getPlayersTurn()]);
+			gameStateText.setText(profiles[currentPlayer].getName() + ", you cannot move! End your turn");
+			gameLogic.move(gameLogic.getPlayerLocations()[currentPlayer]);
+			playerRotations[currentPlayer] = playerRotations[currentPlayer];
 			mainLoop();
 		}
 		for (Coordinate coordinate : validLocations) {
@@ -676,34 +692,64 @@ public class GameScreenController extends StateLoad {
 			// Move to correct location.
 			pointer.setTranslateX(coordinate.getX() * tileWidth);
 			pointer.setTranslateY(coordinate.getY() * tileWidth);
-			gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", select a location to " +
+			gameStateText.setText(profiles[currentPlayer].getName() + ", select a location to " +
 					"move to");
 			pointer.setOnMouseClicked(e -> {
-				Node currentPlayer = players.getChildren().get(gameLogic.getPlayersTurn());
+				Node currentPlayerNode = players.getChildren().get(gameLogic.getPlayersTurn());
 				try {
 					gameLogic.move(coordinate);
 				} catch (Exception exception) {
 					exception.printStackTrace();
 				}
 				controls.getChildren().clear();
-				TranslateTransition walk = new TranslateTransition();
-				walk.setToX(coordinate.getX() * tileWidth);
-				walk.setToY(coordinate.getY() * tileWidth);
-				walk.setNode(currentPlayer);
-				walk.setDuration(new Duration(500));
-				walk.play();
-				removeAll("locationarrow");
-				walk.setOnFinished((e2) -> {
+				rotate.setDuration(new Duration(800));
+
+					Coordinate location = gameLogic.getPlayerLocations()[currentPlayer];
+					if (location.getX() > initLocation.getX()) {
+						rotate.setToAngle(270);
+						playerRotations[currentPlayer] = 270;
+					}
+					if (location.getX() < initLocation.getX()) {
+						rotate.setToAngle(90);
+						playerRotations[currentPlayer] = 90;
+					}
+					if (location.getY() < initLocation.getY()) {
+						rotate.setToAngle(180);
+						playerRotations[currentPlayer] = 180;
+					}
+					if (location.getY() > initLocation.getY()) {
+						rotate.setToAngle(0);
+						playerRotations[currentPlayer] = 0;
+					}
+				rotate.setNode(currentPlayerNode);
+				rotate.setOnFinished((e2) -> {
 					try {
-						MOVEMENT_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
-						mainLoop();
-					} catch (IOException ioException) {
-						ioException.printStackTrace();
+						currentPlayerNode.setRotate((rotate.getToAngle()));
+						walk.setToX(coordinate.getX() * tileWidth);
+						walk.setToY(coordinate.getY() * tileWidth);
+						walk.setNode(currentPlayerNode);
+						walk.setDuration(new Duration(500));
+						walk.play();
+						removeAll("locationarrow");
+						walk.setOnFinished((e3) -> {
+							try {
+								MOVEMENT_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+								playerRotations[currentPlayer] = rotate.getToAngle();
+
+								mainLoop();
+							} catch (IOException ioException) {
+								ioException.printStackTrace();
+							}
+						});
+					} catch (Exception rotateException) {
+						rotateException.printStackTrace();
 					}
 				});
+				rotate.play();
 			});
 			controls.getChildren().add(pointer);
 		}
+
 	}
 
 	/**
