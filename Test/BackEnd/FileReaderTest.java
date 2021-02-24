@@ -13,7 +13,7 @@ class FileReaderTest {
 		Pair<Gameboard, Player[]> output = null;
 
 		try {
-			output = FileReader.gameSetup("ExampleInput.txt");
+			output = FileReader.customGameSetup("CustomBoard.txt");
 		} catch (FileNotFoundException e) {
 			fail();
 		} catch (Exception e) {
@@ -23,12 +23,11 @@ class FileReaderTest {
 
 
 		Gameboard gameboard = output.getKey();
-		assertEquals(8, gameboard.getWidth());
-		assertEquals(10, gameboard.getHeight());
+		assertEquals(9, gameboard.getWidth());
+		assertEquals(9, gameboard.getHeight());
 
-		assertEquals(new Coordinate(0,0), gameboard.getPlayerPos(0));
-		assertEquals(new Coordinate(7, 0), gameboard.getPlayerPos(1));
-		assertEquals(new Coordinate(0, 9), gameboard.getPlayerPos(2));
-		assertEquals(new Coordinate(7, 9), gameboard.getPlayerPos(3));
+		assertEquals("CORNER", gameboard.tileAt(new Coordinate(1, 1)).getType().toString());
+		assertEquals("STRAIGHT", gameboard.tileAt(new Coordinate(3, 3)).getType().toString());
+		assertEquals("T_SHAPE", gameboard.tileAt(new Coordinate(4, 4)).getType().toString());
 	}
 }

@@ -630,4 +630,19 @@ public class Gameboard {
     public void placeFixedTile(FloorTile floorTile, int x, int y) {
         placeFixedTile(floorTile, new Coordinate(x, y));
     }
+
+    /**
+     * Places a floor tile and board tile in the coordinates specified.
+     *
+     * @param tile     to be placed
+     * @param location this is the coordinate for the location.
+     */
+    public void placeTile(FloorTile tile, Coordinate location) {
+        if (tileAt(location) != null) {
+            silkbag.insertTile(tileAt(location));
+            removeTile(tileAt(location));
+        }
+        tile.setLocation(location);
+        boardTiles.add(tile);
+    }
 }
