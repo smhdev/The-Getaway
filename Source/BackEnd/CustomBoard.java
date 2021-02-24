@@ -52,15 +52,15 @@ public class CustomBoard {
 
     // Returns tile on the requested position if such exist and false otherwise
     public FloorTile getTileAt(int i, int j) {
-        for (FloorTile tile : tiles){
-           if (tile.getLocation().getX() == i && tile.getLocation().getY() == j){
-               return tile;
-           }
+        for (FloorTile tile : tiles) {
+            if (tile.getLocation().getX() == i && tile.getLocation().getY() == j) {
+                return tile;
+            }
         }
         return null;
     }
 
-    public int getNumOfElems(TileType tileType){
+    public int getNumOfElems(TileType tileType) {
         return silkBagMap.get(tileType);
     }
 
@@ -80,20 +80,45 @@ public class CustomBoard {
         this.ySize = ySize;
     }
 
-    public Coordinate getPlayerSpawnPoint(int playerNum){
+    public Coordinate getPlayerSpawnPoint(int playerNum) {
         return playerPos[playerNum];
     }
 
-    public void setPlayerSpawnPoint(int playerNum, Coordinate position){
-        if (checkPosition(position)){
+    public void setPlayerSpawnPoint(int playerNum, Coordinate position) {
+        if (checkPosition(position)) {
             playerPos[playerNum] = position;
-        }else {
+        } else {
             System.out.println("Such position isn't possible");
         }
     }
 
+    // Returns all the info about custom board content
+    public String toString() {
+        String result = new String();
+
+        //Size, players positions, tiles on the board, content of the silkbag
+        result += String.format("Size:%d,%d\r\n", getXSize(), getYSize());
+
+        for (int i = 0 ; i < playerPos.length ; i++){
+            result += String.format("Player%d pos: %d,%d\n", i, playerPos[i].getX(), playerPos[i].getY());
+        }
+
+        for (FloorTile tile : tiles){
+            result += tile.getLocation().toString();
+            result += " " + tile.getType().toString();
+            result += " " + tile.isFixed();
+            result += " " + tile.getRotation().toString() + "\n";
+        }
+
+        for (TileType type : TileType.values()){
+            result += String.format("%s:%d\r\n",type.toString(), silkBagMap.get(type));
+        }
+
+        return result;
+    }
+
     // Checks if such coordinate is valid
-    public static boolean checkPosition(Coordinate position){
+    public static boolean checkPosition(Coordinate position) {
         boolean yCheck = position.getY() > -1 && position.getY() < DEFAULT_Y_SIZE;
         boolean xCheck = position.getX() > -1 && position.getX() < DEFAULT_X_SIZE;
 
@@ -101,7 +126,7 @@ public class CustomBoard {
     }
 
     // Changes the number of the elements at the silkbag
-    public void setSilkBagMapElement(TileType tileType, int amount){
+    public void setSilkBagMapElement(TileType tileType, int amount) {
         silkBagMap.replace(tileType, amount);
     }
 }

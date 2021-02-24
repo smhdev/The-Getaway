@@ -191,13 +191,14 @@ public class GameboardEditor {
         board.setSilkBagMapElement(type, amount);
     }
 
-    // Puts tile on the selected location
-    public void putTile(FloorTile tileToAdd, Coordinate position) {
-        if (!checkIfTileLayOnThePosition(position)) {
+    // Puts tile on the selected location (doesn't check if such location is free)
+    public void putTile(FloorTile tileToAdd) {
+        /*if (!checkIfTileLayOnThePosition(position)) {
             board.getTileArray().add(tileToAdd);
         } else {
             System.out.println("Can't put a tile, tile already stands on the position");
-        }
+        }*/
+        board.getTileArray().add(tileToAdd);
     }
 
     // Removes tile with the following position
