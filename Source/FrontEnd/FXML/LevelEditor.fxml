@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="1600.0" prefWidth="2000.0" style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@../../../Assets/mainStyling.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorController">
+   <bottom>
+      <ScrollPane prefHeight="300.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane prefHeight="300.0" prefWidth="1651.0">
+               <children>
+                  <Text layoutX="497.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="499.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/goal.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="350.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="352.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/corner.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="202.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="204.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/t_shape.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="56.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="58.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/straight.png" />
+                     </image>
+                  </ImageView>
+                  <RadioButton layoutX="104.0" layoutY="234.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="250.0" layoutY="234.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="399.0" layoutY="234.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="545.0" layoutY="232.0" mnemonicParsing="false" />
+                  <Text fill="#d7bb58" layoutX="173.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="35.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#d7bb58" layoutX="750.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Action / Effects" textAlignment="CENTER" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="35.0" />
+                     </font>
+                  </Text>
+                  <RadioButton layoutX="1059.0" layoutY="232.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="913.0" layoutY="234.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="764.0" layoutY="234.0" mnemonicParsing="false" />
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="718.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/fire.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="716.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="866.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/frozen.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="864.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="1013.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/fixed.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="1011.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1278.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/player1.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="1246.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="1246.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1278.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/player3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1375.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/player4.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="1343.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="1343.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1375.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/player2.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#d7bb58" layoutX="1184.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="35.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </content></ScrollPane>
+   </bottom>
+   <top>
+      <MenuBar prefHeight="24.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" styleClass="menu-title" text="LEVEL EDITOR     " />
+            <Menu mnemonicParsing="false" text="    Edit    ">
+               <items>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <RadioMenuItem mnemonicParsing="false" selected="true" text="Silk Bag" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="   Help   ">
+               <items>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="   About   " />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Exit" fx:id="exitButton"/>
+                  <MenuItem mnemonicParsing="false" text="Save &amp; Exit" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <right>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0">
+               <children>
+                  <Text fill="#d7bb58" layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="35.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="-4.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="24.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="131.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="straightTile1" layoutX="155.0" layoutY="127.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="248.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="goalTile1" layoutX="155.0" layoutY="243.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="209.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="tshapeTile1" layoutX="155.0" layoutY="205.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="172.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="cornerTile1" layoutX="155.0" layoutY="167.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="343.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="fireTile1" alignment="CENTER" layoutX="155.0" layoutY="339.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="-4.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="24.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="380.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="iceTile1" layoutX="155.0" layoutY="375.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="22.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="420.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="doublemoveTile1" layoutX="155.0" layoutY="415.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double Move" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Slider layoutX="196.0" layoutY="456.0">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Slider>
+                  <TextField fx:id="backtrackTile1" layoutX="155.0" layoutY="452.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Text layoutX="26.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backtrack" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#d7bb58" layoutY="567.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Requirements" textAlignment="CENTER" wrappingWidth="358.466796875">
+                     <font>
+                        <Font name="Impact" size="35.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="2.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All requirements have to be met for a gameboard level to be valid." textAlignment="CENTER" wrappingWidth="354.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="-2.0" layoutY="767.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. " textAlignment="CENTER" wrappingWidth="354.0" />
+                  <Text layoutX="-4.0" layoutY="742.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. " textAlignment="CENTER" wrappingWidth="354.0" />
+                  <Text layoutX="-4.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. " textAlignment="CENTER" wrappingWidth="354.0" />
+                  <Text layoutX="-2.0" layoutY="694.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. " textAlignment="CENTER" wrappingWidth="354.0" />
+                  <Text layoutX="-2.0" layoutY="668.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. " textAlignment="CENTER" wrappingWidth="354.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </right>
+</BorderPane>

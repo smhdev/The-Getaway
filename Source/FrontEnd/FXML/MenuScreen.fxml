@@ -17,9 +17,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@../../../Assets/mainStyling.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
    <center>
-      <VBox alignment="CENTER" prefHeight="610.0" prefWidth="773.0" spacing="10" stylesheets="@../../../Assets/menuStyle.css" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="610.0" prefWidth="773.0" spacing="10" stylesheets="@../../../Assets/mainStyling.css" BorderPane.alignment="CENTER">
          <children>
             <Text lineSpacing="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="THE GETAWAY" textAlignment="CENTER" wrappingWidth="620.33154296875">
                <font>
@@ -85,7 +85,7 @@
       </VBox>
    </center>
    <bottom>
-       <Label fx:id="MoTD" contentDisplay="TOP" styleClass="MessageOfTheDay" stylesheets="@../../../Assets/menuStyle.css" text="MoTD not loaded" translateY="-20.0" BorderPane.alignment="TOP_CENTER">
+       <Label fx:id="MoTD" contentDisplay="TOP" styleClass="MessageOfTheDay" stylesheets="@../../../Assets/mainStyling.css" text="MoTD not loaded" translateY="-20.0" BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
