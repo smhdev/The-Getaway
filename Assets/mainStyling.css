@@ -11,6 +11,12 @@
     -fx-border-width: 1px;
 }
 
+#resetButton{
+    -fx-pref-width: 50;
+    -fx-background-color: red;
+    -fx-text-fill: black;
+    -fx-font-size: 19px;
+}
 
 
 .text {
