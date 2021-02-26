@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-position: center; -fx-background-size: cover;" stylesheets="@../../../Assets/mainStyling.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-position: center; -fx-background-size: cover;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="LEVEL EDITOR" textAlignment="CENTER" wrappingWidth="568.55078125" BorderPane.alignment="BOTTOM_CENTER">
          <BorderPane.margin>
