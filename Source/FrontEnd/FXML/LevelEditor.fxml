@@ -8,9 +8,9 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +29,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="499.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="goalImage" fitHeight="125.0" fitWidth="125.0" layoutX="499.0" layoutY="73.0" onMouseClicked="#onGoalRB" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/goal.png" />
                      </image>
@@ -39,7 +39,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="352.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cornerImage" fitHeight="125.0" fitWidth="125.0" layoutX="352.0" layoutY="73.0" onMouseClicked="#onCornerRB" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/corner.png" />
                      </image>
@@ -49,7 +49,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="204.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="tshapeImage" fitHeight="125.0" fitWidth="125.0" layoutX="204.0" layoutY="73.0" onMouseClicked="#onTshapeRB" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/t_shape.png" />
                      </image>
@@ -59,15 +59,18 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="58.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="straightImage" fitHeight="125.0" fitWidth="125.0" layoutX="58.0" layoutY="73.0" onMouseClicked="#onStraightRB" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/straight.png" />
                      </image>
                   </ImageView>
-                  <RadioButton layoutX="104.0" layoutY="234.0" mnemonicParsing="false" />
-                  <RadioButton layoutX="250.0" layoutY="234.0" mnemonicParsing="false" />
-                  <RadioButton layoutX="399.0" layoutY="234.0" mnemonicParsing="false" />
-                  <RadioButton layoutX="545.0" layoutY="232.0" mnemonicParsing="false" />
+                  <RadioButton fx:id="straightRB" layoutX="104.0" layoutY="234.0" mnemonicParsing="false" onAction="#onStraightRB" selected="true">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="floorTiles" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="tshapeRB" layoutX="250.0" layoutY="234.0" mnemonicParsing="false" onAction="#onTshapeRB" toggleGroup="$floorTiles" />
+                  <RadioButton fx:id="cornerRB" layoutX="399.0" layoutY="234.0" mnemonicParsing="false" onAction="#onCornerRB" toggleGroup="$floorTiles" />
+                  <RadioButton fx:id="goalRB" layoutX="545.0" layoutY="232.0" mnemonicParsing="false" onAction="#onGoalRB" toggleGroup="$floorTiles" />
                   <Text fill="#d7bb58" layoutX="173.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
                      <font>
                         <Font name="Impact" size="35.0" />
@@ -138,7 +141,7 @@
                   <RadioButton layoutX="1219.0" layoutY="168.0" mnemonicParsing="false" />
                   <RadioButton layoutX="1305.0" layoutY="167.0" mnemonicParsing="false" />
                   <RadioButton layoutX="1402.0" layoutY="168.0" mnemonicParsing="false" />
-                  <Button id="resetButton" layoutX="1107.0" layoutY="212.0" mnemonicParsing="false" prefWidth="141.0" text="Reset" />
+                  <Button id="resetPlayerPositionButton" fx:id="resetPlayerPositionButton" onAction="#resetPlayerPosition" layoutX="1208.0" layoutY="213.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="129.0" text="Reset" visible="false" />
                </children>
             </AnchorPane>
          </content></ScrollPane>
@@ -149,18 +152,18 @@
             <Menu mnemonicParsing="false" styleClass="menu-title" text="LEVEL EDITOR     " />
             <Menu mnemonicParsing="false" text="    Edit    ">
                <items>
-                  <RadioMenuItem mnemonicParsing="false" selected="true" text="Silk Bag" />
+                  <RadioMenuItem id="silkBag" fx:id="silkBagToggleButton" onAction="#onSilkBagToggle" mnemonicParsing="false" selected="true" text="Silk Bag" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="   Help   ">
                <items>
-                  <MenuItem mnemonicParsing="false" text="   About   " />
+                  <MenuItem fx:id="aboutButton" onAction="#onAboutButton" mnemonicParsing="false" text="   About   " />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
                <items>
-                  <MenuItem fx:id="exitButton" onAction="onBackButton" mnemonicParsing="false" text="Exit" />
-                  <MenuItem mnemonicParsing="false" text="Save &amp; Exit" />
+                  <MenuItem fx:id="exitButton" onAction="#onExitButton" mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="saveExitButton" onAction="#onSaveExitButton" mnemonicParsing="false" text="Save &amp; Exit" />
                </items>
             </Menu>
          </menus>
@@ -246,7 +249,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Slider>
-                  <TextField id="fireInBox" fx:id="fireInBox" alignment="CENTER" layoutX="155.0" layoutY="339.0"  prefHeight="18.0" prefWidth="40.0" promptText="10">
+                  <TextField id="fireInBox" fx:id="fireInBox" alignment="CENTER" layoutX="155.0" layoutY="339.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -291,12 +294,12 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Slider fx:id="backtrackSlider" blockIncrement="1.0" layoutX="196.0" layoutY="456.0" >
+                  <Slider fx:id="backtrackSlider" blockIncrement="1.0" layoutX="196.0" layoutY="456.0">
                      <padding>
                         <Insets left="15.0" />
                      </padding>
                   </Slider>
-                  <TextField id="backtrackIn" fx:id="backtrackInBox"  layoutX="155.0" layoutY="452.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
+                  <TextField id="backtrackIn" fx:id="backtrackInBox" layoutX="155.0" layoutY="452.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
                      <font>
                         <Font size="14.0" />
                      </font>

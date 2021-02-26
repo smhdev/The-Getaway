@@ -1,11 +1,7 @@
 package FrontEnd;
-
-import javafx.event.ActionEvent;
+;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,8 +47,27 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private TextField backtrackInBox;
 
+    @FXML
+    private RadioButton straightRB;
+    @FXML
+    private RadioButton tshapeRB;
+    @FXML
+    private RadioButton cornerRB;
+    @FXML
+    private RadioButton goalRB;
+    @FXML
+    private ToggleGroup floorTiles;
 
+    @FXML
+    private MenuItem exitButton;
+    @FXML
+    private MenuItem saveExitButton;
+    @FXML
+    private RadioMenuItem silkBagToggleButton;
 
+    @FXML
+    private Button resetPlayerPositionButton;
+    private boolean silkBag = true; //True for silk bag or false to remove option
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,7 +100,52 @@ public class LevelEditorController extends StateLoad {
     }
 
 
+    public void onStraightRB() {
+        //System.out.println(floorTiles.getSelectedToggle().toString());
+        straightRB.setSelected(true);
+    }
 
-    //Silk Bag Controls
+    public void onTshapeRB() {
+        tshapeRB.setSelected(true);
+    }
+
+    public void onCornerRB() {
+        cornerRB.setSelected(true);
+    }
+
+    public void onGoalRB() {
+        goalRB.setSelected(true);
+    }
+
+
+    public void resetPlayerPosition() {
+    }
+
+
+    //Menu Bar Controls
+    public void onSilkBagToggle() {
+        silkBag = !silkBag;
+
+        if (silkBag) {
+            silkBagToggleButton.setSelected(true);
+        } else {
+            silkBagToggleButton.setSelected(false);
+        }
+    }
+
+    public void onAboutButton() {
+        //Get the about page up
+    }
+
+    public void onExitButton() {
+        WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+        wl.load("MenuScreen", getInitData());
+    }
+
+    public void onSaveExitButton () {
+        //Save Here
+        WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+        wl.load("MenuScreen", getInitData());
+    }
 
 }
