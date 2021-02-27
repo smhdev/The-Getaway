@@ -17,22 +17,22 @@
          <children>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="531.0">
                <children>
-                  <Text fill="WHITE" layoutX="95.0" layoutY="165.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Name : " textAlignment="CENTER" wrappingWidth="137.80267333984375">
+                  <Text fill="WHITE" layoutX="95.0" layoutY="165.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Name : " textAlignment="CENTER" wrappingWidth="137.80267333984375">
                      <font>
                         <Font name="Impact" size="25.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="220.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Players : " textAlignment="CENTER" wrappingWidth="216.4693603515625">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="220.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Players : " textAlignment="CENTER" wrappingWidth="216.4693603515625">
                      <font>
                         <Font name="Impact" size="25.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="85.0" layoutY="275.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Gameboard : " textAlignment="CENTER" wrappingWidth="152.4693603515625">
+                  <Text fill="WHITE" layoutX="85.0" layoutY="275.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gameboard : " textAlignment="CENTER" wrappingWidth="152.4693603515625">
                      <font>
                         <Font name="Impact" size="25.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="8.0" layoutY="333.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Custom Gameboard : " textAlignment="CENTER" wrappingWidth="230.46932983398438">
+                  <Text fill="WHITE" layoutX="8.0" layoutY="333.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Custom Gameboard : " textAlignment="CENTER" wrappingWidth="230.46932983398438">
                      <font>
                         <Font name="Impact" size="25.0" />
                      </font>
