@@ -20,6 +20,8 @@ public class GameSetupController extends StateLoad {
 
     /* These final variables are used for the game's Sound Effects (SFX) */
     boolean customBtn = false;
+    URL location;
+    ResourceBundle resources;
     private final String MAIN_MENU_SFX = "Assets\\SFX\\mainmenu.mp3";
     private final AudioClip MAIN_MENU_AUDIO = new AudioClip(new File(MAIN_MENU_SFX).toURI().toString());
     private final String RETURN_SFX = "Assets\\SFX\\return.mp3";
@@ -30,6 +32,9 @@ public class GameSetupController extends StateLoad {
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private Button customButton;
 
     @FXML
     private TextField saveName;
@@ -51,15 +56,17 @@ public class GameSetupController extends StateLoad {
         String custom[];
         String boardName = "";
         if (selectGameBoard.getValue() == null) {
+            this.location=location;
+            this.resources=resources;
             String[] gameBoards;
             File gameBoardLocation = new File("Gameboards");
             gameBoards = gameBoardLocation.list();
             if (gameBoards != null) {
                 for (String gameBoard : gameBoards) {
                     gameBoard = gameBoard.substring(0, gameBoard.length() - 4);
+                    custom = gameBoard.split("Custom");
                     if (customBtn == true) {
-                        custom = gameBoard.split("Custom");
-                        if (custom[0] == "") {
+                        if (custom[0].equals("")) {
                             if (custom.length > 2) {
                                 for (int i = 1; i < custom.length; i++) {
                                     boardName = boardName + custom[i];
@@ -68,23 +75,34 @@ public class GameSetupController extends StateLoad {
                             } else {
                                 selectGameBoard.getItems().add(custom[1]);
                             }
-                        } else {
-                            selectGameBoard.getItems().add(custom[0]);
                         }
                     } else {
-                        selectGameBoard.getItems().add(gameBoard);
+                        if (!custom[0].equals("")) {
+                            selectGameBoard.getItems().add(gameBoard);
+                        }
                     }
-                    selectGameBoard.getSelectionModel().selectFirst();
                 }
-                saveName.setPromptText("Enter game name");
+                selectGameBoard.getSelectionModel().selectFirst();
             }
+            saveName.setPromptText("Enter game name");
         }
     }
 
     /**
-     * Returns to main menu
+     * Toggles between custom and prebuilt maps
      */
-    public void onBackButton() {
+    public void onCustomButton() {
+        customBtn=!customBtn;
+        while(selectGameBoard.getItems().toArray().length!=0){
+            selectGameBoard.getItems().remove(0);
+        }
+        selectGameBoard.setValue(null);
+        initialize(location,resources);
+    }
+        /**
+         * Returns to main menu
+         */
+        public void onBackButton() {
         WindowLoader wl = new WindowLoader(backButton);
         wl.load("MenuScreen", getInitData());
         RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
