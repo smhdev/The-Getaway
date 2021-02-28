@@ -56,8 +56,8 @@ public class GameSetupController extends StateLoad {
         String custom[];
         String boardName = "";
         if (selectGameBoard.getValue() == null) {
-            this.location=location;
-            this.resources=resources;
+            this.location = location;
+            this.resources = resources;
             String[] gameBoards;
             File gameBoardLocation = new File("Gameboards");
             gameBoards = gameBoardLocation.list();
@@ -69,7 +69,11 @@ public class GameSetupController extends StateLoad {
                         if (custom[0].equals("")) {
                             if (custom.length > 2) {
                                 for (int i = 1; i < custom.length; i++) {
-                                    boardName = boardName + custom[i];
+                                    if (custom[i].equals("")) {
+                                        boardName = boardName + "Custom";
+                                    } else {
+                                        boardName = boardName + custom[i];
+                                    }
                                 }
                                 selectGameBoard.getItems().add(boardName);
                             } else {
@@ -92,17 +96,18 @@ public class GameSetupController extends StateLoad {
      * Toggles between custom and prebuilt maps
      */
     public void onCustomButton() {
-        customBtn=!customBtn;
-        while(selectGameBoard.getItems().toArray().length!=0){
+        customBtn = !customBtn;
+        while (selectGameBoard.getItems().toArray().length != 0) {
             selectGameBoard.getItems().remove(0);
         }
         selectGameBoard.setValue(null);
-        initialize(location,resources);
+        initialize(location, resources);
     }
-        /**
-         * Returns to main menu
-         */
-        public void onBackButton() {
+
+    /**
+     * Returns to main menu
+     */
+    public void onBackButton() {
         WindowLoader wl = new WindowLoader(backButton);
         wl.load("MenuScreen", getInitData());
         RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
