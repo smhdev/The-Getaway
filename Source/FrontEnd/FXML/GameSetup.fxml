@@ -32,11 +32,6 @@
                         <Font name="Impact" size="25.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="8.0" layoutY="333.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Custom Gameboard : " textAlignment="CENTER" wrappingWidth="230.46932983398438">
-                     <font>
-                        <Font name="Impact" size="25.0" />
-                     </font>
-                  </Text>
                   <TextField fx:id="saveName" layoutX="261.0" layoutY="141.0" prefHeight="29.0" prefWidth="250.0" promptText="Enter Game Save Name">
                      <font>
                         <Font name="Impact" size="14.0" />
@@ -61,7 +56,7 @@
                      </font>
                   </RadioButton>
                   <ChoiceBox fx:id="selectGameBoard" layoutX="264.0" layoutY="248.0" prefWidth="250.0" />
-                  <ChoiceBox fx:id="selectCustomGameBoard" layoutX="264.0" layoutY="306.0" prefWidth="250.0" />
+                  <Button fx:id="custom" layoutX="264.0" layoutY="312.0" mnemonicParsing="false" text="Use Custom" />
                </children>
             </AnchorPane>
          </children>
