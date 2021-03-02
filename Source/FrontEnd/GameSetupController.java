@@ -34,9 +34,6 @@ public class GameSetupController extends StateLoad {
     private Button backButton;
 
     @FXML
-    private Button customButton;
-
-    @FXML
     private TextField saveName;
 
     @FXML
