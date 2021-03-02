@@ -11,6 +11,12 @@
     -fx-border-width: 1px;
 }
 
+#resetButton{
+    -fx-pref-width: 150;
+    -fx-background-color: red;
+    -fx-text-fill: black;
+    -fx-font-size: 19px;
+}
 
 
 .text {
@@ -60,10 +66,12 @@
 .choice-box{
     -fx-background-color: #333;
     -fx-mark-color: white ;
+    -fx-pref-width: 250;
 }
 
 .choice-box .context-menu {
     -fx-background-color: #333;
+    -fx-pref-width: 250;
 }
 
 .choice-box .menu-item:focused {
