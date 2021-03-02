@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.GameSetupController">
    <center>
-      <FlowPane alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="531.0">
                <children>
@@ -70,12 +70,12 @@
    <top>
       <FlowPane alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text stroke="BLACK" strokeType="OUTSIDE" styleClass="WindowName" text="GAME SETUP" wrappingWidth="454.4693603515625" />
+            <Text stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="GAME SETUP" wrappingWidth="454.4693603515625" />
          </children>
       </FlowPane>
    </top>
    <bottom>
-      <FlowPane alignment="TOP_CENTER" hgap="45.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_CENTER" hgap="45.0" prefHeight="200.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButton" text="Back Button" />
             <Button fx:id="start" mnemonicParsing="false" onAction="#onStartButton" style="-fx-background-color: #b5b500;" text="Start" />

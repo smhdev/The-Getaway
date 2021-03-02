@@ -76,72 +76,94 @@
                         <Font name="Impact" size="35.0" />
                      </font>
                   </Text>
-                  <Text fill="#d7bb58" layoutX="718.0" layoutY="53.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
+                  <Text fill="#d7bb58" layoutX="763.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
                      <font>
                         <Font name="Impact" size="35.0" />
                      </font>
                   </Text>
-                  <RadioButton layoutX="818.0" layoutY="231.0" mnemonicParsing="false" />
-                  <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="772.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                  <RadioButton layoutX="753.0" layoutY="210.0" mnemonicParsing="false" />
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="721.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/fixed.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="770.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
+                  <Text layoutX="697.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1100.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1129.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/player1.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="1068.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
+                  <Text layoutX="1097.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="1251.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="CENTER" wrappingWidth="128.466796875">
+                  <Text layoutX="1299.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="CENTER" wrappingWidth="128.466796875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1283.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1312.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/player3.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1380.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1409.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/player4.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="1348.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
+                  <Text layoutX="1396.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="1165.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="128.466796875">
+                  <Text layoutX="1203.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="128.466796875">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1197.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1226.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Assets/player2.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#d7bb58" layoutX="1083.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
+                  <Text fill="#d7bb58" layoutX="1112.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
                      <font>
                         <Font name="Impact" size="35.0" />
                      </font>
                   </Text>
-                  <RadioButton layoutX="1122.0" layoutY="168.0" mnemonicParsing="false" />
-                  <RadioButton layoutX="1219.0" layoutY="168.0" mnemonicParsing="false" />
-                  <RadioButton layoutX="1305.0" layoutY="167.0" mnemonicParsing="false" />
-                  <RadioButton layoutX="1402.0" layoutY="168.0" mnemonicParsing="false" />
-                  <Button id="resetPlayerPositionButton" fx:id="resetPlayerPositionButton" onAction="#resetPlayerPosition" layoutX="1208.0" layoutY="213.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="129.0" text="Reset" visible="false" />
+                  <RadioButton layoutX="1151.0" layoutY="211.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="1257.0" layoutY="211.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="1353.0" layoutY="210.0" mnemonicParsing="false" />
+                  <RadioButton layoutX="1450.0" layoutY="211.0" mnemonicParsing="false" />
+                  <Button id="resetPlayerPositionButton" fx:id="resetPlayerPositionButton" layoutX="1208.0" layoutY="213.0" mnemonicParsing="false" onAction="#resetPlayerPosition" prefHeight="36.0" prefWidth="129.0" text="Reset" visible="false" />
+                  <RadioButton layoutX="872.0" layoutY="210.0" mnemonicParsing="false" />
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="840.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/rotateArrow.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="816.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <RadioButton layoutX="989.0" layoutY="210.0" mnemonicParsing="false" />
+                  <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="957.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Assets/bin.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="933.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" textAlignment="CENTER" wrappingWidth="128.466796875">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </content></ScrollPane>
@@ -152,18 +174,18 @@
             <Menu mnemonicParsing="false" styleClass="menu-title" text="LEVEL EDITOR     " />
             <Menu mnemonicParsing="false" text="    Edit    ">
                <items>
-                  <RadioMenuItem id="silkBag" fx:id="silkBagToggleButton" onAction="#onSilkBagToggle" mnemonicParsing="false" selected="true" text="Silk Bag" />
+                  <RadioMenuItem id="silkBag" fx:id="silkBagToggleButton" mnemonicParsing="false" onAction="#onSilkBagToggle" selected="true" text="Silk Bag" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="   Help   ">
                <items>
-                  <MenuItem fx:id="aboutButton" onAction="#onAboutButton" mnemonicParsing="false" text="   About   " />
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButton" text="   About   " />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
                <items>
-                  <MenuItem fx:id="exitButton" onAction="#onExitButton" mnemonicParsing="false" text="Exit" />
-                  <MenuItem fx:id="saveExitButton" onAction="#onSaveExitButton" mnemonicParsing="false" text="Save &amp; Exit" />
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" text="Exit" />
+                  <MenuItem fx:id="saveExitButton" mnemonicParsing="false" onAction="#onSaveExitButton" text="Save &amp; Exit" />
                </items>
             </Menu>
          </menus>
