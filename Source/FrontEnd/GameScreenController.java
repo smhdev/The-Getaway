@@ -78,6 +78,8 @@ public class GameScreenController extends StateLoad {
 	@FXML
 	private Pane profile;
 	@FXML
+	private Pane profilePic;
+	@FXML
 	private VBox confirmation;
 	@FXML
 	private StackPane boardArea;
@@ -143,6 +145,7 @@ public class GameScreenController extends StateLoad {
 		}
 		profile.getChildren().add(Assets.getProfile(profiles[gameLogic.getPlayersTurn()]));
 		profileName.setText(profiles[gameLogic.getPlayersTurn()].getName()); //sets the current players turn to text
+		profilePic.getChildren().add(Assets.getPlayer(gameLogic.getPlayersTurn()));
 		try {
 			updateBoard();
 		} catch (Exception e) {
