@@ -35,7 +35,7 @@ public class Assets {
      * @param name name of image needed.
      * @return loaded image.
      */
-    private static Image get(String name) {
+    public static Image get(String name) {
         Image image = cache.get(name.toLowerCase());
         if (image == null) {
             image = new Image(name + EXT);
