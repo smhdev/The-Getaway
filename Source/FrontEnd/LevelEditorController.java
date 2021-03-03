@@ -1,7 +1,14 @@
 package FrontEnd;
 ;
+import BackEnd.CustomBoard;
+import BackEnd.GameboardEditor;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.stage.Screen;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -69,9 +76,36 @@ public class LevelEditorController extends StateLoad {
     private Button resetPlayerPositionButton;
     private boolean silkBag = true; //True for silk bag or false to remove option
 
+    @FXML
+    private GridPane boardGridPane;
+
+    private GameboardEditor boardEditor;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // initialize is called twice, once automatically by JavaFX and again
+        // in WindowLoader.load (line 59). The second time around getInitData
+        // will actually return a HashMap. Hence we must check to see
+        // if getInitData isn't null before we can retrieve data from it.
+        if (getInitData() != null) {
+            String customBoardName = getInitData().get("Custom Board Name");
+            boardEditor = new GameboardEditor(customBoardName);
+            int screenWidth = (int) Screen.getPrimary().getBounds().getHeight();
+            int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+            int boardWidth = boardEditor.getBoard().getXSize();
+            int boardHeight = boardEditor.getBoard().getYSize();
+            int maxTileWidth = screenWidth / (boardWidth + 9);
+            int maxTileHeight = screenHeight / (boardHeight + 9);
+            int tileSize = Math.min(maxTileHeight, maxTileWidth);
 
+            for (int i = 0; i < boardWidth; i++) {
+                boardGridPane.getColumnConstraints().add(new ColumnConstraints(tileSize));
+            }
+
+            for (int i = 0; i < boardHeight; i++) {
+                boardGridPane.getRowConstraints().add(new RowConstraints(tileSize));
+            }
+        }
 
         straightSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 straightInBox.setText(String.valueOf(Math.round((Double) newValue))));

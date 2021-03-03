@@ -110,7 +110,7 @@ public class GameScreenController extends StateLoad {
 				}
 				int width = (int) Screen.getPrimary().getBounds().getHeight();
 				int height = (int) Screen.getPrimary().getBounds().getHeight();
-				int maxTileWidth = width / (gameLogic.getWidth() + 3) ;
+				int maxTileWidth = width / (gameLogic.getWidth() + 3);
 				int maxTileHeight = height / (gameLogic.getHeight() + 3);
 				tileWidth = Math.min(maxTileHeight, maxTileWidth);
 				boardArea.setTranslateY(tileWidth);

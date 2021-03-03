@@ -108,7 +108,19 @@ public class LevelEditorMenuController extends StateLoad{
         }
 
         //Take you to level editor
-
+        if (newLevel.isSelected()) {
+            // User chose to create a new level
+            getInitData().put("Custom Board Name", nameIn.getText());
+            getInitData().put("Custom Board Is New", "true");
+            getInitData().put("Custom Board Width", widthIn.getText());
+            getInitData().put("Custom Board Height", heightIn.getText());
+        } else {
+            // User chose to modify existing level
+            getInitData().put("Custom Board Name", selectGameBoard.getValue());
+            getInitData().put("Custom Board Is New", "false");
+            getInitData().put("Custom Board Width", widthIn.getText());
+            getInitData().put("Custom Board Height", heightIn.getText());
+        }
 
         WindowLoader wl = new WindowLoader(backButton);
         wl.load("LevelEditor", getInitData());
