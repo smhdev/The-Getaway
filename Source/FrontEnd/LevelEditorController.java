@@ -2,6 +2,7 @@ package FrontEnd;
 ;
 import BackEnd.CustomBoard;
 import BackEnd.GameboardEditor;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
@@ -63,7 +64,23 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private RadioButton goalRB;
     @FXML
-    private ToggleGroup floorTiles;
+    private RadioButton fixRB;
+    @FXML
+    private RadioButton rotateRB;
+    @FXML
+    private RadioButton removeRB;
+    @FXML
+    private RadioButton p1RB;
+    @FXML
+    private RadioButton p2RB;
+    @FXML
+    private RadioButton p3RB;
+    @FXML
+    private RadioButton p4RB;
+    @FXML
+    private ToggleGroup floorActionPlayerSet;
+    //used to select what to place on board
+    //System.out.println(floorActionPlayerSet.getSelectedToggle().toString());
 
     @FXML
     private MenuItem exitButton;
@@ -135,22 +152,26 @@ public class LevelEditorController extends StateLoad {
 
 
     public void onStraightRB() {
-        //System.out.println(floorTiles.getSelectedToggle().toString());
         straightRB.setSelected(true);
     }
-
     public void onTshapeRB() {
         tshapeRB.setSelected(true);
     }
-
     public void onCornerRB() {
         cornerRB.setSelected(true);
     }
-
     public void onGoalRB() {
         goalRB.setSelected(true);
     }
 
+    public void onFixRB() { fixRB.setSelected(true);}
+    public void onRotateRB() { rotateRB.setSelected(true);}
+    public void onRemoveRB() { removeRB.setSelected(true);}
+
+    public void onP1RB() { p1RB.setSelected(true);}
+    public void onP2RB() { p2RB.setSelected(true);}
+    public void onP3RB() { p3RB.setSelected(true);}
+    public void onP4RB() { p4RB.setSelected(true);}
 
     public void resetPlayerPosition() {
     }
@@ -181,5 +202,5 @@ public class LevelEditorController extends StateLoad {
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());
     }
-
+    
 }
