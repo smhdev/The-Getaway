@@ -13,8 +13,8 @@ class FileReaderTest {
 		Pair<Gameboard, Player[]> output = null;
 
 		try {
-			output = FileReader.customGameSetup("CustomBoard.txt");
-		} catch (FileNotFoundException e) {
+//			output = FileReader.customGameSetup("CustomBoard.txt");
+//		} catch (FileNotFoundException e) {
 			fail();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
