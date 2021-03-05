@@ -3,6 +3,7 @@ package FrontEnd;
 import BackEnd.CustomBoard;
 import BackEnd.FloorTile;
 import BackEnd.GameboardEditor;
+import BackEnd.TileType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Screen;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
@@ -66,7 +68,23 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private RadioButton goalRB;
     @FXML
-    private ToggleGroup floorTiles;
+    private RadioButton fixRB;
+    @FXML
+    private RadioButton rotateRB;
+    @FXML
+    private RadioButton removeRB;
+    @FXML
+    private RadioButton p1RB;
+    @FXML
+    private RadioButton p2RB;
+    @FXML
+    private RadioButton p3RB;
+    @FXML
+    private RadioButton p4RB;
+    @FXML
+    private ToggleGroup floorActionPlayerSet;
+    //used to select what to place on board
+    //System.out.println(floorActionPlayerSet.getSelectedToggle().toString());
 
     @FXML
     private MenuItem exitButton;
@@ -176,38 +194,105 @@ public class LevelEditorController extends StateLoad {
         return tileImg;
     }
 
+    /**
+     *
+     * @return HashMap
+     */
+    private HashMap getSilkBagData(){
+
+        HashMap<TileType, Integer> silkBagMap = null;
+        if (silkBag) {
+            silkBagMap.put(TileType.STRAIGHT, Integer.valueOf(straightInBox.getText()));
+            silkBagMap.put(TileType.CORNER, Integer.valueOf(cornerInBox.getText()));
+            silkBagMap.put(TileType.T_SHAPE, Integer.valueOf(tshapeInBox.getText()));
+            silkBagMap.put(TileType.GOAL, Integer.valueOf(goalInBox.getText()));
+            silkBagMap.put(TileType.FIRE, Integer.valueOf(fireInBox.getText()));
+            silkBagMap.put(TileType.FROZEN, Integer.valueOf(iceInBox.getText()));
+            silkBagMap.put(TileType.BACKTRACK, Integer.valueOf(backtrackInBox.getText()));
+            silkBagMap.put(TileType.DOUBLE_MOVE, Integer.valueOf(doublemoveInBox.getText()));
+        }
+
+        return silkBagMap;
+    }
+
 
     public void onStraightRB() {
-        //System.out.println(floorTiles.getSelectedToggle().toString());
         straightRB.setSelected(true);
+        checkVisRestPlayerButton();
     }
-
     public void onTshapeRB() {
         tshapeRB.setSelected(true);
+        checkVisRestPlayerButton();
     }
-
     public void onCornerRB() {
         cornerRB.setSelected(true);
+        checkVisRestPlayerButton();
     }
-
     public void onGoalRB() {
         goalRB.setSelected(true);
+        checkVisRestPlayerButton();
     }
 
+    public void onFixRB() {
+        fixRB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+    public void onRotateRB() {
+        rotateRB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+    public void onRemoveRB() {
+        removeRB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+
+    public void onP1RB() {
+        p1RB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+    public void onP2RB() {
+        p2RB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+    public void onP3RB() {
+        p3RB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+    public void onP4RB() {
+        p4RB.setSelected(true);
+        checkVisRestPlayerButton();
+    }
+
+    private void checkVisRestPlayerButton() {
+        switch (((RadioButton) floorActionPlayerSet.getSelectedToggle()).getId()) {
+            case "p1RB":
+            case "p2RB":
+            case "p3RB":
+            case "p4RB":
+                resetPlayerPositionButton.setVisible(true);
+                break;
+            default:
+                resetPlayerPositionButton.setVisible(false);
+                break;
+        }
+    }
 
     public void resetPlayerPosition() {
+        switch (((RadioButton) floorActionPlayerSet.getSelectedToggle()).getId()) {
+            case "p1RB":
+            case "p2RB":
+            case "p3RB":
+            case "p4RB":
+                //Rest Player
+                break;
+        }
     }
-
 
     //Menu Bar Controls
     public void onSilkBagToggle() {
         silkBag = !silkBag;
 
-        if (silkBag) {
-            silkBagToggleButton.setSelected(true);
-        } else {
-            silkBagToggleButton.setSelected(false);
-        }
+        silkBagToggleButton.setSelected(silkBag);
     }
 
     public void onAboutButton() {

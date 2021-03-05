@@ -18,6 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.Pane?>
 <BorderPane prefHeight="1000.0" prefWidth="1800.0" style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorController">
    <bottom>
       <AnchorPane prefHeight="250.0" prefWidth="1651.0" style="-fx-background-color: #FFFFFF;">
@@ -349,7 +350,9 @@
       </AnchorPane>
    </right>
    <center>
-      <GridPane fx:id="boardGridPane" alignment="CENTER" style="-fx-background-color: #4ab33f;">
-      </GridPane>
+      <Pane>
+         <GridPane fx:id="boardGridPane" alignment="CENTER">
+         </GridPane>
+      </Pane>
    </center>
 </BorderPane>
