@@ -3,6 +3,7 @@ package FrontEnd;
 import BackEnd.*;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -147,17 +148,21 @@ public class LevelEditorController extends StateLoad {
                         // A tile exists here; create an image view containing the tile's picture
                         String tileName = currentTile.getType().name().toLowerCase();
                         ImageView tileImg = createTileImageView(tileName, tileSize, currentTile.getRotation());
+                        tileImg.setUserData("TileImage " + tileName);
                         pane.getChildren().add(tileImg);
 
                         if (currentTile.isFixed()) {
                             // Add the locked icon on top
                             ImageView lockedImg = createTileImageView("fixed", tileSize);
+                            lockedImg.setUserData("LockedImage");
                             pane.getChildren().add(lockedImg);
                         }
 
                     } else {
                         // No tile exists; create an image view with an empty tile
-                        pane.getChildren().add(createTileImageView("empty", tileSize));
+                        ImageView emptyImage = createTileImageView("empty", tileSize);
+                        emptyImage.setUserData("EmptyImage");
+                        pane.getChildren().add(emptyImage);
                     }
                     pane.setUserData(new Pair<Integer, Integer>(x, y));
                     // Add the pane containing the images to the board grid pane
@@ -188,10 +193,8 @@ public class LevelEditorController extends StateLoad {
                         if (db.hasString()) {
                             // Get the name of the new tile
                             String newTileName = db.getString();
-                            ImageView tileImg = createTileImageView(newTileName, tileSize);
                             // Remove all other images and add this new tile to the pane
-                            pane.getChildren().removeAll();
-                            pane.getChildren().add(tileImg);
+                            swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
 
                             // Stick it in the board editor
                             TileType tileType;
@@ -227,7 +230,24 @@ public class LevelEditorController extends StateLoad {
 
                     // Add an event handler when the pane is clicked
                     pane.setOnMouseClicked((MouseEvent event) -> {
-                        System.out.printf("Tile (%d, %d) was clicked on%n", finalX, finalY);
+
+                        if (fixRB.isSelected()) {
+                            // Fix or unfix this tile
+                        } else if (rotateRB.isSelected()) {
+                            // Rotate this tile
+                            FloorTile tile = customBoard.getTileAt(finalX, finalY);
+                            if (tile != null) {
+                                tile.setRotation(tile.getRotation().clockwise());
+                                String tileName = tile.getType().toString().toLowerCase();
+                                swapOutTileImage(pane, tileName, tileSize, tile.getRotation());
+
+                                System.out.printf("Tile (%d, %d) was rotated to %s%n",
+                                        finalX, finalY, tile.getRotation()
+                                );
+                            }
+                        } else if (removeRB.isSelected()) {
+                            // Remove this tile
+                        }
                     });
                 }
             }
@@ -257,6 +277,28 @@ public class LevelEditorController extends StateLoad {
 
         doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
+    }
+
+    /**
+     * Helper function that swaps the ImageView containing a tile for a different one.
+     * @param pane The pane containing tile ImageViews.
+     * @param newTile The name of the new tile.
+     * @param size The size of the new tile.
+     * @param rotation The rotation of the new tile.
+     */
+    public void swapOutTileImage(Pane pane, String newTile, int size, Rotation rotation) {
+        for (Node child : pane.getChildren()) {
+            String userData = child.getUserData().toString();
+            if (userData != null) {
+                if (userData.startsWith("TileImage") || userData.startsWith("EmptyImage")) {
+                    pane.getChildren().remove(child);
+                    ImageView tileImageView = createTileImageView(newTile, size, rotation);
+                    tileImageView.setUserData("TileImage " + newTile);
+                    pane.getChildren().add(0, tileImageView);
+                    break;
+                }
+            }
+        }
     }
 
     /**
