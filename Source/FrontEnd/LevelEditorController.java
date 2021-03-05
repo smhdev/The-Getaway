@@ -2,6 +2,7 @@ package FrontEnd;
 ;
 import BackEnd.*;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -12,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.util.Pair;
 
+import javax.sound.sampled.Clip;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -162,10 +164,15 @@ public class LevelEditorController extends StateLoad {
                     // at the given column and row
                     boardGridPane.add(pane, x, y);
 
-                    // Add an event handler when something gets dragged on top of it
+                    // Add an event handler when something gets dragged on top of the pane
                     pane.setOnDragOver((DragEvent event) -> {
                         if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
-                            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                            String dbContent = event.getDragboard().getString();
+                            // Make sure a tile is being dragged onto this pane
+                            if (dbContent.equals("straight") || dbContent.equals("t_shape") ||
+                                    dbContent.equals("corner") || dbContent.equals("goal")) {
+                                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                            }
                         }
                         event.consume();
                     });
@@ -175,7 +182,7 @@ public class LevelEditorController extends StateLoad {
                     final int finalX = x;
                     final int finalY = y;
 
-                    // Add an event handler when something gets dropped on top of it
+                    // Add an event handler when something gets dropped on top of the pane
                     pane.setOnDragDropped((DragEvent event) -> {
                         Dragboard db = event.getDragboard();
                         if (db.hasString()) {
@@ -187,11 +194,30 @@ public class LevelEditorController extends StateLoad {
                             pane.getChildren().add(tileImg);
 
                             // Stick it in the board editor
-                            FloorTile tileToAdd = new FloorTile(TileType.STRAIGHT);
+                            TileType tileType;
+                            switch (newTileName) {
+                                case "straight":
+                                    tileType = TileType.STRAIGHT;
+                                    break;
+                                case "t_shape":
+                                    tileType = TileType.T_SHAPE;
+                                    break;
+                                case "corner":
+                                    tileType = TileType.CORNER;
+                                    break;
+                                case "goal":
+                                    tileType = TileType.GOAL;
+                                    break;
+                                default:
+                                    throw new IllegalStateException("What the hell is a " +
+                                            newTileName + "? Not a tile that's what.");
+                            }
+
+                            FloorTile tileToAdd = new FloorTile(tileType);
                             tileToAdd.setLocation(new Coordinate(finalX, finalY));
                             editor.putTile(tileToAdd);
 
-                            System.out.printf("The tile at (%d, %d) is now a %s", finalX, finalY, newTileName);
+                            System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
                             event.setDropCompleted(true);
                         } else {
                             event.setDropCompleted(false);
@@ -263,16 +289,50 @@ public class LevelEditorController extends StateLoad {
         return silkBagMap;
     }
 
+    /**
+     * Helper method which starts a drag and drop event.
+     * @param source The source of the dragging.
+     * @param tileName The name of the tile being dragged.
+     */
+    private void startDragAndDrop(Node source, String tileName) {
+        Dragboard db = source.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent content = new ClipboardContent();
+        content.putString(tileName);
+        db.setContent(content);
+        System.out.println("Starting a drag event for " + content.getString());
+    }
+
     public void onMouseDragStraightTile(MouseEvent event) {
         event.setDragDetect(true);
     }
 
     public void onDragStraightTile(MouseEvent event) {
-        Dragboard db = straightImage.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putString("straight");
-        db.setContent(content);
-        System.out.println("Starting a drag event for " + content.getString());
+        startDragAndDrop(straightImage, "straight");
+    }
+
+
+    public void onMouseDragTShapeTile(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragTShapeTile(MouseEvent event) {
+        startDragAndDrop(tshapeImage, "t_shape");
+    }
+
+    public void onMouseDragCornerTile(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragCornerTile(MouseEvent event) {
+        startDragAndDrop(cornerImage, "corner");
+    }
+
+    public void onMouseDragGoalTile(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragGoalTile(MouseEvent event) {
+        startDragAndDrop(goalImage, "goal");
     }
 
 

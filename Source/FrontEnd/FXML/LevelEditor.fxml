@@ -15,7 +15,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="goalImage" fitHeight="90.0" fitWidth="90.0" layoutX="435.0" layoutY="78.0" onMouseClicked="#onGoalRB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="goalImage" fitHeight="90.0" fitWidth="90.0" layoutX="435.0" layoutY="78.0" onDragDetected="#onDragGoalTile" onMouseClicked="#onGoalRB" onMouseDragEntered="#onMouseDragGoalTile" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/goal.png" />
                </image>
@@ -25,7 +25,7 @@
                         <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="cornerImage" fitHeight="90.0" fitWidth="90.0" layoutX="310.0" layoutY="78.0" onMouseClicked="#onCornerRB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cornerImage" fitHeight="90.0" fitWidth="90.0" layoutX="310.0" layoutY="78.0" onDragDetected="#onDragCornerTile" onMouseClicked="#onCornerRB" onMouseDragEntered="#onMouseDragCornerTile" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/corner.png" />
                </image>
@@ -35,7 +35,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="tshapeImage" fitHeight="90.0" fitWidth="90.0" layoutX="191.0" layoutY="78.0" onMouseClicked="#onTshapeRB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="tshapeImage" fitHeight="90.0" fitWidth="90.0" layoutX="191.0" layoutY="78.0" onDragDetected="#onDragTShapeTile" onMouseClicked="#onTshapeRB" onMouseDragEntered="#onMouseDragTShapeTile" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/t_shape.png" />
                </image>
