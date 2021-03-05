@@ -186,6 +186,7 @@ public class LevelEditorController extends StateLoad {
                     // coordinates to final variables before reading them
                     final int finalX = x;
                     final int finalY = y;
+                    final Coordinate coords = new Coordinate(x, y);
 
                     // Add an event handler when something gets dropped on top of the pane
                     pane.setOnDragDropped((DragEvent event) -> {
@@ -217,7 +218,7 @@ public class LevelEditorController extends StateLoad {
                             }
 
                             FloorTile tileToAdd = new FloorTile(tileType);
-                            tileToAdd.setLocation(new Coordinate(finalX, finalY));
+                            tileToAdd.setLocation(coords);
                             editor.putTile(tileToAdd);
 
                             System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
@@ -247,6 +248,9 @@ public class LevelEditorController extends StateLoad {
                             }
                         } else if (removeRB.isSelected()) {
                             // Remove this tile
+                            emptyTileImage(pane, tileSize);
+                            editor.removeTileOnPosition(coords);
+                            System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
                         }
                     });
                 }
@@ -295,6 +299,27 @@ public class LevelEditorController extends StateLoad {
                     ImageView tileImageView = createTileImageView(newTile, size, rotation);
                     tileImageView.setUserData("TileImage " + newTile);
                     pane.getChildren().add(0, tileImageView);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Helper function that swaps the ImageView containing a tile for an empty one.
+     * @param pane The pane containing tile ImageViews.
+     * @param size The size of the empty image.
+     */
+    public void emptyTileImage(Pane pane, int size) {
+        for (Node child : pane.getChildren()) {
+            String userData = child.getUserData().toString();
+            if (userData != null) {
+                if (userData.startsWith("TileImage") || userData.startsWith("EmptyImage")) {
+                    // FIXME: This might cause the fixed tile icon to persist. Need to remove that.
+                    pane.getChildren().remove(child);
+                    ImageView emptyImageView = createTileImageView("empty", size);
+                    emptyImageView.setUserData("EmptyImage");
+                    pane.getChildren().add(emptyImageView);
                     break;
                 }
             }
@@ -355,6 +380,7 @@ public class LevelEditorController extends StateLoad {
      * @param tileName The name of the tile being dragged.
      */
     private void startDragAndDrop(Node source, String tileName) {
+        unselectActionRadioButtons();
         Dragboard db = source.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         content.putString(tileName);
@@ -369,7 +395,6 @@ public class LevelEditorController extends StateLoad {
     public void onDragStraightTile(MouseEvent event) {
         startDragAndDrop(straightImage, "straight");
     }
-
 
     public void onMouseDragTShapeTile(MouseEvent event) {
         event.setDragDetect(true);
@@ -456,6 +481,12 @@ public class LevelEditorController extends StateLoad {
         }
     }
 
+    public void unselectActionRadioButtons() {
+        fixRB.setSelected(false);
+        rotateRB.setSelected(false);
+        removeRB.setSelected(false);
+    }
+
     public void resetPlayerPosition() {
         switch (((RadioButton) floorActionPlayerSet.getSelectedToggle()).getId()) {
             case "p1RB":
@@ -485,6 +516,7 @@ public class LevelEditorController extends StateLoad {
 
     public void onSaveExitButton () {
         //Save Here
+
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());
     }
