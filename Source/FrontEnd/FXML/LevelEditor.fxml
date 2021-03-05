@@ -74,7 +74,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="p1Image" fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onDragDetected="#onDragPlayer1" onMouseDragEntered="#onMouseDragPlayer1" onMouseClicked="#onP1RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p1Image" fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onDragDetected="#onDragPlayer1" onMouseDragEntered="#onMouseDragPlayer1" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player1.png" />
                </image>
@@ -89,12 +89,12 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="p3Image" fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onDragDetected="#onDragPlayer3" onMouseDragEntered="#onMouseDragPlayer3" onMouseClicked="#onP3RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p3Image" fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onDragDetected="#onDragPlayer3" onMouseDragEntered="#onMouseDragPlayer3" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player3.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="p4Image" fitHeight="80.0" fitWidth="80.0" layoutX="1306.0" layoutY="85.0" onDragDetected="#onDragPlayer4" onMouseDragEntered="#onMouseDragPlayer4" onMouseClicked="#onP4RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p4Image" fitHeight="80.0" fitWidth="80.0" layoutX="1306.0" layoutY="85.0" onDragDetected="#onDragPlayer4" onMouseDragEntered="#onMouseDragPlayer4" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player4.png" />
                </image>
@@ -109,7 +109,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fx:id="p2Image" fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onDragDetected="#onDragPlayer2" onMouseDragEntered="#onMouseDragPlayer2" onMouseClicked="#onP2RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p2Image" fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onDragDetected="#onDragPlayer2" onMouseDragEntered="#onMouseDragPlayer2" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player2.png" />
                </image>
@@ -119,10 +119,6 @@
                   <Font name="Impact" size="35.0" />
                </font>
             </Text>
-            <RadioButton fx:id="p1RB" layoutX="1037.0" layoutY="200.0" mnemonicParsing="false" onAction="#onP1RB" toggleGroup="$floorActionPlayerSet" />
-            <RadioButton fx:id="p2RB" layoutX="1143.0" layoutY="200.0" mnemonicParsing="false" onAction="#onP2RB" toggleGroup="$floorActionPlayerSet" />
-            <RadioButton fx:id="p3RB" layoutX="1239.0" layoutY="199.0" mnemonicParsing="false" onAction="#onP3RB" toggleGroup="$floorActionPlayerSet" />
-            <RadioButton fx:id="p4RB" layoutX="1336.0" layoutY="200.0" mnemonicParsing="false" onAction="#onP4RB" toggleGroup="$floorActionPlayerSet" />
             <Button id="resetPlayerPositionButton" fx:id="resetPlayerPositionButton" layoutX="1410.0" layoutY="91.0" mnemonicParsing="false" onAction="#resetPlayerPosition" prefHeight="70.0" prefWidth="70.0" styleClass="resetButton" text="Reset" textAlignment="CENTER" visible="false">
                <font>
                   <Font name="Impact" size="18.0" />
