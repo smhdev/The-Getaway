@@ -233,4 +233,13 @@ public class Assets {
 		profileView.setFitHeight(100);
 		return profileView;
 	}
+
+	public static ImageView getCar(int playerNumber) {
+        Image carModel = get("player" + (playerNumber+1));
+        ImageView car = new ImageView(carModel);
+        car.setFitHeight(100);
+        car.setFitWidth(100);
+        car.setId("player " + playerNumber);
+        return car;
+    }
 }
