@@ -1,17 +1,16 @@
 package FrontEnd;
 ;
-import BackEnd.CustomBoard;
-import BackEnd.FloorTile;
-import BackEnd.GameboardEditor;
-import BackEnd.TileType;
+import BackEnd.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
+import javafx.util.Pair;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -59,6 +58,15 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private TextField backtrackInBox;
 
+
+    @FXML
+    private ImageView straightImage;
+    @FXML
+    private ImageView goalImage;
+    @FXML
+    private ImageView cornerImage;
+    @FXML
+    private ImageView tshapeImage;
     @FXML
     private RadioButton straightRB;
     @FXML
@@ -100,6 +108,7 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private GridPane boardGridPane;
 
+    private GameboardEditor editor;
     private CustomBoard customBoard;
 
     @Override
@@ -111,6 +120,7 @@ public class LevelEditorController extends StateLoad {
         if (getInitData() != null) {
             String customBoardName = getInitData().get("Custom Board Name");
             customBoard = GameboardEditor.loadFile("./Gameboards/" + customBoardName + ".txt");
+            editor = new GameboardEditor(customBoard);
             // Bunch of calculations to work out the proper size of the tile
             int screenWidth = (int) Screen.getPrimary().getBounds().getHeight();
             int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
@@ -147,9 +157,47 @@ public class LevelEditorController extends StateLoad {
                         // No tile exists; create an image view with an empty tile
                         pane.getChildren().add(createTileImageView("empty", tileSize));
                     }
+                    pane.setUserData(new Pair<Integer, Integer>(x, y));
                     // Add the pane containing the images to the board grid pane
                     // at the given column and row
                     boardGridPane.add(pane, x, y);
+
+                    // Add an event handler when something gets dragged on top of it
+                    pane.setOnDragOver((DragEvent event) -> {
+                        if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
+                            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                        }
+                        event.consume();
+                    });
+
+                    // Lambda expressions require variables to be final, so copy the
+                    // coordinates to final variables before reading them
+                    final int finalX = x;
+                    final int finalY = y;
+
+                    // Add an event handler when something gets dropped on top of it
+                    pane.setOnDragDropped((DragEvent event) -> {
+                        Dragboard db = event.getDragboard();
+                        if (db.hasString()) {
+                            // Get the name of the new tile
+                            String newTileName = db.getString();
+                            ImageView tileImg = createTileImageView(newTileName, tileSize);
+                            // Remove all other images and add this new tile to the pane
+                            pane.getChildren().removeAll();
+                            pane.getChildren().add(tileImg);
+
+                            // Stick it in the board editor
+                            FloorTile tileToAdd = new FloorTile(TileType.STRAIGHT);
+                            tileToAdd.setLocation(new Coordinate(finalX, finalY));
+                            editor.putTile(tileToAdd);
+
+                            System.out.printf("The tile at (%d, %d) is now a %s", finalX, finalY, newTileName);
+                            event.setDropCompleted(true);
+                        } else {
+                            event.setDropCompleted(false);
+                        }
+                        event.consume();
+                    });
                 }
             }
         }
@@ -213,6 +261,18 @@ public class LevelEditorController extends StateLoad {
         }
 
         return silkBagMap;
+    }
+
+    public void onMouseDragStraightTile(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragStraightTile(MouseEvent event) {
+        Dragboard db = straightImage.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent content = new ClipboardContent();
+        content.putString("straight");
+        db.setContent(content);
+        System.out.println("Starting a drag event for " + content.getString());
     }
 
 
