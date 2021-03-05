@@ -103,7 +103,7 @@ public class LevelEditorController extends StateLoad {
 
     @FXML
     private GridPane boardGridPane;
-    private Pane[] playerSpawnPanes = new Pane[4];
+    private final Pane[] playerSpawnPanes = new Pane[4];
 
     private GameboardEditor editor;
     private CustomBoard customBoard;
