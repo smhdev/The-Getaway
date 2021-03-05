@@ -86,14 +86,6 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private ImageView p4Image;
     @FXML
-    private RadioButton p1RB;
-    @FXML
-    private RadioButton p2RB;
-    @FXML
-    private RadioButton p3RB;
-    @FXML
-    private RadioButton p4RB;
-    @FXML
     private ToggleGroup floorActionPlayerSet;
     //used to select what to place on board
     //System.out.println(floorActionPlayerSet.getSelectedToggle().toString());
@@ -269,9 +261,11 @@ public class LevelEditorController extends StateLoad {
                             }
                         } else if (removeRB.isSelected()) {
                             // Remove this tile
-                            emptyTileImage(pane, tileSize);
-                            editor.removeTileOnPosition(coordinates);
-                            System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
+                            if (customBoard.getTileAt(finalX, finalY) != null) {
+                                emptyTileImage(pane, tileSize);
+                                editor.removeTileOnPosition(coordinates);
+                                System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
+                            }
                         }
                     });
 
@@ -562,23 +556,6 @@ public class LevelEditorController extends StateLoad {
     }
     public void onRemoveRB() {
         removeRB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-
-    public void onP1RB() {
-        p1RB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-    public void onP2RB() {
-        p2RB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-    public void onP3RB() {
-        p3RB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-    public void onP4RB() {
-        p4RB.setSelected(true);
         checkVisRestPlayerButton();
     }
 
