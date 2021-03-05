@@ -153,9 +153,7 @@ public class LevelEditorController extends StateLoad {
 
                         if (currentTile.isFixed()) {
                             // Add the locked icon on top
-                            ImageView lockedImg = createTileImageView("fixed", tileSize);
-                            lockedImg.setUserData("LockedImage");
-                            pane.getChildren().add(lockedImg);
+                            toggleFixedImage(pane, tileSize);
                         }
 
                     } else {
@@ -234,6 +232,17 @@ public class LevelEditorController extends StateLoad {
 
                         if (fixRB.isSelected()) {
                             // Fix or unfix this tile
+                            FloorTile tile = customBoard.getTileAt(finalX, finalY);
+                            if (tile != null) {
+                                tile.setFixedBool(!tile.isFixed());
+                                toggleFixedImage(pane, tileSize);
+                                System.out.printf(
+                                        tile.isFixed() ?
+                                        "Tile (%d, %d) was fixed%n" :
+                                        "Tile (%d, %d) was unfixed%n",
+                                        finalX, finalY
+                                );
+                            }
                         } else if (rotateRB.isSelected()) {
                             // Rotate this tile
                             FloorTile tile = customBoard.getTileAt(finalX, finalY);
@@ -324,6 +333,28 @@ public class LevelEditorController extends StateLoad {
                 }
             }
         }
+    }
+
+    /**
+     * Helper function that adds a fixed ImageView if it isn't there, or removes it if it is.
+     * @param pane The pane containing a tile ImageView.
+     * @param size The size of the locked image.
+     */
+    public void toggleFixedImage(Pane pane, int size) {
+        for (Node child : pane.getChildren()) {
+            String userData = child.getUserData().toString();
+            if (userData != null) {
+                if (userData.startsWith("FixedImage")) {
+                    pane.getChildren().remove(child);
+                    return;
+                }
+            }
+        }
+        // At this point, all of the children have been examined but none have the "FixedImage" userdata.
+        // Therefore a fixed image must be added.
+        ImageView lockedImg = createTileImageView("fixed", size);
+        lockedImg.setUserData("FixedImage");
+        pane.getChildren().add(lockedImg);
     }
 
     /**
