@@ -88,13 +88,8 @@ public class LevelEditorController extends StateLoad {
     private ImageView p4Image;
     @FXML
     private ToggleGroup floorActionPlayerSet;
-    //used to select what to place on board
-    //System.out.println(floorActionPlayerSet.getSelectedToggle().toString());
 
-    @FXML
-    private MenuItem exitButton;
-    @FXML
-    private MenuItem saveExitButton;
+
     @FXML
     private RadioMenuItem silkBagToggleButton;
 
@@ -605,7 +600,6 @@ public class LevelEditorController extends StateLoad {
     //Menu Bar Controls
     public void onSilkBagToggle() {
         silkBag = !silkBag;
-
         silkBagToggleButton.setSelected(silkBag);
     }
 
