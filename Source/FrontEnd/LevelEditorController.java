@@ -176,7 +176,7 @@ public class LevelEditorController extends StateLoad {
                     // coordinates to final variables before reading them
                     final int finalX = x;
                     final int finalY = y;
-                    final Coordinate coords = new Coordinate(x, y);
+                    final Coordinate coordinates = new Coordinate(x, y);
 
                     // Add an event handler when something gets dropped on top of the pane
                     pane.setOnDragDropped((DragEvent event) -> {
@@ -208,7 +208,7 @@ public class LevelEditorController extends StateLoad {
                             }
 
                             FloorTile tileToAdd = new FloorTile(tileType);
-                            tileToAdd.setLocation(coords);
+                            tileToAdd.setLocation(coordinates);
                             editor.putTile(tileToAdd);
 
                             System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
@@ -250,7 +250,7 @@ public class LevelEditorController extends StateLoad {
                         } else if (removeRB.isSelected()) {
                             // Remove this tile
                             emptyTileImage(pane, tileSize);
-                            editor.removeTileOnPosition(coords);
+                            editor.removeTileOnPosition(coordinates);
                             System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
                         }
                     });
