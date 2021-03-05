@@ -180,8 +180,14 @@
          </menus>
       </MenuBar>
    </top>
-   <right>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: FFFFFF;">
+   <center>
+      <Pane>
+         <GridPane fx:id="boardGridPane" alignment="CENTER">
+         </GridPane>
+      </Pane>
+   </center>
+   <left>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
             <Text fill="#d7bb58" layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
@@ -335,11 +341,5 @@
             <Text layoutX="-2.0" layoutY="668.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. " textAlignment="CENTER" wrappingWidth="354.0" />
          </children>
       </AnchorPane>
-   </right>
-   <center>
-      <Pane>
-         <GridPane fx:id="boardGridPane" alignment="CENTER">
-         </GridPane>
-      </Pane>
-   </center>
+   </left>
 </BorderPane>
