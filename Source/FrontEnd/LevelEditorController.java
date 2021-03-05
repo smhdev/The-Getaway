@@ -345,6 +345,18 @@ public class LevelEditorController extends StateLoad {
                 }
             }
         }
+        // If a car exists on this pane, move it to the front.
+        for (Node child : pane.getChildren()) {
+            Object userData = child.getUserData();
+            if (userData != null) {
+                String strUserData = child.getUserData().toString();
+                if (strUserData.startsWith("CarImage")) {
+                    pane.getChildren().remove(child);
+                    pane.getChildren().add(child);
+                    break;
+                }
+            }
+        }
     }
 
     /**
