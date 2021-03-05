@@ -11,12 +11,14 @@
     -fx-border-width: 1px;
 }
 
-#resetButton{
-    -fx-pref-width: 150;
-    -fx-background-color: red;
+.resetButton{
+    -fx-pref-width: 75;
+    -fx-font-family: Impact;
+    -fx-background-color: #ff6666;
     -fx-text-fill: black;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
 }
+
 
 
 .text {
