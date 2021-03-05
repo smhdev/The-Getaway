@@ -102,6 +102,7 @@ public class LevelEditorController extends StateLoad {
 
     @FXML
     private GridPane boardGridPane;
+    private Pane[] playerSpawnPanes = new Pane[4];
 
     private GameboardEditor editor;
     private CustomBoard customBoard;
@@ -254,6 +255,15 @@ public class LevelEditorController extends StateLoad {
                             System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
                         }
                     });
+
+                    // Check to see if a player spawn point is here
+                    for (int i = 0; i < 4; i++) {
+                        Coordinate spawnPoint = customBoard.getPlayerSpawnPoint(i);
+                        if (spawnPoint.equals(coordinates)) {
+                            // Put a car here
+                            moveCarImage(i, pane, tileSize);
+                        }
+                    }
                 }
             }
         }
@@ -357,6 +367,31 @@ public class LevelEditorController extends StateLoad {
         ImageView lockedImg = createTileImageView("fixed", size);
         lockedImg.setUserData("FixedImage");
         pane.getChildren().add(lockedImg);
+    }
+
+    /**
+     * Helper function that moves the car to a new pane.
+     * @param player Which player's car to move.
+     * @param newPane The pane to move it to.
+     * @param size The size of the ImageView.
+     */
+    public void moveCarImage(int player, Pane newPane, int size) {
+        // First, remove the car from the old pane
+        if (playerSpawnPanes[player] != null) {
+            for (Node child : playerSpawnPanes[player].getChildren()) {
+                if (child.getUserData() != null) {
+                    String userData = child.getUserData().toString();
+                    if (userData.startsWith("CarImage")) {
+                        playerSpawnPanes[player].getChildren().remove(child);
+                    }
+                }
+            }
+        }
+        // Place the car in the new pane
+        ImageView carImg = createTileImageView("player" + (1 + player), size);
+        carImg.setUserData("CarImage " + player);
+        newPane.getChildren().add(carImg);
+        playerSpawnPanes[player] = newPane;
     }
 
     /**
