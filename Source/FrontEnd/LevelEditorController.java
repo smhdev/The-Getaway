@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -76,6 +77,14 @@ public class LevelEditorController extends StateLoad {
     private RadioButton rotateRB;
     @FXML
     private RadioButton removeRB;
+    @FXML
+    private ImageView p1Image;
+    @FXML
+    private ImageView p2Image;
+    @FXML
+    private ImageView p3Image;
+    @FXML
+    private ImageView p4Image;
     @FXML
     private RadioButton p1RB;
     @FXML
@@ -166,7 +175,8 @@ public class LevelEditorController extends StateLoad {
                             String dbContent = event.getDragboard().getString();
                             // Make sure a tile is being dragged onto this pane
                             if (dbContent.equals("straight") || dbContent.equals("t_shape") ||
-                                    dbContent.equals("corner") || dbContent.equals("goal")) {
+                                    dbContent.equals("corner") || dbContent.equals("goal") ||
+                                    dbContent.startsWith("player ")) {
                                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
                             }
                         }
@@ -183,37 +193,46 @@ public class LevelEditorController extends StateLoad {
                     pane.setOnDragDropped((DragEvent event) -> {
                         Dragboard db = event.getDragboard();
                         if (db.hasString()) {
-                            // Get the name of the new tile
-                            String newTileName = db.getString();
-                            // Remove all other images and add this new tile to the pane
-                            swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
+                            // Determine if this is a player or tile we're dealing with
+                            if (db.getString().startsWith("player ")) {
+                                // Get the number of the player that got dragged in
+                                int playerNum = Integer.parseInt(db.getString().substring(7)) - 1;
+                                customBoard.setPlayerSpawnPoint(playerNum, coordinates);
+                                moveCarImage(playerNum, pane, tileSize);
+                                System.out.printf("Moved player %d to (%d, %d)%n", playerNum + 1, finalX, finalY);
+                            } else {
+                                // Get the name of the new tile
+                                String newTileName = db.getString();
+                                // Remove all other images and add this new tile to the pane
+                                swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
 
-                            // Stick it in the board editor
-                            TileType tileType;
-                            switch (newTileName) {
-                                case "straight":
-                                    tileType = TileType.STRAIGHT;
-                                    break;
-                                case "t_shape":
-                                    tileType = TileType.T_SHAPE;
-                                    break;
-                                case "corner":
-                                    tileType = TileType.CORNER;
-                                    break;
-                                case "goal":
-                                    tileType = TileType.GOAL;
-                                    break;
-                                default:
-                                    throw new IllegalStateException("What the hell is a " +
-                                            newTileName + "? Not a tile that's what.");
+                                // Stick it in the board editor
+                                TileType tileType;
+                                switch (newTileName) {
+                                    case "straight":
+                                        tileType = TileType.STRAIGHT;
+                                        break;
+                                    case "t_shape":
+                                        tileType = TileType.T_SHAPE;
+                                        break;
+                                    case "corner":
+                                        tileType = TileType.CORNER;
+                                        break;
+                                    case "goal":
+                                        tileType = TileType.GOAL;
+                                        break;
+                                    default:
+                                        throw new IllegalStateException("What the hell is a " +
+                                                newTileName + "? Not a tile that's what.");
+                                }
+
+                                FloorTile tileToAdd = new FloorTile(tileType);
+                                tileToAdd.setLocation(coordinates);
+                                editor.putTile(tileToAdd);
+
+                                System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
+                                event.setDropCompleted(true);
                             }
-
-                            FloorTile tileToAdd = new FloorTile(tileType);
-                            tileToAdd.setLocation(coordinates);
-                            editor.putTile(tileToAdd);
-
-                            System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
-                            event.setDropCompleted(true);
                         } else {
                             event.setDropCompleted(false);
                         }
@@ -395,6 +414,7 @@ public class LevelEditorController extends StateLoad {
                     String userData = child.getUserData().toString();
                     if (userData.startsWith("CarImage")) {
                         playerSpawnPanes[player].getChildren().remove(child);
+                        break;
                     }
                 }
             }
@@ -498,6 +518,38 @@ public class LevelEditorController extends StateLoad {
 
     public void onDragGoalTile(MouseEvent event) {
         startDragAndDrop(goalImage, "goal");
+    }
+
+    public void onMouseDragPlayer1(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragPlayer1(MouseEvent event) {
+        startDragAndDrop(p1Image, "player 1");
+    }
+
+    public void onMouseDragPlayer2(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragPlayer2(MouseEvent event) {
+        startDragAndDrop(p2Image, "player 2");
+    }
+
+    public void onMouseDragPlayer3(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragPlayer3(MouseEvent event) {
+        startDragAndDrop(p3Image, "player 3");
+    }
+
+    public void onMouseDragPlayer4(MouseEvent event) {
+        event.setDragDetect(true);
+    }
+
+    public void onDragPlayer4(MouseEvent event) {
+        startDragAndDrop(p4Image, "player 4");
     }
 
     public void onFixRB() {

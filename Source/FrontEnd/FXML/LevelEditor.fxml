@@ -74,7 +74,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onMouseClicked="#onP1RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p1Image" fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onDragDetected="#onDragPlayer1" onMouseDragEntered="#onMouseDragPlayer1" onMouseClicked="#onP1RB" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player1.png" />
                </image>
@@ -89,12 +89,12 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onMouseClicked="#onP3RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p3Image" fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onDragDetected="#onDragPlayer3" onMouseDragEntered="#onMouseDragPlayer3" onMouseClicked="#onP3RB" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player3.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1306.0" layoutY="85.0" onMouseClicked="#onP4RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p4Image" fitHeight="80.0" fitWidth="80.0" layoutX="1306.0" layoutY="85.0" onDragDetected="#onDragPlayer4" onMouseDragEntered="#onMouseDragPlayer4" onMouseClicked="#onP4RB" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player4.png" />
                </image>
@@ -109,7 +109,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onMouseClicked="#onP2RB" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="p2Image" fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onDragDetected="#onDragPlayer2" onMouseDragEntered="#onMouseDragPlayer2" onMouseClicked="#onP2RB" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Assets/player2.png" />
                </image>
