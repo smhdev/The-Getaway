@@ -1,12 +1,15 @@
 package FrontEnd;
 ;
 import BackEnd.CustomBoard;
+import BackEnd.FloorTile;
 import BackEnd.GameboardEditor;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.stage.Screen;
 
 import java.net.URL;
@@ -79,7 +82,7 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private GridPane boardGridPane;
 
-    private GameboardEditor boardEditor;
+    private CustomBoard customBoard;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -89,21 +92,47 @@ public class LevelEditorController extends StateLoad {
         // if getInitData isn't null before we can retrieve data from it.
         if (getInitData() != null) {
             String customBoardName = getInitData().get("Custom Board Name");
-            boardEditor = new GameboardEditor(customBoardName);
+            customBoard = GameboardEditor.loadFile("./Gameboards/" + customBoardName + ".txt");
+            // Bunch of calculations to work out the proper size of the tile
             int screenWidth = (int) Screen.getPrimary().getBounds().getHeight();
             int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
-            int boardWidth = boardEditor.getBoard().getXSize();
-            int boardHeight = boardEditor.getBoard().getYSize();
+            int boardWidth = customBoard.getXSize();
+            int boardHeight = customBoard.getYSize();
             int maxTileWidth = screenWidth / (boardWidth + 9);
             int maxTileHeight = screenHeight / (boardHeight + 9);
             int tileSize = Math.min(maxTileHeight, maxTileWidth);
 
-            for (int i = 0; i < boardWidth; i++) {
-                boardGridPane.getColumnConstraints().add(new ColumnConstraints(tileSize));
-            }
+            // Loop through the rows of the board
+            for (int y = 0; y < boardHeight; y++) {
+                // Add row constraints to this row
+                boardGridPane.getRowConstraints().add(new RowConstraints(tileSize, tileSize, tileSize));
+                // Loop through the columns of the row
+                for (int x = 0; x < boardWidth; x++) {
+                    // Add column constraints to this column
+                    boardGridPane.getColumnConstraints().add(new ColumnConstraints(tileSize, tileSize, tileSize));
+                    FloorTile currentTile = customBoard.getTileAt(x, y);
+                    StackPane pane = new StackPane();
 
-            for (int i = 0; i < boardHeight; i++) {
-                boardGridPane.getRowConstraints().add(new RowConstraints(tileSize));
+                    if (currentTile != null) {
+                        // A tile exists here; create an image view containing the tile's picture
+                        String tileName = currentTile.getType().name().toLowerCase();
+                        ImageView tileImg = createTileImageView(tileName, tileSize);
+                        pane.getChildren().add(tileImg);
+
+                        if (currentTile.isFixed()) {
+                            // Add the locked icon on top
+                            ImageView lockedImg = createTileImageView("fixed", tileSize);
+                            pane.getChildren().add(lockedImg);
+                        }
+
+                    } else {
+                        // No tile exists; create an image view with an empty tile
+                        pane.getChildren().add(createTileImageView("empty", tileSize));
+                    }
+                    // Add the pane containing the images to the board grid pane
+                    // at the given column and row
+                    boardGridPane.add(pane, x, y);
+                }
             }
         }
 
@@ -131,6 +160,20 @@ public class LevelEditorController extends StateLoad {
 
         doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
+    }
+
+    /**
+     * Creates an ImageView for use as a tile on the game board.
+     * @param name The name of the image to use.
+     * @param size The fit width and height of the ImageView.
+     * @return An ImageView with the tile's image
+     *         and its fit size set to the provided size.
+     */
+    public ImageView createTileImageView(String name, int size) {
+        ImageView tileImg = new ImageView(Assets.get(name));
+        tileImg.setFitWidth(size);
+        tileImg.setFitHeight(size);
+        return tileImg;
     }
 
 
