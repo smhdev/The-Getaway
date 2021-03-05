@@ -165,7 +165,7 @@ public class LevelEditorController extends StateLoad {
                     pane.setOnDragOver((DragEvent event) -> {
                         if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
                             String dbContent = event.getDragboard().getString();
-                            // Make sure a tile is being dragged onto this pane
+                            // Make sure a tile or car is being dragged onto this pane
                             if (dbContent.equals("straight") || dbContent.equals("t_shape") ||
                                     dbContent.equals("corner") || dbContent.equals("goal") ||
                                     dbContent.startsWith("player ")) {
