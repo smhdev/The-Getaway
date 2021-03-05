@@ -17,6 +17,7 @@ import javafx.util.Pair;
 
 import javax.sound.sampled.Clip;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -115,8 +116,19 @@ public class LevelEditorController extends StateLoad {
         // will actually return a HashMap. Hence we must check to see
         // if getInitData isn't null before we can retrieve data from it.
         if (getInitData() != null) {
-            String customBoardName = getInitData().get("Custom Board Name");
-            customBoard = GameboardEditor.loadFile("./Gameboards/" + customBoardName + ".txt");
+            if(getInitData().get("Custom Board Is New").equals("true")) {
+                int customWidth = Integer.parseInt(getInitData().get("Custom Board Width"));
+                int customHeight = Integer.parseInt(getInitData().get("Custom Board Height"));
+                // TODO: It would be nice if the back end did most of the initialisation for me
+                customBoard = new CustomBoard(customWidth, customHeight,
+                        new Coordinate[FileReader.MAX_NUM_OF_PLAYERS],
+                        new ArrayList<>(),
+                        new HashMap<>()
+                );
+            } else {
+                String customBoardName = getInitData().get("Custom Board Name");
+                customBoard = GameboardEditor.loadFile("./Gameboards/" + customBoardName + ".txt");
+            }
             editor = new GameboardEditor(customBoard);
             // Bunch of calculations to work out the proper size of the tile
             int screenWidth = (int) Screen.getPrimary().getBounds().getHeight();
@@ -272,7 +284,7 @@ public class LevelEditorController extends StateLoad {
                     // Check to see if a player spawn point is here
                     for (int i = 0; i < 4; i++) {
                         Coordinate spawnPoint = customBoard.getPlayerSpawnPoint(i);
-                        if (spawnPoint.equals(coordinates)) {
+                        if (spawnPoint != null && spawnPoint.equals(coordinates)) {
                             // Put a car here
                             moveCarImage(i, pane, tileSize);
                         }
