@@ -146,7 +146,7 @@ public class LevelEditorController extends StateLoad {
                     if (currentTile != null) {
                         // A tile exists here; create an image view containing the tile's picture
                         String tileName = currentTile.getType().name().toLowerCase();
-                        ImageView tileImg = createTileImageView(tileName, tileSize);
+                        ImageView tileImg = createTileImageView(tileName, tileSize, currentTile.getRotation());
                         pane.getChildren().add(tileImg);
 
                         if (currentTile.isFixed()) {
@@ -224,6 +224,11 @@ public class LevelEditorController extends StateLoad {
                         }
                         event.consume();
                     });
+
+                    // Add an event handler when the pane is clicked
+                    pane.setOnMouseClicked((MouseEvent event) -> {
+                        System.out.printf("Tile (%d, %d) was clicked on%n", finalX, finalY);
+                    });
                 }
             }
         }
@@ -261,10 +266,23 @@ public class LevelEditorController extends StateLoad {
      * @return An ImageView with the tile's image
      *         and its fit size set to the provided size.
      */
-    public ImageView createTileImageView(String name, int size) {
+    private ImageView createTileImageView(String name, int size) {
+        return createTileImageView(name, size, Rotation.UP);
+    }
+
+    /**
+     * Creates an ImageView for use as a tile on the game board with the specified rotation.
+     * @param name The name of the image to use.
+     * @param size The fit width and height of the ImageView.
+     * @param rotation The orthogonal rotation of the tile.
+     * @return An ImageView with the tile's image rotated to the specified direction
+     *         and its fit size set to the provided size.
+     */
+    private ImageView createTileImageView(String name, int size, Rotation rotation) {
         ImageView tileImg = new ImageView(Assets.get(name));
         tileImg.setFitWidth(size);
         tileImg.setFitHeight(size);
+        tileImg.setRotate(rotation.degrees());
         return tileImg;
     }
 
@@ -334,7 +352,6 @@ public class LevelEditorController extends StateLoad {
     public void onDragGoalTile(MouseEvent event) {
         startDragAndDrop(goalImage, "goal");
     }
-
 
     public void onStraightRB() {
         straightRB.setSelected(true);
