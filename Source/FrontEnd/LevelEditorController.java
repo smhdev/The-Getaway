@@ -71,14 +71,6 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private ImageView tshapeImage;
     @FXML
-    private RadioButton straightRB;
-    @FXML
-    private RadioButton tshapeRB;
-    @FXML
-    private RadioButton cornerRB;
-    @FXML
-    private RadioButton goalRB;
-    @FXML
     private RadioButton fixRB;
     @FXML
     private RadioButton rotateRB;
@@ -449,23 +441,6 @@ public class LevelEditorController extends StateLoad {
 
     public void onDragGoalTile(MouseEvent event) {
         startDragAndDrop(goalImage, "goal");
-    }
-
-    public void onStraightRB() {
-        straightRB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-    public void onTshapeRB() {
-        tshapeRB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-    public void onCornerRB() {
-        cornerRB.setSelected(true);
-        checkVisRestPlayerButton();
-    }
-    public void onGoalRB() {
-        goalRB.setSelected(true);
-        checkVisRestPlayerButton();
     }
 
     public void onFixRB() {

@@ -50,14 +50,6 @@
                   <Image url="@../../../Assets/straight.png" />
                </image>
             </ImageView>
-            <RadioButton fx:id="straightRB" layoutX="110.0" layoutY="203.0" mnemonicParsing="false" onAction="#onStraightRB" selected="true">
-               <toggleGroup>
-                  <ToggleGroup fx:id="floorActionPlayerSet" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="tshapeRB" layoutX="226.0" layoutY="203.0" mnemonicParsing="false" onAction="#onTshapeRB" toggleGroup="$floorActionPlayerSet" />
-            <RadioButton fx:id="cornerRB" layoutX="345.0" layoutY="203.0" mnemonicParsing="false" onAction="#onCornerRB" toggleGroup="$floorActionPlayerSet" />
-            <RadioButton fx:id="goalRB" layoutX="470.0" layoutY="201.0" mnemonicParsing="false" onAction="#onGoalRB" toggleGroup="$floorActionPlayerSet" />
             <Text fill="#d7bb58" layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
                   <Font name="Impact" size="35.0" />
