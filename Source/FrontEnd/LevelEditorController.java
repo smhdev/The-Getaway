@@ -114,12 +114,9 @@ public class LevelEditorController extends StateLoad {
             if(getInitData().get("Custom Board Is New").equals("true")) {
                 int customWidth = Integer.parseInt(getInitData().get("Custom Board Width"));
                 int customHeight = Integer.parseInt(getInitData().get("Custom Board Height"));
-                // TODO: It would be nice if the back end did most of the initialisation for me
-                customBoard = new CustomBoard(customWidth, customHeight,
-                        new Coordinate[FileReader.MAX_NUM_OF_PLAYERS],
-                        new ArrayList<>(),
-                        new HashMap<>()
-                );
+                customBoard = new CustomBoard();
+                customBoard.setXSize(customWidth);
+                customBoard.setYSize(customHeight);
             } else {
                 String customBoardName = getInitData().get("Custom Board Name");
                 customBoard = GameboardEditor.loadFile("./Gameboards/" + customBoardName + ".txt");
@@ -454,25 +451,15 @@ public class LevelEditorController extends StateLoad {
         return tileImg;
     }
 
-    /**
-     *
-     * @return HashMap
-     */
-    private HashMap getSilkBagData(){
-
-        HashMap<TileType, Integer> silkBagMap = null;
-        if (silkBag) {
-            silkBagMap.put(TileType.STRAIGHT, Integer.valueOf(straightInBox.getText()));
-            silkBagMap.put(TileType.CORNER, Integer.valueOf(cornerInBox.getText()));
-            silkBagMap.put(TileType.T_SHAPE, Integer.valueOf(tshapeInBox.getText()));
-            silkBagMap.put(TileType.GOAL, Integer.valueOf(goalInBox.getText()));
-            silkBagMap.put(TileType.FIRE, Integer.valueOf(fireInBox.getText()));
-            silkBagMap.put(TileType.FROZEN, Integer.valueOf(iceInBox.getText()));
-            silkBagMap.put(TileType.BACKTRACK, Integer.valueOf(backtrackInBox.getText()));
-            silkBagMap.put(TileType.DOUBLE_MOVE, Integer.valueOf(doublemoveInBox.getText()));
-        }
-
-        return silkBagMap;
+    private void setSilkBagData(){
+        customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.CORNER, Integer.parseInt(cornerInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.T_SHAPE, Integer.parseInt(tshapeInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.GOAL, Integer.parseInt(goalInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.FIRE, Integer.parseInt(fireInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.FROZEN, Integer.parseInt(iceInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.BACKTRACK, Integer.parseInt(backtrackInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.DOUBLE_MOVE, Integer.parseInt(doublemoveInBox.getText()));
     }
 
     /**
@@ -614,6 +601,7 @@ public class LevelEditorController extends StateLoad {
 
     public void onSaveExitButton () {
         //Save Here
+        setSilkBagData();
         CustomBoardSaveLoad.writeIniBoard("./Gameboards/" + getInitData().get("Custom Board Name") + ".txt", customBoard);
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());
