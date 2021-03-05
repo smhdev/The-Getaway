@@ -9,37 +9,35 @@ import java.util.ArrayList;
  * @author Mikhail Okrugov
  */
 
-/*
-    Should be possible to:
- */
-
 public class GameboardEditor {
+    // Default file name and folder to save
     private static final String DEFAULT_NAME = "CustomBoard";
     private static final String DEFAULT_MAP_PATH = "./CustomGameBoards";
 
-    // Board data with it's name to save
+    // Board data with it's name to save and file name
     private CustomBoard board;
     private String fileName;
 
-    /*
-        Constructors
-
-        (Not sure which constructors do we need so will make every variation)
+    /**
+     * Default constructor with selecting board and default name
+     * @param board board with all required data
      */
-
-    public GameboardEditor() {
-        board = new CustomBoard();
-    }
-
     public GameboardEditor(CustomBoard board) {
+        fileName = getNextDefaultName();
         this.board = board;
     }
 
+    /*
     public GameboardEditor(String fileName) {
         board = new CustomBoard();
         this.fileName = fileName;
-    }
+    }*/
 
+    /**
+     * Constructor with board and file name as parameter
+     * @param board
+     * @param fileName
+     */
     public GameboardEditor(CustomBoard board, String fileName) {
         this.board = board;
         this.fileName = fileName;
@@ -51,18 +49,34 @@ public class GameboardEditor {
         (Some of them might be useful)
      */
 
+    /**
+     * Returns board
+     * @return board with all data to use
+     */
     public CustomBoard getBoard() {
         return board;
     }
 
+    /**
+     * Setter for the board dataset parameter
+     * @param board board to set
+     */
     public void setBoard(CustomBoard board) {
         this.board = board;
     }
 
+    /**
+     * Returns name of the file with which the board will be saved
+     * @return
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * Settter for the file name
+     * @param fileName new name of the board file
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
@@ -75,16 +89,43 @@ public class GameboardEditor {
         (Should they be static or better to make them connected to the object?)
      */
 
-    // Uploads selected file as CustomGameBoard object
+    /**
+     * Uploads selected file as CustomGameBoard object
+     * @param path path where file will be uploaded
+     * @return CustomBoard which will be uploaded from the file
+     */
     public static CustomBoard loadFile(String path) {
         CustomBoard board = CustomBoardSaveLoad.readIniBoard(path);
         return board;
     }
 
-    // Save chosen file at the following path
+    /**
+     * Save chosen file at the following path (also includes word custom at the beginning
+     * @param path path where file will be saved
+     * @param boardToSave board which will be saved in the following path
+     */
     public static void saveFile(String path, CustomBoard boardToSave) {
+        // Check if the name contains word custom
+        String lowPath = path.toLowerCase();
+        String[] fileNameArray = path.split("/");
+        String fileName = fileNameArray[fileNameArray.length - 1];
+
+        // Debug
+        System.out.println("Required path is: " + lowPath);
+        System.out.println("File name: " + fileName);
+
+        if (fileName.substring(6).equals("custom")){
+            fileNameArray[fileNameArray.length - 1] = "Custom" + fileName;
+        }
+
+        String resultString = new String();
+        for (int i = 0; i < fileNameArray.length; i++) {
+            resultString += fileNameArray[i];
+        }
+
         if (!checkIfFileExist(path)) {
-            CustomBoardSaveLoad.writeIniBoard(path, boardToSave);
+            System.out.println("Saved at the path +" + resultString);
+            CustomBoardSaveLoad.writeIniBoard(resultString, boardToSave);
         } else {
             System.out.println("Such file already exists");
         }
@@ -192,13 +233,35 @@ public class GameboardEditor {
     }
 
     // Puts tile on the selected location (doesn't check if such location is free)
-    public void putTile(FloorTile tileToAdd) {
+    // Return true if successfully put and false otherwise
+    public boolean putTile(FloorTile tileToAdd) {
         /*if (!checkIfTileLayOnThePosition(position)) {
             board.getTileArray().add(tileToAdd);
         } else {
             System.out.println("Can't put a tile, tile already stands on the position");
         }*/
+
+        // Goal tile checks
+        if (tileToAdd.getType() == TileType.GOAL) {
+            // Check the other goal tiles on the board
+            if (containGoalTiles()) {
+                System.out.println("Gameboard already contain fixed tile so ignore putTile");
+                return false;
+            }
+
+            // Check if player located on the
+            if (checkIfPlayerOnTheTile(tileToAdd)) {
+                System.out.println("Player stands on the position");
+                return false;
+            }
+
+            // Set the goal tile fixed
+            System.out.println("It's a goal tile so set it fixed");
+            tileToAdd.setFixed();
+        }
+
         board.getTileArray().add(tileToAdd);
+        return true;
     }
 
     // Removes tile with the following position
@@ -208,6 +271,28 @@ public class GameboardEditor {
             tileToRemove = board.getTileAt(position.getX(), position.getY());
             board.getTileArray().remove(tileToRemove);
         }
+    }
+
+    // Return true if board contain goal tile in the array
+    private boolean containGoalTiles() {
+        for (FloorTile tile : board.getTileArray()) {
+            if (tile.getType() == TileType.GOAL) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Checks if any player stands on the tile position
+    private boolean checkIfPlayerOnTheTile(FloorTile tile) {
+        for (Coordinate coordinate : board.getPlayerPos()) {
+            if (coordinate != null) {
+                if (tile.getLocation().equals(coordinate)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 

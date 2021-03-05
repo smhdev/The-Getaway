@@ -24,6 +24,9 @@ public class CustomBoard {
         ySize = DEFAULT_Y_SIZE;
         tiles = new ArrayList<>();
         playerPos = new Coordinate[FileReader.MAX_NUM_OF_PLAYERS];
+        for (int i = 0; i < FileReader.MAX_NUM_OF_PLAYERS; i++){
+            playerPos[i] = null;
+        }
         silkBagMap = new HashMap<>();
         for (TileType tileType : TileType.values()) {
             silkBagMap.put(tileType, 0);
@@ -128,5 +131,10 @@ public class CustomBoard {
     // Changes the number of the elements at the silkbag
     public void setSilkBagMapElement(TileType tileType, int amount) {
         silkBagMap.replace(tileType, amount);
+    }
+
+    // Return player positions`
+    public Coordinate[] getPlayerPos(){
+        return playerPos;
     }
 }

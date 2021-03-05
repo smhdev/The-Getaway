@@ -204,8 +204,6 @@ public class LevelEditorController extends StateLoad {
                             } else {
                                 // Get the name of the new tile
                                 String newTileName = db.getString();
-                                // Remove all other images and add this new tile to the pane
-                                swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
 
                                 // Stick it in the board editor
                                 TileType tileType;
@@ -229,10 +227,15 @@ public class LevelEditorController extends StateLoad {
 
                                 FloorTile tileToAdd = new FloorTile(tileType);
                                 tileToAdd.setLocation(coordinates);
-                                editor.putTile(tileToAdd);
 
-                                System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
-                                event.setDropCompleted(true);
+                                // Adds tile if it was added successfully
+                                if (editor.putTile(tileToAdd)){
+                                    // Remove all other images and add this new tile to the pane
+                                    swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
+                                    System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
+                                }
+                                //editor.putTile(tileToAdd);
+
                             }
                         } else {
                             event.setDropCompleted(false);
