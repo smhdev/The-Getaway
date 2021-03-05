@@ -547,7 +547,7 @@ public class LevelEditorController extends StateLoad {
 
     public void onSaveExitButton () {
         //Save Here
-
+        CustomBoardSaveLoad.writeIniBoard("./Gameboards/" + getInitData().get("Custom Board Name") + ".txt", customBoard);
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());
     }
