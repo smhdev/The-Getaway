@@ -316,11 +316,21 @@ public class LevelEditorController extends StateLoad {
             String userData = child.getUserData().toString();
             if (userData != null) {
                 if (userData.startsWith("TileImage") || userData.startsWith("EmptyImage")) {
-                    // FIXME: This might cause the fixed tile icon to persist. Need to remove that.
                     pane.getChildren().remove(child);
                     ImageView emptyImageView = createTileImageView("empty", size);
                     emptyImageView.setUserData("EmptyImage");
                     pane.getChildren().add(emptyImageView);
+                    break;
+                }
+            }
+        }
+        // Trying to use one for-each loop to remove the fixed icon will result in a
+        // ConcurrentModificationException. Hence pane.getChildren() is iterated over twice.
+        for (Node child : pane.getChildren()) {
+            String userData = child.getUserData().toString();
+            if (userData != null) {
+                if (userData.startsWith("FixedImage") ) {
+                    pane.getChildren().remove(child);
                     break;
                 }
             }
