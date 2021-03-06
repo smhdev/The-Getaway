@@ -129,6 +129,7 @@ public class GameboardEditor {
         }else{
             fileNameArray[fileNameArray.length - 1] = "Custom" + fileName;
         }
+        System.out.println(fileName);
 
         // Generate new file name containing word custom at the beginning
         String resultString = new String();
