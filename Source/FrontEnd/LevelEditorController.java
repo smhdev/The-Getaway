@@ -18,6 +18,7 @@ import javafx.util.Pair;
 import javax.sound.sampled.Clip;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -99,6 +100,7 @@ public class LevelEditorController extends StateLoad {
 
     @FXML
     private GridPane boardGridPane;
+
     private final Pane[] playerSpawnPanes = new Pane[4];
     /**
      * Contains the image views within each pane.
@@ -185,7 +187,10 @@ public class LevelEditorController extends StateLoad {
                                 // Make sure this isn't a goal tile they're being dragged on to
                                 FloorTile thisTile = customBoard.getTileAt(finalX, finalY);
                                 if (thisTile == null || thisTile.getType() != TileType.GOAL) {
-                                    event.acceptTransferModes(TransferMode.MOVE);
+                                    // Make sure this isn't a player they're being dragged on to
+                                    if (!paneIsPlayerSpawn(pane)) {
+                                        event.acceptTransferModes(TransferMode.MOVE);
+                                    }
                                 }
                             }
                         }
@@ -307,6 +312,20 @@ public class LevelEditorController extends StateLoad {
 
         doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
+    }
+
+    /**
+     * Determines whether the given pane is one that is also a player spawn point.
+     * @param pane The pane to check.
+     * @return True if the pane is a player spawn point; false otherwise.
+     */
+    private boolean paneIsPlayerSpawn(Pane pane) {
+        for (Pane spawnPane : playerSpawnPanes) {
+            if (pane.equals(spawnPane)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setPaneTileImage(Pane pane, String newTile, int size) {
@@ -433,26 +452,20 @@ public class LevelEditorController extends StateLoad {
 
     /**
      * Helper function that moves the car to a new pane.
-     * @param player Which player's car to move.
+     * @param player Zero-based index of the player's car to move.
      * @param newPane The pane to move it to.
      * @param size The size of the ImageView.
      */
     public void moveCarImage(int player, Pane newPane, int size) {
         // First, remove the car from the old pane
         if (playerSpawnPanes[player] != null) {
-            for (Node child : playerSpawnPanes[player].getChildren()) {
-                if (child.getUserData() != null) {
-                    String userData = child.getUserData().toString();
-                    if (userData.startsWith("CarImage")) {
-                        playerSpawnPanes[player].getChildren().remove(child);
-                        break;
-                    }
-                }
-            }
+            ImageView oldCarImg = imageViews.get(playerSpawnPanes[player])[2];
+            playerSpawnPanes[player].getChildren().remove(oldCarImg);
+            imageViews.get(playerSpawnPanes[player])[2] = null;
         }
         // Place the car in the new pane
         ImageView carImg = createTileImageView("player" + (1 + player), size);
-        carImg.setUserData("CarImage " + player);
+        imageViews.get(newPane)[2] = carImg;
         newPane.getChildren().add(carImg);
         playerSpawnPanes[player] = newPane;
     }
