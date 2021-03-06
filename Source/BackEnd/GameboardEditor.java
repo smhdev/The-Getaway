@@ -328,6 +328,11 @@ public class GameboardEditor {
             tileToAdd.setFixed();
         }
 
+        // Replace tile if one already exists on position
+        if (checkIfTileLayOnThePosition(tileToAdd.getLocation())) {
+            removeTileOnPosition(tileToAdd.getLocation());
+        }
+
         board.getTileArray().add(tileToAdd);
         return true;
     }

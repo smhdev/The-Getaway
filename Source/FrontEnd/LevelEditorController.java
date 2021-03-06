@@ -100,6 +100,15 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private GridPane boardGridPane;
     private final Pane[] playerSpawnPanes = new Pane[4];
+    /**
+     * Contains the image views within each pane.
+     * Each value within this HashMap is an array where:
+     *
+     * element 0 is the tile ImageView,
+     * element 1 is the fixed ImageView, and
+     * element 2 is the car ImageView.
+     */
+    private final HashMap<Pane, ImageView[]> imageViews = new HashMap<>();
 
     private GameboardEditor editor;
     private CustomBoard customBoard;
@@ -139,26 +148,19 @@ public class LevelEditorController extends StateLoad {
                 for (int x = 0; x < boardWidth; x++) {
                     // Add column constraints to this column
                     boardGridPane.getColumnConstraints().add(new ColumnConstraints(tileSize, tileSize, tileSize));
-                    FloorTile currentTile = customBoard.getTileAt(x, y);
-                    StackPane pane = new StackPane();
 
+                    StackPane pane = new StackPane();
+                    imageViews.put(pane, new ImageView[3]);
+
+                    FloorTile currentTile = customBoard.getTileAt(x, y);
                     if (currentTile != null) {
                         // A tile exists here; create an image view containing the tile's picture
                         String tileName = currentTile.getType().name().toLowerCase();
-                        ImageView tileImg = createTileImageView(tileName, tileSize, currentTile.getRotation());
-                        tileImg.setUserData("TileImage " + tileName);
-                        pane.getChildren().add(tileImg);
-
-                        if (currentTile.isFixed()) {
-                            // Add the locked icon on top
-                            toggleFixedImage(pane, tileSize);
-                        }
+                        setPaneTileImage(pane, tileName, tileSize, currentTile.getRotation());
 
                     } else {
                         // No tile exists; create an image view with an empty tile
-                        ImageView emptyImage = createTileImageView("empty", tileSize);
-                        emptyImage.setUserData("EmptyImage");
-                        pane.getChildren().add(emptyImage);
+                        setPaneTileImage(pane, "empty", tileSize);
                     }
                     pane.setUserData(new Pair<Integer, Integer>(x, y));
                     // Add the pane containing the images to the board grid pane
@@ -173,6 +175,7 @@ public class LevelEditorController extends StateLoad {
                             if (dbContent.equals("straight") || dbContent.equals("t_shape") ||
                                     dbContent.equals("corner") || dbContent.equals("goal") ||
                                     dbContent.startsWith("player ")) {
+                                // TODO: Reject transfer if a player is being dragged onto a goal tile.
                                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
                             }
                         }
@@ -193,8 +196,7 @@ public class LevelEditorController extends StateLoad {
                             if (db.getString().startsWith("player ")) {
                                 // Get the number of the player that got dragged in
                                 int playerNum = Integer.parseInt(db.getString().substring(7)) - 1;
-                                //customBoard.setPlayerSpawnPoint(playerNum, coordinates)
-                                //moveCarImage(playerNum, pane, tileSize);
+
                                 if (editor.setPlayerPosition(playerNum, coordinates)){
                                     moveCarImage(playerNum, pane, tileSize);
                                 }
@@ -227,17 +229,15 @@ public class LevelEditorController extends StateLoad {
                                 FloorTile tileToAdd = new FloorTile(tileType);
                                 tileToAdd.setLocation(coordinates);
 
+
+
                                 // Adds tile if it was added successfully
                                 if (editor.putTile(tileToAdd)){
                                     // Remove all other images and add this new tile to the pane
-                                    swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
-                                    if (tileToAdd.isFixed()) {
-                                        toggleFixedImage(pane, tileSize);
-                                    }
+                                    setPaneTileImage(pane, newTileName, tileSize, Rotation.UP);
+                                    setPaneFixedImage(pane, tileToAdd.isFixed(), tileSize);
                                     System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
                                 }
-                                //editor.putTile(tileToAdd);
-
                             }
                         } else {
                             event.setDropCompleted(false);
@@ -253,7 +253,7 @@ public class LevelEditorController extends StateLoad {
                             FloorTile tile = customBoard.getTileAt(finalX, finalY);
                             if (tile != null) {
                                 tile.setFixedBool(!tile.isFixed());
-                                toggleFixedImage(pane, tileSize);
+                                setPaneFixedImage(pane, tile.isFixed(), tileSize);
                                 System.out.printf(
                                         tile.isFixed() ?
                                         "Tile (%d, %d) was fixed%n" :
@@ -267,7 +267,7 @@ public class LevelEditorController extends StateLoad {
                             if (tile != null) {
                                 tile.setRotation(tile.getRotation().clockwise());
                                 String tileName = tile.getType().toString().toLowerCase();
-                                swapOutTileImage(pane, tileName, tileSize, tile.getRotation());
+                                setPaneTileImage(pane, tileName, tileSize, tile.getRotation());
 
                                 System.out.printf("Tile (%d, %d) was rotated to %s%n",
                                         finalX, finalY, tile.getRotation()
@@ -276,7 +276,8 @@ public class LevelEditorController extends StateLoad {
                         } else if (removeRB.isSelected()) {
                             // Remove this tile
                             if (customBoard.getTileAt(finalX, finalY) != null) {
-                                emptyTileImage(pane, tileSize);
+                                setPaneTileImage(pane, "empty", tileSize);
+                                setPaneFixedImage(pane, false, tileSize);
                                 editor.removeTileOnPosition(coordinates);
                                 System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
                             }
@@ -320,6 +321,41 @@ public class LevelEditorController extends StateLoad {
         doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
     }
+
+    private void setPaneTileImage(Pane pane, String newTile, int size) {
+        setPaneTileImage(pane, newTile, size, Rotation.UP);
+    }
+
+    private void setPaneTileImage(Pane pane, String newTile, int size, Rotation rotation) {
+        // Remove the already existing ImageView
+        ImageView currentImageView = imageViews.get(pane)[0];
+        if (currentImageView != null) {
+            pane.getChildren().remove(currentImageView);
+            imageViews.get(pane)[0] = null;
+        }
+        // Create and add the new ImageView
+        ImageView newImg = createTileImageView(newTile, size, rotation);
+        pane.getChildren().add(0, newImg);
+        imageViews.get(pane)[0] = newImg;
+    }
+
+    private void setPaneFixedImage(Pane pane, boolean isFixed, int size) {
+        if (isFixed) {
+            if (imageViews.get(pane)[1] == null) {
+                ImageView fixedImage = createTileImageView("fixed", size);
+                pane.getChildren().add(fixedImage);
+                imageViews.get(pane)[1] = fixedImage;
+            }
+        } else {
+            ImageView fixedImageView = imageViews.get(pane)[1];
+            if (fixedImageView != null) {
+                pane.getChildren().remove(fixedImageView);
+                imageViews.get(pane)[1] = null;
+            }
+        }
+    }
+
+
 
     /**
      * Helper function that swaps the ImageView containing a tile for a different one.
