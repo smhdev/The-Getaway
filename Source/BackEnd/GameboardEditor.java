@@ -108,7 +108,8 @@ public class GameboardEditor {
 
     /**
      * Save chosen file at the following path (also includes word custom at the beginning
-     *s
+     * s
+     *
      * @return true if saved successfully and false otherwise
      */
     public boolean saveFile() {
@@ -121,7 +122,11 @@ public class GameboardEditor {
         System.out.println("Required path is: " + lowPath);
         System.out.println("File name: " + fileName);
 
-        if (fileName.substring(6).equals("custom")) {
+        if (fileName.length() >= 6){
+            if (fileName.substring(6).equals("custom")) {
+                fileNameArray[fileNameArray.length - 1] = "Custom" + fileName;
+            }
+        }else{
             fileNameArray[fileNameArray.length - 1] = "Custom" + fileName;
         }
 
@@ -133,11 +138,13 @@ public class GameboardEditor {
 
         // Check if contain at least 1 goal tile and all player positions
         // Will do it today
+        if (!containGoalTiles() || !checkIFAllPlayersExist()){
+            return false;
+        }
 
-
-        // Is it required?
-        //if (!checkIfFileExist(path)) {
-        System.out.println("Saved at the path +" + resultString);
+            // Is it required?
+            //if (!checkIfFileExist(path)) {
+            System.out.println("Saved at the path +" + resultString);
         CustomBoardSaveLoad.writeIniBoard(resultString, board);
         return true;
         /*} else {
@@ -379,6 +386,20 @@ public class GameboardEditor {
             }
         }
         return false;
+    }
+
+    /**
+     * Check if every players position is set on the board
+     *
+     * @return true if all players position is set and false otherwise
+     */
+    private boolean checkIFAllPlayersExist() {
+        for (Coordinate coordinate : board.getPlayerPos()) {
+            if (coordinate == null) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

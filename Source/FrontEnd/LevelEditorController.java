@@ -255,14 +255,20 @@ public class LevelEditorController extends StateLoad {
                             // Fix or unfix this tile
                             FloorTile tile = customBoard.getTileAt(finalX, finalY);
                             if (tile != null) {
-                                tile.setFixedBool(!tile.isFixed());
-                                toggleFixedImage(pane, tileSize);
-                                System.out.printf(
-                                        tile.isFixed() ?
-                                        "Tile (%d, %d) was fixed%n" :
-                                        "Tile (%d, %d) was unfixed%n",
-                                        finalX, finalY
-                                );
+                                if (tile.getType() != TileType.GOAL){
+                                    tile.setFixedBool(!tile.isFixed());
+                                    toggleFixedImage(pane, tileSize);
+                                    System.out.printf(
+                                            tile.isFixed() ?
+                                                    "Tile (%d, %d) was fixed%n" :
+                                                    "Tile (%d, %d) was unfixed%n",
+                                            finalX, finalY
+                                    );
+                                }else{
+                                    System.out.printf("Goal tile can't be unfixed");
+                                }
+
+
                             }
                         } else if (rotateRB.isSelected()) {
                             // Rotate this tile
