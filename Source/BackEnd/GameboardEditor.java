@@ -312,10 +312,10 @@ public class GameboardEditor {
         // Goal tile checks
         if (tileToAdd.getType() == TileType.GOAL) {
             // Check the other goal tiles on the board
-            if (containGoalTiles()) {
+            /*if (containGoalTiles()) {
                 System.out.println("Gameboard already contain fixed tile so ignore putTile");
                 return false;
-            }
+            }*/
 
             // Check if player located on the
             if (checkIfPlayerOnTheTile(tileToAdd)) {
