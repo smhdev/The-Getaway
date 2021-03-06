@@ -618,7 +618,8 @@ public class LevelEditorController extends StateLoad {
     public void onSaveExitButton () {
         //Save Here
         setSilkBagData();
-        CustomBoardSaveLoad.writeIniBoard("./Gameboards/" + getInitData().get("Custom Board Name") + ".txt", customBoard);
+        editor.setFileName("./Gameboards/" + getInitData().get("Custom Board Name") + ".txt");
+        editor.saveFile();
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());
     }

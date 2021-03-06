@@ -35,7 +35,7 @@ public class CustomBoardTest {
     @Test
     void checkGameboardEditor() {
         // Read file
-        String path = "./CustomGameBoards/CustomBoard1.txt";
+        String path = "./Gameboards/CustomBoard1.txt";
         CustomBoard board = GameboardEditor.loadFile(path);
 
         // Generates new GameboardEditor object with a newt default name
@@ -46,8 +46,8 @@ public class CustomBoardTest {
         GameboardEditor gameboardEditor = new GameboardEditor(board, newName);
 
         // Save and delete methods
-        String pathToCheck = "./CustomGameBoards/" + gameboardEditor.getFileName() + ".txt";
-        GameboardEditor.saveFile(pathToCheck, gameboardEditor.getBoard());
+        String pathToCheck = "./Gameboards/" + gameboardEditor.getFileName() + ".txt";
+        gameboardEditor.saveFile();
         GameboardEditor.deleteFile(pathToCheck);
 
         // Check uploaded board
