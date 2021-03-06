@@ -94,6 +94,11 @@ public class LevelEditorMenuController extends StateLoad{
             nameIn.setStyle("-fx-prompt-text-fill:red;");
             inputError = true;
         }
+        if (GameboardEditor.checkIfFileExist("./GameBoards/Custom"+nameIn.getText()+".txt")){
+            nameIn.setText("");
+            nameIn.setStyle("-fx-prompt-text-fill:red;");
+            inputError=true;
+        }
         if (!correctBoardSize(widthIn.getText())) {
             widthIn.setText("");
             widthIn.setStyle("-fx-prompt-text-fill:red;");
