@@ -108,14 +108,13 @@ public class GameboardEditor {
 
     /**
      * Save chosen file at the following path (also includes word custom at the beginning
-     *
-     * @param path        path where file will be saved
-     * @param boardToSave board which will be saved in the following path
+     *s
+     * @return true if saved successfully and false otherwise
      */
-    public static void saveFile(String path, CustomBoard boardToSave) {
+    public boolean saveFile() {
         // Check if the name contains word custom
-        String lowPath = path.toLowerCase();
-        String[] fileNameArray = path.split("/");
+        String lowPath = fileName.toLowerCase();
+        String[] fileNameArray = fileName.split("/");
         String fileName = fileNameArray[fileNameArray.length - 1];
 
         // Debug
@@ -132,12 +131,18 @@ public class GameboardEditor {
             resultString += fileNameArray[i];
         }
 
-        if (!checkIfFileExist(path)) {
-            System.out.println("Saved at the path +" + resultString);
-            CustomBoardSaveLoad.writeIniBoard(resultString, boardToSave);
-        } else {
+        // Check if contain at least 1 goal tile and all player positions
+        // Will do it today
+
+
+        // Is it required?
+        //if (!checkIfFileExist(path)) {
+        System.out.println("Saved at the path +" + resultString);
+        CustomBoardSaveLoad.writeIniBoard(resultString, board);
+        return true;
+        /*} else {
             System.out.println("Such file already exists");
-        }
+        }*/
     }
 
     /**
