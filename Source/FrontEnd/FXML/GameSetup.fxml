@@ -56,7 +56,7 @@
                      </font>
                   </RadioButton>
                   <ChoiceBox fx:id="selectGameBoard" layoutX="264.0" layoutY="248.0" prefWidth="250.0" />
-                  <Button fx:id="custom" layoutX="264.0" layoutY="312.0" mnemonicParsing="false" text="Use Custom" onAction="#onCustomButton" />
+                  <Button fx:id="customBoardBtn" layoutX="264.0" layoutY="312.0" mnemonicParsing="false" text="Use Custom" onAction="#onCustomButton" />
                </children>
             </AnchorPane>
          </children>

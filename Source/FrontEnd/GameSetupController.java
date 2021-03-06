@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 public class GameSetupController extends StateLoad {
 
     /* These final variables are used for the game's Sound Effects (SFX) */
-    boolean customBtn = false;
     URL location;
     ResourceBundle resources;
     private final String MAIN_MENU_SFX = "Assets\\SFX\\mainmenu.mp3";
@@ -42,6 +41,9 @@ public class GameSetupController extends StateLoad {
     @FXML
     private ToggleGroup playerCount;
 
+    @FXML private Button customBoardBtn;
+
+    boolean isCustomBoard = false;
     /**
      * Populates the choice box with the available gameboards when the page is initialized.
      *
@@ -62,7 +64,7 @@ public class GameSetupController extends StateLoad {
                 for (String gameBoard : gameBoards) {
                     gameBoard = gameBoard.substring(0, gameBoard.length() - 4);
                     custom = gameBoard.split("Custom");
-                    if (customBtn == true) {
+                    if (isCustomBoard == true) {
                         if (custom[0].equals("")) {
                             if (custom.length > 2) {
                                 for (int i = 1; i < custom.length; i++) {
@@ -93,7 +95,12 @@ public class GameSetupController extends StateLoad {
      * Toggles between custom and prebuilt maps
      */
     public void onCustomButton() {
-        customBtn = !customBtn;
+        isCustomBoard = !isCustomBoard;
+        if (isCustomBoard) {
+            customBoardBtn.setText("Use Prebuilt");
+        } else {
+            customBoardBtn.setText("Use Custom");
+        }
         while (selectGameBoard.getItems().toArray().length != 0) {
             selectGameBoard.getItems().remove(0);
         }
