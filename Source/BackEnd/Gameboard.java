@@ -577,8 +577,10 @@ public class Gameboard {
      * @return true, if there is a null location on the board. Else false.
      */
     public boolean isBoardNotFull() {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        int wide = width-1;
+        int tall = height-1;
+        for (int x = 0; x < wide; x++) {
+            for (int y = 0; y < tall; y++) {
                 if (tileAt(new Coordinate(x, y)) == null) {
                     return true;
                 }
