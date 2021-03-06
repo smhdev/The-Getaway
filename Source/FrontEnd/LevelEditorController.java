@@ -167,26 +167,30 @@ public class LevelEditorController extends StateLoad {
                     // at the given column and row
                     boardGridPane.add(pane, x, y);
 
+                    // Lambda expressions require variables to be final, so copy the
+                    // coordinates to final variables before reading them
+                    final int finalX = x;
+                    final int finalY = y;
+                    final Coordinate coordinates = new Coordinate(x, y);
+
                     // Add an event handler when something gets dragged on top of the pane
                     pane.setOnDragOver((DragEvent event) -> {
                         if (event.getGestureSource() != pane && event.getDragboard().hasString()) {
                             String dbContent = event.getDragboard().getString();
                             // Make sure a tile or car is being dragged onto this pane
                             if (dbContent.equals("straight") || dbContent.equals("t_shape") ||
-                                    dbContent.equals("corner") || dbContent.equals("goal") ||
-                                    dbContent.startsWith("player ")) {
-                                // TODO: Reject transfer if a player is being dragged onto a goal tile.
-                                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                                    dbContent.equals("corner") || dbContent.equals("goal")) {
+                                event.acceptTransferModes(TransferMode.COPY);
+                            } else if (dbContent.startsWith("player ")) {
+                                // Make sure this isn't a goal tile they're being dragged on to
+                                FloorTile thisTile = customBoard.getTileAt(finalX, finalY);
+                                if (thisTile == null || thisTile.getType() != TileType.GOAL) {
+                                    event.acceptTransferModes(TransferMode.MOVE);
+                                }
                             }
                         }
                         event.consume();
                     });
-
-                    // Lambda expressions require variables to be final, so copy the
-                    // coordinates to final variables before reading them
-                    final int finalX = x;
-                    final int finalY = y;
-                    final Coordinate coordinates = new Coordinate(x, y);
 
                     // Add an event handler when something gets dropped on top of the pane
                     pane.setOnDragDropped((DragEvent event) -> {
