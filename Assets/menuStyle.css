@@ -11,15 +11,18 @@
     -fx-border-width: 1px;
 }
 
+@font-face {
+    font-family: 'Xenogears';
+    src: url('file:Assets/Xenogears.ttf') format('truetype');
+}
+
 .resetButton{
     -fx-pref-width: 75;
-    -fx-font-family: Impact;
+    -fx-font-family: 'Xenogears';
     -fx-background-color: #ff6666;
     -fx-text-fill: black;
     -fx-font-size: 15px;
 }
-
-
 
 .text {
     -fx-text-fill: whitesmoke;
@@ -31,15 +34,16 @@
 .label {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Impact;
+    -fx-font-family: 'Xenogears';
     -fx-font-size: 20;
 }
 
 
 .WindowName {
-    -fx-font-family: "Impact";
+    -fx-font-family: 'Xenogears';
     -fx-font-size: 90px;
-    -fx-fill: #b5b500;
+    -fx-fill: #c634eb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .7), 20, .5, 10, 10);
 }
 
 
@@ -47,7 +51,7 @@
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
     -fx-font-family: Consolas;
-    -fx-font-size: 10;
+    -fx-font-size: 20;
 }
 
 .QuitScreen {
@@ -63,7 +67,6 @@
     -fx-font-family: Consolas;
     -fx-font-size: 15;
 }
-
 
 .choice-box{
     -fx-background-color: #333;
@@ -90,19 +93,17 @@
 }
 
 .menu-item {
-    -fx-background-color: #333;
-    -fx-font-family: Impact;
+    -fx-background-color: #c634eb;
+    -fx-font-family: 'Xenogears';
 }
 
 .menu .menu-item:focused {
     -fx-background-color: black;
 }
 .context-menu {
-    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-skin: 'com.sun.javafx.scene.control.skin.ContextMenuSkin';
     -fx-background-color: #333;
 }
-
-
 
 .list-cell:even:filled:selected:focused, .list-cell:even:filled:selected {
     -fx-background-color: linear-gradient(#333 0%, #b5b500 100%);

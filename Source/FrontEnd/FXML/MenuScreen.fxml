@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.jpg'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-size: cover; -fx-background-position: center;" styleClass="WindowName" stylesheets="@../../../Assets/menuStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.MenuScreenController">
    <center>
       <VBox alignment="CENTER" prefHeight="610.0" prefWidth="773.0" spacing="10" stylesheets="@../../../Assets/menuStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Text lineSpacing="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="THE GETAWAY" textAlignment="CENTER" wrappingWidth="620.33154296875">
-               <font>
-                  <Font name="lazer84" size="65.0" />
-               </font>
+            <Text fx:id="Header" lineSpacing="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="THE GETAWAY" textAlignment="CENTER" wrappingWidth="620.33154296875">
                <fill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -24,7 +23,7 @@
                   </RadialGradient>
                </fill>
             </Text>
-            <VBox alignment="CENTER" prefHeight="397.0" prefWidth="979.0" spacing="5.0">
+            <VBox alignment="CENTER" prefHeight="397.0" prefWidth="979.0" spacing="5.0" stylesheets="@../../../Assets/menuStyle.css">
                <children>
                   <Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewGame" prefHeight="36.0" prefWidth="100.0" text="New Game" textAlignment="CENTER" textFill="#009c05">
                      <VBox.margin>

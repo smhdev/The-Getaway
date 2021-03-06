@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.StageStyle;
 
 import java.io.File;
@@ -33,6 +35,8 @@ public class MenuScreenController extends StateLoad {
     private Button newGameButton;
     @FXML
     private Label MoTD;
+    @FXML
+    private Text Header;
 
     private WindowLoader wl;
 
@@ -45,6 +49,7 @@ public class MenuScreenController extends StateLoad {
             message = "Error with Server" + e.getCause();
         }
         MoTD.setText(message);
+        Header.setFont(Font.loadFont("file:Assets/Xenogears.ttf", 50));
     }
 
     /**
