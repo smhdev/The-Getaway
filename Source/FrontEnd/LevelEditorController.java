@@ -286,32 +286,39 @@ public class LevelEditorController extends StateLoad {
                     }
                 }
             }
+
+            straightSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    straightInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            conerSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    cornerInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            tshapeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    tshapeInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            goalSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    goalInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            fireSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    fireInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            iceSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    iceInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            backtrackSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    backtrackInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                    doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
+
+            straightSlider.setValue(customBoard.getNumOfTileTypes(TileType.STRAIGHT));
+            conerSlider.setValue((customBoard.getNumOfTileTypes(TileType.CORNER)));
+            tshapeSlider.setValue((customBoard.getNumOfTileTypes(TileType.T_SHAPE)));
+            fireSlider.setValue((customBoard.getNumOfTileTypes(TileType.FIRE)));
+            iceSlider.setValue((customBoard.getNumOfTileTypes(TileType.FROZEN)));
+            backtrackSlider.setValue((customBoard.getNumOfTileTypes(TileType.BACKTRACK)));
+            doublemoveSlider.setValue((customBoard.getNumOfTileTypes(TileType.DOUBLE_MOVE)));
         }
-
-        straightSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                straightInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-        conerSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                cornerInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-        tshapeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                tshapeInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-        goalSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                goalInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-
-        fireSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                fireInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-        iceSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                iceInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-        backtrackSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                backtrackInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-        doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
     }
 
     /**
