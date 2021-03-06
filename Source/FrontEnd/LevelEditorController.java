@@ -533,7 +533,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragStraightTile(MouseEvent event) {
+    public void onDragStraightTile() {
         startDragAndDrop(straightImage, "straight");
     }
 
@@ -541,7 +541,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragTShapeTile(MouseEvent event) {
+    public void onDragTShapeTile() {
         startDragAndDrop(tshapeImage, "t_shape");
     }
 
@@ -549,7 +549,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragCornerTile(MouseEvent event) {
+    public void onDragCornerTile() {
         startDragAndDrop(cornerImage, "corner");
     }
 
@@ -557,7 +557,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragGoalTile(MouseEvent event) {
+    public void onDragGoalTile() {
         startDragAndDrop(goalImage, "goal");
     }
 
@@ -565,7 +565,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragPlayer1(MouseEvent event) {
+    public void onDragPlayer1() {
         startDragAndDrop(p1Image, "player 1");
     }
 
@@ -573,7 +573,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragPlayer2(MouseEvent event) {
+    public void onDragPlayer2() {
         startDragAndDrop(p2Image, "player 2");
     }
 
@@ -581,7 +581,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragPlayer3(MouseEvent event) {
+    public void onDragPlayer3() {
         startDragAndDrop(p3Image, "player 3");
     }
 
@@ -589,7 +589,7 @@ public class LevelEditorController extends StateLoad {
         event.setDragDetect(true);
     }
 
-    public void onDragPlayer4(MouseEvent event) {
+    public void onDragPlayer4() {
         startDragAndDrop(p4Image, "player 4");
     }
 
