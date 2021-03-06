@@ -469,25 +469,25 @@ public class LevelEditorController extends StateLoad {
     }
 
     private void setSilkBagData() {
-        if (!straightInBox.getText().equals(null)) {
+        if (straightInBox.getText().equals("")) {
             straightInBox.setText("10");
         }
-        if (!cornerInBox.getText().equals(null)) {
+        if (cornerInBox.getText().equals("")) {
             cornerInBox.setText("10");
         }
-        if (!tshapeInBox.getText().equals(null)) {
+        if (tshapeInBox.getText().equals("")) {
             tshapeInBox.setText("10");
         }
-        if (!iceInBox.getText().equals(null)) {
+        if (iceInBox.getText().equals("")) {
             iceInBox.setText("10");
         }
-        if (!fireInBox.getText().equals(null)) {
+        if (fireInBox.getText().equals("")) {
             fireInBox.setText("10");
         }
-        if (!backtrackInBox.getText().equals(null)) {
+        if (backtrackInBox.getText().equals("")) {
             backtrackInBox.setText("10");
         }
-        if (!doublemoveInBox.getText().equals(null)) {
+        if (doublemoveInBox.getText().equals("")) {
             doublemoveInBox.setText("10");
         }
         customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
@@ -644,7 +644,7 @@ public class LevelEditorController extends StateLoad {
     public void onSaveExitButton() {
         //Save Here
         setSilkBagData();
-        editor.setFileName("./Gameboards/" + getInitData().get("Custom Board Name") + ".txt");
+        editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
         editor.saveFile();
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());

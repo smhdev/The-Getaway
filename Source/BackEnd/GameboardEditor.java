@@ -132,9 +132,10 @@ public class GameboardEditor {
 
         // Generate new file name containing word custom at the beginning
         String resultString = new String();
-        for (int i = 0; i < fileNameArray.length; i++) {
-            resultString += fileNameArray[i];
-        }
+//        for (int i = 0; i < fileNameArray.length; i++) {
+//            resultString += fileNameArray[i];
+//        }
+        resultString = "./GameBoards/"+fileName;
 
         // Check if contain at least 1 goal tile and all player positions
         // Will do it today
