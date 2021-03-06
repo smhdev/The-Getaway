@@ -35,8 +35,6 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private TextField straightInBox;
     @FXML
-    private Slider goalSlider;
-    @FXML
     private TextField goalInBox;
     @FXML
     private Slider tshapeSlider;
@@ -309,10 +307,6 @@ public class LevelEditorController extends StateLoad {
         tshapeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 tshapeInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
-        goalSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                goalInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-
         fireSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                 fireInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
@@ -470,7 +464,7 @@ public class LevelEditorController extends StateLoad {
         customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.CORNER, Integer.parseInt(cornerInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.T_SHAPE, Integer.parseInt(tshapeInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.GOAL, Integer.parseInt(goalInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.GOAL, 0);
         customBoard.setSilkBagMapElement(TileType.FIRE, Integer.parseInt(fireInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.FROZEN, Integer.parseInt(iceInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.BACKTRACK, Integer.parseInt(backtrackInBox.getText()));

@@ -205,21 +205,6 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Slider fx:id="goalSlider" blockIncrement="1.0" layoutX="196.0" layoutY="248.0">
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </Slider>
-            <TextField id="goalInBox" fx:id="goalInBox" layoutX="155.0" layoutY="243.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <Text layoutX="26.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Text>
             <Slider fx:id="tshapeSlider" blockIncrement="1.0" layoutX="196.0" layoutY="209.0">
                <padding>
                   <Insets left="15.0" />
