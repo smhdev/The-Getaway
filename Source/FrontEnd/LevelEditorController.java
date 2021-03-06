@@ -464,7 +464,6 @@ public class LevelEditorController extends StateLoad {
     }
 
     private void setSilkBagData() {
-        System.out.println(straightInBox.getText());
         if (!straightInBox.getText().equals(null)) {
             straightInBox.setText("10");
         }
