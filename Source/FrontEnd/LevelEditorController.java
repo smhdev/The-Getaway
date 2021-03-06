@@ -198,14 +198,16 @@ public class LevelEditorController extends StateLoad {
                             if (db.getString().startsWith("player ")) {
                                 // Get the number of the player that got dragged in
                                 int playerNum = Integer.parseInt(db.getString().substring(7)) - 1;
-                                customBoard.setPlayerSpawnPoint(playerNum, coordinates);
-                                moveCarImage(playerNum, pane, tileSize);
+                                //customBoard.setPlayerSpawnPoint(playerNum, coordinates)
+                                //moveCarImage(playerNum, pane, tileSize);
+                                if (editor.setPlayerPosition(playerNum, coordinates)){
+                                    moveCarImage(playerNum, pane, tileSize);
+                                }
+
                                 System.out.printf("Moved player %d to (%d, %d)%n", playerNum + 1, finalX, finalY);
                             } else {
                                 // Get the name of the new tile
                                 String newTileName = db.getString();
-                                // Remove all other images and add this new tile to the pane
-                                swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
 
                                 // Stick it in the board editor
                                 TileType tileType;
@@ -229,10 +231,18 @@ public class LevelEditorController extends StateLoad {
 
                                 FloorTile tileToAdd = new FloorTile(tileType);
                                 tileToAdd.setLocation(coordinates);
-                                editor.putTile(tileToAdd);
 
-                                System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
-                                event.setDropCompleted(true);
+                                // Adds tile if it was added successfully
+                                if (editor.putTile(tileToAdd)){
+                                    // Remove all other images and add this new tile to the pane
+                                    swapOutTileImage(pane, newTileName, tileSize, Rotation.UP);
+                                    if (tileToAdd.isFixed()) {
+                                        toggleFixedImage(pane, tileSize);
+                                    }
+                                    System.out.printf("The tile at (%d, %d) is now a %s%n", finalX, finalY, newTileName);
+                                }
+                                //editor.putTile(tileToAdd);
+
                             }
                         } else {
                             event.setDropCompleted(false);

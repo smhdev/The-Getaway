@@ -60,8 +60,8 @@
                 </padding>
             <HBox>
                <children>
-                      <Pane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: ffffff;" />
                   <Pane fx:id="profilePic" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: ffffff;" />
+                      <Pane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: ffffff;" />
                </children>
             </HBox>
                 <Text fx:id="profileName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
