@@ -78,6 +78,8 @@ public class GameScreenController extends StateLoad {
 	@FXML
 	private Pane profile;
 	@FXML
+	private Pane profilePic;
+	@FXML
 	private VBox confirmation;
 	@FXML
 	private StackPane boardArea;
@@ -141,8 +143,9 @@ public class GameScreenController extends StateLoad {
 		for (int i = 0; i < gameLogic.getNumberOfPlayers(); i++) {
 			profiles[i] = Profile.readProfile(getInitData().get("Profile" + (i)));
 		}
-		profile.getChildren().add(Assets.getProfile(profiles[gameLogic.getPlayersTurn()]));
+		profile.getChildren().add(Assets.getProfile(profiles[gameLogic.getPlayersTurn()])); //the profile image
 		profileName.setText(profiles[gameLogic.getPlayersTurn()].getName()); //sets the current players turn to text
+		profilePic.getChildren().add(Assets.getCar(gameLogic.getPlayersTurn())); //adds car next to player
 		try {
 			updateBoard();
 		} catch (Exception e) {
@@ -447,7 +450,6 @@ public class GameScreenController extends StateLoad {
 
 		}
 		// showing the player locations
-		//players = new ImageView[gameLogic.getNumberOfPlayers()];
 		for (int i = 0; i < gameLogic.getPlayerLocations().length; i++) {
 			Coordinate location = gameLogic.getPlayerLocations()[i];
 			ImageView playerView = Assets.getPlayer(i);
@@ -456,7 +458,6 @@ public class GameScreenController extends StateLoad {
 			playerView.setRotate(playerRotations[i]);
 			players.getChildren().add(playerView);
 		}
-
 
 	}
 

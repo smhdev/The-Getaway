@@ -121,6 +121,7 @@ public class LevelEditorMenuController extends StateLoad{
 
         WindowLoader wl = new WindowLoader(backButton);
         wl.load("LevelEditor", getInitData());
+        wl.setWindowFull();
         RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 
     }

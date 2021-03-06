@@ -15,7 +15,12 @@ import java.util.Scanner;
 
 public class CustomBoardSaveLoad {
 
-    // Reads required data
+    /**
+     * Reads required data in the following path
+     *
+     * @param path where file will be read
+     * @return Custom board instance with all required data
+     */
     public static CustomBoard readIniBoard(String path) {
         CustomBoard result = null;
         File file = null;
@@ -52,7 +57,12 @@ public class CustomBoardSaveLoad {
         return result;
     }
 
-    // Gets player positions using scanner
+    /**
+     * Gets player positions using scanner
+     *
+     * @param in scanner in the file to read
+     * @return array list of every player spawn point
+     */
     private static Coordinate[] getPlayerPos(Scanner in) {
         Coordinate[] result = new Coordinate[FileReader.MAX_NUM_OF_PLAYERS];
 
@@ -72,7 +82,12 @@ public class CustomBoardSaveLoad {
         return result;
     }
 
-    // Gets silk bag content using scanner
+    /**
+     * Gets silk bag content using scanner
+     *
+     * @param in scanner in the file to read data
+     * @return map with every amount of the tiles in the silkbag
+     */
     private static HashMap<TileType, Integer> getSilkBagContent(Scanner in) {
         HashMap<TileType, Integer> result = new HashMap<>();
 
@@ -88,7 +103,14 @@ public class CustomBoardSaveLoad {
         return result;
     }
 
-    // Gets matrix with fixed tiles on the board
+    /**
+     * Gets matrix with fixed tiles on the board
+     *
+     * @param in    scanner in the file to read data
+     * @param xSize x size of the board
+     * @param ySize y size of the board
+     * @return array list with all the tiles within the board
+     */
     private static ArrayList<FloorTile> getTiles(Scanner in, int xSize, int ySize) {
         ArrayList<FloorTile> result = new ArrayList<FloorTile>();
         int numOfTiles = in.nextInt();
@@ -121,7 +143,12 @@ public class CustomBoardSaveLoad {
         return result;
     }
 
-    // Gets tile from the file
+    /**
+     * Gets tile from the file
+     *
+     * @param in scanner in the file to read data
+     * @return floor tile we will add into the array
+     */
     private static FloorTile getFloorTile(Scanner in) {
         String tileTypeString;
         TileType tileType;
@@ -150,7 +177,12 @@ public class CustomBoardSaveLoad {
         return result;
     }
 
-    // Writes data to file
+    /**
+     * Writes data to file
+     *
+     * @param path        where the file belongs
+     * @param boardToSave custom board which will be saved using the function
+     */
     public static void writeIniBoard(String path, CustomBoard boardToSave) {
         CustomBoard result = null;
         File file = null;
@@ -177,7 +209,13 @@ public class CustomBoardSaveLoad {
         }
     }
 
-    // Writes players into the file
+    /**
+     * Writes players into the file in the following path
+     *
+     * @param writer writer in the file where the board will be saved
+     * @param board  board with required data
+     * @throws IOException exception if anything happen with the file
+     */
     private static void writePlayerPos(FileWriter writer, CustomBoard board) throws IOException {
         Coordinate coor;
 
@@ -187,7 +225,13 @@ public class CustomBoardSaveLoad {
         }
     }
 
-    // Writes silk bag content into the file
+    /**
+     * Writes silk bag content into the file
+     *
+     * @param writer writer within the file
+     * @param board  with all the required data to save
+     * @throws IOException exception if anything happen with the file
+     */
     private static void writeSilkBagContent(FileWriter writer, CustomBoard board) throws IOException {
         int numOfElems;
 
@@ -197,7 +241,13 @@ public class CustomBoardSaveLoad {
         }
     }
 
-    // Writes tiles into the file
+    /**
+     * Writes tiles into the file
+     *
+     * @param writer within the file where the board willbe savd
+     * @param board  it contains all the required data
+     * @throws IOException exception if anything happen with the file
+     */
     private static void writeTiles(FileWriter writer, CustomBoard board) throws IOException {
         ArrayList<FloorTile> fixedTiles = new ArrayList<>();
         ArrayList<FloorTile> nonFixedTiles = new ArrayList<>();
@@ -214,7 +264,13 @@ public class CustomBoardSaveLoad {
 
     }
 
-    // Writes tile arrays into the file with their size at the beginning
+    /**
+     * Writes tile arrays into the file with their size at the beginning
+     *
+     * @param writer within the file where the board willbe savd
+     * @param tiles  an array list with all the tiles to save
+     * @throws IOException exception if anything happen with the file
+     */
     private static void writeTileArray(FileWriter writer, ArrayList<FloorTile> tiles) throws IOException {
         TileType tileType;
         Coordinate tilePosition;

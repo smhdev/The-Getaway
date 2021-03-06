@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import static BackEnd.TileType.STRAIGHT;
+import static BackEnd.TileType.*;
 
 /**
  * This class is a file reader class which will take in a given level file format text file, verify it
  * and create the gameboard, along with the fixed tiles in their correct locations, the players in their correct
  * locations, and the amount and type of each floor/action tile that will populate the silk bag.
  *
- * @author Christian Sanger, Atif Ishaq and Joshua Oladitan.
+ * @author Christian Sanger, Atif Ishaq, Joshua Oladitan and Reuben MacDonald
  * @version 1.0
  */
 
@@ -38,107 +38,15 @@ public class FileReader {
      * @throws Exception issue with gameboard file
      */
     public static Pair<Gameboard, Player[]> gameSetup(String filename, int silkBagSeed) throws Exception {
-        File input = new File("Gameboards\\" + filename);
-        if (!input.exists()) {
-            throw new FileNotFoundException(filename);
-        }
-        Scanner in = new Scanner(input);
-        Scanner currentLine;
-        SilkBag silkBag = new SilkBag(silkBagSeed);
-
-        //// board config
-        currentLine = new Scanner(in.nextLine());
-        int width = currentLine.nextInt();
-        int height = currentLine.nextInt();
-        Gameboard gameboard = new Gameboard(width, height, silkBag);
-
-        //// Creating players
-        Player[] players = new Player[MAX_NUM_OF_PLAYERS];
-        Coordinate[] playerPos = new Coordinate[MAX_NUM_OF_PLAYERS];
-        gameboard.setNumOfPlayers(MAX_NUM_OF_PLAYERS);
-        for (int i = 0; i < MAX_NUM_OF_PLAYERS; i++) {
-            String nextLine = in.nextLine();
-            currentLine = new Scanner(nextLine);
-            int x = currentLine.nextInt();
-            int y = currentLine.nextInt();
-            playerPos[i] = new Coordinate(x, y);
-            gameboard.setPlayerPos(i, new Coordinate(x, y));
-            players[i] = new Player(silkBag, gameboard);
-        }
-
-        //// Filling SilkBag
-        int[] tileTypeCount = new int[NUM_OF_TILE_TYPES];
-        // Reading how many of each tile
-        for (int tileType = 0; tileType < NUM_OF_TILE_TYPES; tileType++) {
-            currentLine = new Scanner(in.nextLine());
-            tileTypeCount[tileType] = currentLine.nextInt();
-        }
-        // putting them in the bag
-        // for each tile type
-        for (int tileType = 0; tileType < NUM_OF_TILE_TYPES; tileType++) {
-            int numberOfThisTile = tileTypeCount[tileType];
-            // for each tile that need to be added to silkbag
-            for (int i = 0; i < numberOfThisTile; i++) {
-                Tile newTile = Tile.createTile(TileType.values()[tileType]);
-                silkBag.insertTile(newTile);
-            }
-        }
-
-        //// Fill with random tiles
-        Random r = new Random(silkBagSeed);
-        ArrayList<Coordinate> slideLocations = gameboard.getSlideLocations();
-
-        while (gameboard.isBoardNotFull()) {
-            Coordinate toSlide = null;
-            if (slideLocations.size() == 0) {
-                throw new Exception("No slide locations");
-            }
-
-            for (int i = 0; i < slideLocations.size(); i++) {
-                FloorTile tile = silkBag.getFloorTile();
-                tile.setRotation(Rotation.values()[r.nextInt(4)]);
-                toSlide = slideLocations.get(r.nextInt(slideLocations.size()));
-                if (toSlide == null) {
-                    throw new Exception("Null Slide location");
-                }
-                gameboard.playFloorTile(toSlide, tile);
-            }
-        }
-        //// Fixed tiles
-        currentLine = new Scanner(in.nextLine());
-        int numberOfFixedTiles = currentLine.nextInt();
-        for (int i = 0; i < numberOfFixedTiles; i++) {
-            currentLine = new Scanner(in.nextLine());
-            TileType tileType = TileType.valueOf(currentLine.next().toUpperCase());
-            int x = currentLine.nextInt();
-            int y = currentLine.nextInt();
-            Coordinate location = new Coordinate(x, y);
-            int rotationInt = currentLine.nextInt();
-            Rotation rotation = Rotation.values()[rotationInt];
-            FloorTile tile = new FloorTile(tileType, rotation);
-            gameboard.placeFixedTile(tile, location);
-        }
-
-        // Place players back in correct location as they would have been shifted when tiles have been placed
-        for (int i = 0; i < MAX_NUM_OF_PLAYERS; i++) {
-            for (int j = 0; j < 4; j++) {
-                gameboard.setPlayerPos(i, playerPos[i]);
-            }
-        }
-
-
-        return new Pair<>(gameboard, players);
-    }
-
-    public static Pair<Gameboard, Player[]> customGameSetup(String filename, int silkBagSeed) throws Exception {
         int rand;
+        int tileRand;
         int nonFixedCounter = 0;
         int nonFixedMax = -1;
         String fixed;
         boolean nonFixed = false;
         Random rd = new Random();
         String unFix;
-        File input = new File("CustomGameBoards\\" + filename);
+        File input = new File("Gameboards\\" + filename);
         if (!input.exists()) {
             throw new FileNotFoundException(filename);
         }
@@ -196,7 +104,16 @@ public class FileReader {
             for (int x = 0; x <= gameboard.getWidth(); x++) {
                 for (int y = 0; y <= gameboard.getHeight(); y++) {
                     rand = rd.nextInt(3);
-                    FloorTile tile = new FloorTile(STRAIGHT);
+                    tileRand = rd.nextInt(3);
+                    FloorTile tile = null;
+                    switch (tileRand) {
+                        case 0:
+                            tile = new FloorTile(STRAIGHT);
+                        case 1:
+                            tile = new FloorTile(CORNER);
+                        case 2:
+                            tile = new FloorTile(T_SHAPE);
+                    }
                     tile.setRotation(Rotation.values()[r.nextInt(4)]);
                     Coordinate coord = new Coordinate(x, y);
                     switch (rand) {
@@ -211,28 +128,17 @@ public class FileReader {
             }
         }
         currentLine = new Scanner(in.nextLine());
-        currentLine = new Scanner(in.nextLine());
         while (nonFixedCounter != nonFixedMax) {
-            currentLine = new Scanner(in.nextLine());
-            fixed = currentLine.next().toUpperCase();
-            try {
-                nonFixedMax = Integer.parseInt(fixed);
-                if (nonFixed == false) {
-                    currentLine = new Scanner(in.nextLine());
-                    nonFixed = true;
-                    fixed = currentLine.next().toUpperCase();
-                }
-                TileType tileType = TileType.valueOf(fixed);
-                int x = currentLine.nextInt();
-                int y = currentLine.nextInt();
-                Coordinate location = new Coordinate(x, y);
-                int rotationInt = currentLine.nextInt();
-                Rotation rotation = Rotation.values()[rotationInt];
-                FloorTile tile = new FloorTile(tileType, rotation);
-                gameboard.placeTile(tile, location);
-                nonFixedCounter += 1;
-            } catch (NumberFormatException e) {
-                if (nonFixed == true) {
+            try{
+                currentLine = new Scanner(in.nextLine());
+                fixed = currentLine.next().toUpperCase();
+                try {
+                    nonFixedMax = Integer.parseInt(fixed);
+                    if (nonFixed == false) {
+                        currentLine = new Scanner(in.nextLine());
+                        nonFixed = true;
+                        fixed = currentLine.next().toUpperCase();
+                    }
                     TileType tileType = TileType.valueOf(fixed);
                     int x = currentLine.nextInt();
                     int y = currentLine.nextInt();
@@ -242,16 +148,30 @@ public class FileReader {
                     FloorTile tile = new FloorTile(tileType, rotation);
                     gameboard.placeTile(tile, location);
                     nonFixedCounter += 1;
-                } else {
-                    TileType tileType = TileType.valueOf(fixed);
-                    int x = currentLine.nextInt();
-                    int y = currentLine.nextInt();
-                    Coordinate location = new Coordinate(x, y);
-                    int rotationInt = currentLine.nextInt();
-                    Rotation rotation = Rotation.values()[rotationInt];
-                    FloorTile tile = new FloorTile(tileType, rotation);
-                    gameboard.placeFixedTile(tile, location);
+                } catch (NumberFormatException e) {
+                    if (nonFixed == true) {
+                        TileType tileType = TileType.valueOf(fixed);
+                        int x = currentLine.nextInt();
+                        int y = currentLine.nextInt();
+                        Coordinate location = new Coordinate(x, y);
+                        int rotationInt = currentLine.nextInt();
+                        Rotation rotation = Rotation.values()[rotationInt];
+                        FloorTile tile = new FloorTile(tileType, rotation);
+                        gameboard.placeTile(tile, location);
+                        nonFixedCounter += 1;
+                    } else {
+                        TileType tileType = TileType.valueOf(fixed);
+                        int x = currentLine.nextInt();
+                        int y = currentLine.nextInt();
+                        Coordinate location = new Coordinate(x, y);
+                        int rotationInt = currentLine.nextInt();
+                        Rotation rotation = Rotation.values()[rotationInt];
+                        FloorTile tile = new FloorTile(tileType, rotation);
+                        gameboard.placeFixedTile(tile, location);
+                    }
                 }
+            } catch (Exception e) {
+                nonFixedCounter=-1;
             }
         }
 
@@ -272,9 +192,9 @@ public class FileReader {
      * @return in The scanner that iterates through the file.
      * @throws Exception if cannot create gameSetup
      */
-    public static Pair<Gameboard, Player[]> customGameSetup(String gameBoard) throws Exception {
-        return customGameSetup(gameBoard, (new Random()).nextInt());
-    }
+//    public static Pair<Gameboard, Player[]> customGameSetup(String gameBoard) throws Exception {
+//        return customGameSetup(gameBoard, (new Random()).nextInt());
+//    }
 
     /**
      * This method takes in the given level format file, and checks to see that the file exists.
