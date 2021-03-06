@@ -157,7 +157,7 @@ public class LevelEditorController extends StateLoad {
                         // A tile exists here; create an image view containing the tile's picture
                         String tileName = currentTile.getType().name().toLowerCase();
                         setPaneTileImage(pane, tileName, tileSize, currentTile.getRotation());
-
+                        setPaneFixedImage(pane, currentTile.isFixed(), tileSize);
                     } else {
                         // No tile exists; create an image view with an empty tile
                         setPaneTileImage(pane, "empty", tileSize);
@@ -207,24 +207,7 @@ public class LevelEditorController extends StateLoad {
                                 String newTileName = db.getString();
 
                                 // Stick it in the board editor
-                                TileType tileType;
-                                switch (newTileName) {
-                                    case "straight":
-                                        tileType = TileType.STRAIGHT;
-                                        break;
-                                    case "t_shape":
-                                        tileType = TileType.T_SHAPE;
-                                        break;
-                                    case "corner":
-                                        tileType = TileType.CORNER;
-                                        break;
-                                    case "goal":
-                                        tileType = TileType.GOAL;
-                                        break;
-                                    default:
-                                        throw new IllegalStateException("What the hell is a " +
-                                                newTileName + "? Not a tile that's what.");
-                                }
+                                TileType tileType = TileType.valueOf(newTileName.toUpperCase());
 
                                 FloorTile tileToAdd = new FloorTile(tileType);
                                 tileToAdd.setLocation(coordinates);
