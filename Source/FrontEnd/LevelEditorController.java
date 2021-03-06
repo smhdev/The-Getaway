@@ -180,7 +180,7 @@ public class LevelEditorController extends StateLoad {
                                 FloorTile thisTile = customBoard.getTileAt(finalX, finalY);
                                 if (thisTile == null || thisTile.getType() != TileType.GOAL) {
                                     // Make sure this isn't a player they're being dragged on to
-                                    if (!paneIsPlayerSpawn(pane)) {
+                                    if (paneIsNotPlayerSpawn(pane)) {
                                         event.acceptTransferModes(TransferMode.MOVE);
                                     }
                                 }
@@ -316,15 +316,15 @@ public class LevelEditorController extends StateLoad {
     /**
      * Determines whether the given pane is one that is also a player spawn point.
      * @param pane The pane to check.
-     * @return True if the pane is a player spawn point; false otherwise.
+     * @return True if the pane is not a player spawn point; false otherwise.
      */
-    private boolean paneIsPlayerSpawn(Pane pane) {
+    private boolean paneIsNotPlayerSpawn(Pane pane) {
         for (Pane spawnPane : playerSpawnPanes) {
             if (pane.equals(spawnPane)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private void setPaneEmptyImage(Pane pane, int size) {
