@@ -108,36 +108,50 @@ public class GameboardEditor {
 
     /**
      * Save chosen file at the following path (also includes word custom at the beginning
+     * s
      *
-     * @param path        path where file will be saved
-     * @param boardToSave board which will be saved in the following path
+     * @return true if saved successfully and false otherwise
      */
-    public static void saveFile(String path, CustomBoard boardToSave) {
+    public boolean saveFile() {
         // Check if the name contains word custom
-        String lowPath = path.toLowerCase();
-        String[] fileNameArray = path.split("/");
+        String lowPath = fileName.toLowerCase();
+        String[] fileNameArray = fileName.split("/");
         String fileName = fileNameArray[fileNameArray.length - 1];
 
         // Debug
         System.out.println("Required path is: " + lowPath);
         System.out.println("File name: " + fileName);
 
-        if (fileName.substring(6).equals("custom")) {
+        if (fileName.length() >= 6){
+            if (fileName.substring(6).equals("custom")) {
+                fileNameArray[fileNameArray.length - 1] = "Custom" + fileName;
+            }
+        }else{
             fileNameArray[fileNameArray.length - 1] = "Custom" + fileName;
         }
+        System.out.println(fileName);
 
         // Generate new file name containing word custom at the beginning
         String resultString = new String();
-        for (int i = 0; i < fileNameArray.length; i++) {
-            resultString += fileNameArray[i];
+//        for (int i = 0; i < fileNameArray.length; i++) {
+//            resultString += fileNameArray[i];
+//        }
+        resultString = "./GameBoards/"+fileName;
+
+        // Check if contain at least 1 goal tile and all player positions
+        // Will do it today
+        if (!containGoalTiles() || !checkIFAllPlayersExist()){
+            return false;
         }
 
-        if (!checkIfFileExist(path)) {
+            // Is it required?
+            //if (!checkIfFileExist(path)) {
             System.out.println("Saved at the path +" + resultString);
-            CustomBoardSaveLoad.writeIniBoard(resultString, boardToSave);
-        } else {
+        CustomBoardSaveLoad.writeIniBoard(resultString, board);
+        return true;
+        /*} else {
             System.out.println("Such file already exists");
-        }
+        }*/
     }
 
     /**
@@ -379,6 +393,20 @@ public class GameboardEditor {
             }
         }
         return false;
+    }
+
+    /**
+     * Check if every players position is set on the board
+     *
+     * @return true if all players position is set and false otherwise
+     */
+    private boolean checkIFAllPlayersExist() {
+        for (Coordinate coordinate : board.getPlayerPos()) {
+            if (coordinate == null) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

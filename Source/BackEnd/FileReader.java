@@ -101,29 +101,25 @@ public class FileReader {
             if (slideLocations.size() == 0) {
                 throw new Exception("No slide locations");
             }
-            for (int x = 0; x <= gameboard.getWidth(); x++) {
-                for (int y = 0; y <= gameboard.getHeight(); y++) {
+            for (int x = 0; x <= (gameboard.getWidth())-1; x++) {
+                for (int y = 0; y <= (gameboard.getHeight())-1; y++) {
                     rand = rd.nextInt(3);
                     tileRand = rd.nextInt(3);
                     FloorTile tile = null;
                     switch (tileRand) {
                         case 0:
                             tile = new FloorTile(STRAIGHT);
+                            break;
                         case 1:
                             tile = new FloorTile(CORNER);
+                            break;
                         case 2:
                             tile = new FloorTile(T_SHAPE);
+                            break;
                     }
                     tile.setRotation(Rotation.values()[r.nextInt(4)]);
                     Coordinate coord = new Coordinate(x, y);
-                    switch (rand) {
-                        case 0:
-                            gameboard.placeTile(tile, coord);
-                        case 1:
-                            gameboard.placeTile(tile, coord);
-                        case 2:
-                            gameboard.placeTile(tile, coord);
-                    }
+                    gameboard.placeTile(tile, coord);
                 }
             }
         }

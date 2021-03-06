@@ -15,11 +15,9 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
- *
- *
+ * @author Liam B
  * @version 1.0
  * @since 1.0
- * @author Liam B
  */
 public class LevelEditorController extends StateLoad {
 
@@ -27,10 +25,6 @@ public class LevelEditorController extends StateLoad {
     private Slider straightSlider;
     @FXML
     private TextField straightInBox;
-    @FXML
-    private Slider goalSlider;
-    @FXML
-    private TextField goalInBox;
     @FXML
     private Slider tshapeSlider;
     @FXML
@@ -114,7 +108,7 @@ public class LevelEditorController extends StateLoad {
         // will actually return a HashMap. Hence we must check to see
         // if getInitData isn't null before we can retrieve data from it.
         if (getInitData() != null) {
-            if(getInitData().get("Custom Board Is New").equals("true")) {
+            if (getInitData().get("Custom Board Is New").equals("true")) {
                 int customWidth = Integer.parseInt(getInitData().get("Custom Board Width"));
                 int customHeight = Integer.parseInt(getInitData().get("Custom Board Height"));
                 customBoard = new CustomBoard();
@@ -198,7 +192,7 @@ public class LevelEditorController extends StateLoad {
                                 // Get the number of the player that got dragged in
                                 int playerNum = Integer.parseInt(db.getString().substring(7)) - 1;
 
-                                if (editor.setPlayerPosition(playerNum, coordinates)){
+                                if (editor.setPlayerPosition(playerNum, coordinates)) {
                                     moveCarImage(playerNum, pane, tileSize);
                                 }
 
@@ -216,7 +210,7 @@ public class LevelEditorController extends StateLoad {
 
 
                                 // Adds tile if it was added successfully
-                                if (editor.putTile(tileToAdd)){
+                                if (editor.putTile(tileToAdd)) {
                                     // Remove all other images and add this new tile to the pane
                                     setPaneTileImage(pane, newTileName, tileSize, Rotation.UP);
                                     setPaneFixedImage(pane, tileToAdd.isFixed(), tileSize);
@@ -236,14 +230,19 @@ public class LevelEditorController extends StateLoad {
                             // Fix or unfix this tile
                             FloorTile tile = customBoard.getTileAt(finalX, finalY);
                             if (tile != null) {
-                                tile.setFixedBool(!tile.isFixed());
-                                setPaneFixedImage(pane, tile.isFixed(), tileSize);
-                                System.out.printf(
-                                        tile.isFixed() ?
-                                        "Tile (%d, %d) was fixed%n" :
-                                        "Tile (%d, %d) was unfixed%n",
-                                        finalX, finalY
-                                );
+                                if (tile.getType() != TileType.GOAL) {
+                                    tile.setFixedBool(!tile.isFixed());
+                                    setPaneFixedImage(pane, tile.isFixed(), tileSize);
+                                    System.out.printf(
+                                            tile.isFixed() ?
+                                            "Tile (%d, %d) was fixed%n" :
+                                            "Tile (%d, %d) was unfixed%n",
+                                            finalX, finalY
+                                    );
+                                } else {
+                                    System.out.printf("Goal tile can't be unfixed");
+                                }
+
                             }
                         } else if (rotateRB.isSelected()) {
                             // Rotate this tile
@@ -297,6 +296,7 @@ public class LevelEditorController extends StateLoad {
             iceSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     iceInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
+
             backtrackSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     backtrackInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
@@ -326,6 +326,7 @@ public class LevelEditorController extends StateLoad {
         }
         return true;
     }
+
 
     private void setPaneEmptyImage(Pane pane, int size) {
         setPaneTileImage(pane, "empty", size, Rotation.UP);
@@ -364,7 +365,7 @@ public class LevelEditorController extends StateLoad {
      * Helper function that moves the car to a new pane.
      * @param player Zero-based index of the player's car to move.
      * @param newPane The pane to move it to.
-     * @param size The size of the ImageView.
+     * @param size    The size of the ImageView.
      */
     public void moveCarImage(int player, Pane newPane, int size) {
         // First, remove the car from the old pane
@@ -382,10 +383,11 @@ public class LevelEditorController extends StateLoad {
 
     /**
      * Creates an ImageView for use as a tile on the game board.
+     *
      * @param name The name of the image to use.
      * @param size The fit width and height of the ImageView.
      * @return An ImageView with the tile's image
-     *         and its fit size set to the provided size.
+     * and its fit size set to the provided size.
      */
     private ImageView createTileImageView(String name, int size) {
         return createTileImageView(name, size, Rotation.UP);
@@ -393,11 +395,12 @@ public class LevelEditorController extends StateLoad {
 
     /**
      * Creates an ImageView for use as a tile on the game board with the specified rotation.
-     * @param name The name of the image to use.
-     * @param size The fit width and height of the ImageView.
+     *
+     * @param name     The name of the image to use.
+     * @param size     The fit width and height of the ImageView.
      * @param rotation The orthogonal rotation of the tile.
      * @return An ImageView with the tile's image rotated to the specified direction
-     *         and its fit size set to the provided size.
+     * and its fit size set to the provided size.
      */
     private ImageView createTileImageView(String name, int size, Rotation rotation) {
         ImageView tileImg = new ImageView(Assets.get(name));
@@ -407,11 +410,32 @@ public class LevelEditorController extends StateLoad {
         return tileImg;
     }
 
-    private void setSilkBagData(){
+    private void setSilkBagData() {
+        if (straightInBox.getText().equals("")) {
+            straightInBox.setText("10");
+        }
+        if (cornerInBox.getText().equals("")) {
+            cornerInBox.setText("10");
+        }
+        if (tshapeInBox.getText().equals("")) {
+            tshapeInBox.setText("10");
+        }
+        if (iceInBox.getText().equals("")) {
+            iceInBox.setText("10");
+        }
+        if (fireInBox.getText().equals("")) {
+            fireInBox.setText("10");
+        }
+        if (backtrackInBox.getText().equals("")) {
+            backtrackInBox.setText("10");
+        }
+        if (doublemoveInBox.getText().equals("")) {
+            doublemoveInBox.setText("10");
+        }
         customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.CORNER, Integer.parseInt(cornerInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.T_SHAPE, Integer.parseInt(tshapeInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.GOAL, Integer.parseInt(goalInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.GOAL, 0);
         customBoard.setSilkBagMapElement(TileType.FIRE, Integer.parseInt(fireInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.FROZEN, Integer.parseInt(iceInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.BACKTRACK, Integer.parseInt(backtrackInBox.getText()));
@@ -420,7 +444,8 @@ public class LevelEditorController extends StateLoad {
 
     /**
      * Helper method which starts a drag and drop event.
-     * @param source The source of the dragging.
+     *
+     * @param source   The source of the dragging.
      * @param tileName The name of the tile being dragged.
      */
     private void startDragAndDrop(Node source, String tileName) {
@@ -500,10 +525,12 @@ public class LevelEditorController extends StateLoad {
         fixRB.setSelected(true);
         checkVisRestPlayerButton();
     }
+
     public void onRotateRB() {
         rotateRB.setSelected(true);
         checkVisRestPlayerButton();
     }
+
     public void onRemoveRB() {
         removeRB.setSelected(true);
         checkVisRestPlayerButton();
@@ -555,10 +582,11 @@ public class LevelEditorController extends StateLoad {
         wl.load("MenuScreen", getInitData());
     }
 
-    public void onSaveExitButton () {
+    public void onSaveExitButton() {
         //Save Here
         setSilkBagData();
-        CustomBoardSaveLoad.writeIniBoard("./Gameboards/" + getInitData().get("Custom Board Name") + ".txt", customBoard);
+        editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
+        editor.saveFile();
         WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
         wl.load("MenuScreen", getInitData());
     }

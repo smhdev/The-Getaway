@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import BackEnd.GameboardEditor;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
@@ -92,6 +93,11 @@ public class LevelEditorMenuController extends StateLoad{
             nameIn.setText("");
             nameIn.setStyle("-fx-prompt-text-fill:red;");
             inputError = true;
+        }
+        if (GameboardEditor.checkIfFileExist("./GameBoards/Custom"+nameIn.getText()+".txt")){
+            nameIn.setText("");
+            nameIn.setStyle("-fx-prompt-text-fill:red;");
+            inputError=true;
         }
         if (!correctBoardSize(widthIn.getText())) {
             widthIn.setText("");
