@@ -20,6 +20,9 @@ import java.util.Scanner;
  */
 public class LevelEditorMenuController extends StateLoad{
 
+    private final int MINIMUM_CUSTOM_BOARD_SIZE = 4;
+    private final int MAXIMUM_CUSTOM_BOARD_SIZE = 10;
+
     private final String RETURN_SFX = "Assets\\SFX\\return.mp3";
     private final AudioClip RETURN_AUDIO = new AudioClip(new File(RETURN_SFX).toURI().toString());
     private boolean levelEditorOption = true; // True for new level or False for existing level
@@ -50,6 +53,9 @@ public class LevelEditorMenuController extends StateLoad{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        widthIn.setPromptText(String.format("%d - %d", MINIMUM_CUSTOM_BOARD_SIZE, MAXIMUM_CUSTOM_BOARD_SIZE));
+        heightIn.setPromptText(String.format("%d - %d", MINIMUM_CUSTOM_BOARD_SIZE, MAXIMUM_CUSTOM_BOARD_SIZE));
 
         ToggleGroup levelEditorOption = new ToggleGroup();
         newLevel.setToggleGroup(levelEditorOption);
@@ -162,8 +168,6 @@ public class LevelEditorMenuController extends StateLoad{
      */
     private boolean correctBoardSize(String sizeIn) {
 
-        final int MAX_IN = 100;
-        final int MIN_IN = 3;
         int numIn = 0;
 
         try {
@@ -172,7 +176,7 @@ public class LevelEditorMenuController extends StateLoad{
             System.out.println("NOT a int input");
         }
 
-        return numIn >= MIN_IN && numIn <= MAX_IN;
+        return numIn >= MINIMUM_CUSTOM_BOARD_SIZE && numIn <= MAXIMUM_CUSTOM_BOARD_SIZE;
     }
 
     /**
