@@ -154,7 +154,7 @@ public class LevelEditorController extends StateLoad {
                         setPaneFixedImage(pane, currentTile.isFixed(), tileSize);
                     } else {
                         // No tile exists; create an image view with an empty tile
-                        setPaneTileImage(pane, "empty", tileSize);
+                        setPaneEmptyImage(pane, tileSize);
                     }
                     pane.setUserData(new Pair<Integer, Integer>(x, y));
                     // Add the pane containing the images to the board grid pane
@@ -260,7 +260,7 @@ public class LevelEditorController extends StateLoad {
                         } else if (removeRB.isSelected()) {
                             // Remove this tile
                             if (customBoard.getTileAt(finalX, finalY) != null) {
-                                setPaneTileImage(pane, "empty", tileSize);
+                                setPaneEmptyImage(pane, tileSize);
                                 setPaneFixedImage(pane, false, tileSize);
                                 editor.removeTileOnPosition(coordinates);
                                 System.out.printf("Tile (%d, %d) was removed%n", finalX, finalY);
@@ -327,8 +327,8 @@ public class LevelEditorController extends StateLoad {
         return false;
     }
 
-    private void setPaneTileImage(Pane pane, String newTile, int size) {
-        setPaneTileImage(pane, newTile, size, Rotation.UP);
+    private void setPaneEmptyImage(Pane pane, int size) {
+        setPaneTileImage(pane, "empty", size, Rotation.UP);
     }
 
     private void setPaneTileImage(Pane pane, String newTile, int size, Rotation rotation) {
