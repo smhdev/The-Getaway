@@ -240,7 +240,7 @@ public class LevelEditorController extends StateLoad {
                                             finalX, finalY
                                     );
                                 } else {
-                                    System.out.printf("Goal tile can't be unfixed");
+                                    System.out.printf("Goal tile on (%d, %d) can't be unfixed%n", finalX, finalY);
                                 }
 
                             }
@@ -286,9 +286,6 @@ public class LevelEditorController extends StateLoad {
 
             tshapeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     tshapeInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
-            goalSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    goalInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             fireSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     fireInBox.setText(String.valueOf(Math.round((Double) newValue))));
