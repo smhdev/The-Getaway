@@ -6,10 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.SpinnerValueFactory.*?>
+<?import java.lang.Integer?>
 <BorderPane prefHeight="1000.0" prefWidth="1800.0" style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorController">
    <bottom>
       <fx:define>
          <ToggleGroup fx:id="floorActionPlayerSet"/>
+         <Integer fx:id="maxTiles" fx:value="100" />
       </fx:define>
       <AnchorPane prefHeight="250.0" prefWidth="1651.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -190,61 +193,61 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Text>
-            <Slider fx:id="straightSlider" blockIncrement="1.0" layoutX="196.0" layoutY="131.0">
+            <Slider fx:id="straightSlider" blockIncrement="1.0" layoutX="196.0" layoutY="131.0" max="$maxTiles">
                <padding>
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="straightIn" fx:id="straightInBox" layoutX="155.0" layoutY="127.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="straightIn" fx:id="straightSpinner" layoutX="153.0" layoutY="127.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="26.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Slider fx:id="tshapeSlider" blockIncrement="1.0" layoutX="196.0" layoutY="209.0">
+            <Slider fx:id="tshapeSlider" blockIncrement="1.0" layoutX="196.0" layoutY="209.0" max="$maxTiles">
                <padding>
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="tshapeInBox" fx:id="tshapeInBox" layoutX="155.0" layoutY="205.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="tshapeInBox" fx:id="tshapeSpinner" layoutX="153.0" layoutY="205.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="26.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Slider fx:id="conerSlider" blockIncrement="1.0" layoutX="196.0" layoutY="172.0">
+            <Slider fx:id="conerSlider" blockIncrement="1.0" layoutX="196.0" layoutY="172.0" max="$maxTiles">
                <padding>
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="cornerInBox" fx:id="cornerInBox" layoutX="155.0" layoutY="167.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="cornerInBox" fx:id="cornerSpinner" layoutX="153.0" layoutY="167.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="26.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Slider fx:id="fireSlider" blockIncrement="1.0" layoutX="196.0" layoutY="343.0">
+            <Slider fx:id="fireSlider" blockIncrement="1.0" layoutX="196.0" layoutY="343.0" max="$maxTiles">
                <padding>
                    <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="fireInBox" fx:id="fireInBox" alignment="CENTER" layoutX="155.0" layoutY="339.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="fireInBox" fx:id="fireSpinner" layoutX="153.0" layoutY="339.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
@@ -255,46 +258,46 @@
                   <Font name="Impact" size="24.0" />
                </font>
             </Text>
-            <Slider fx:id="iceSlider" blockIncrement="1.0" layoutX="196.0" layoutY="380.0">
+            <Slider fx:id="iceSlider" blockIncrement="1.0" layoutX="196.0" layoutY="380.0" max="$maxTiles">
                <padding>
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="iceInBox" fx:id="iceInBox" layoutX="155.0" layoutY="375.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="iceInBox" fx:id="iceSpinner" layoutX="153.0" layoutY="375.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="22.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Slider fx:id="doublemoveSlider" blockIncrement="1.0" layoutX="196.0" layoutY="420.0">
+            <Slider fx:id="doublemoveSlider" blockIncrement="1.0" layoutX="196.0" layoutY="420.0" max="$maxTiles">
                <padding>
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="doublemoveInBox" fx:id="doublemoveInBox" layoutX="155.0" layoutY="415.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="doublemoveInBox" fx:id="doublemoveSpinner" layoutX="153.0" layoutY="415.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="26.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double Move" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Slider fx:id="backtrackSlider" blockIncrement="1.0" layoutX="196.0" layoutY="456.0">
+            <Slider fx:id="backtrackSlider" blockIncrement="1.0" layoutX="196.0" layoutY="456.0" max="$maxTiles">
                <padding>
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="backtrackIn" fx:id="backtrackInBox" layoutX="155.0" layoutY="452.0" prefHeight="18.0" prefWidth="40.0" promptText="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <Spinner id="backtrackIn" fx:id="backtrackSpinner" layoutX="153.0" layoutY="452.0" prefHeight="18.0" prefWidth="58.0" editable="true">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="$maxTiles" />
+               </valueFactory>
+            </Spinner>
             <Text layoutX="26.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backtrack" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Bold" size="18.0" />
