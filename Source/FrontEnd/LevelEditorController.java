@@ -1,13 +1,19 @@
 package FrontEnd;
 
 import BackEnd.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
+import javafx.util.Duration;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -76,6 +82,10 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private ToggleGroup floorActionPlayerSet;
 
+    @FXML
+    private VBox errorMsgBox;
+    @FXML
+    private Text errorMsgText;
 
     @FXML
     private RadioMenuItem silkBagToggleButton;
@@ -447,6 +457,7 @@ public class LevelEditorController extends StateLoad {
      */
     private void startDragAndDrop(Node source, String tileName) {
         unselectActionRadioButtons();
+        hideErrorMsgBox();
         Dragboard db = source.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         content.putString(tileName);
@@ -519,16 +530,19 @@ public class LevelEditorController extends StateLoad {
     }
 
     public void onFixRB() {
+        hideErrorMsgBox();
         fixRB.setSelected(true);
         checkVisRestPlayerButton();
     }
 
     public void onRotateRB() {
+        hideErrorMsgBox();
         rotateRB.setSelected(true);
         checkVisRestPlayerButton();
     }
 
     public void onRemoveRB() {
+        hideErrorMsgBox();
         removeRB.setSelected(true);
         checkVisRestPlayerButton();
     }
@@ -551,6 +565,16 @@ public class LevelEditorController extends StateLoad {
         fixRB.setSelected(false);
         rotateRB.setSelected(false);
         removeRB.setSelected(false);
+    }
+
+    public void showErrorMsgBox(String errorMessage) {
+        errorMsgText.setText(errorMessage);
+        errorMsgBox.setVisible(true);
+    }
+
+    public void hideErrorMsgBox() {
+        errorMsgBox.setVisible(false);
+        errorMsgText.setText("");
     }
 
     public void resetPlayerPosition() {
@@ -588,7 +612,8 @@ public class LevelEditorController extends StateLoad {
             WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
             wl.load("MenuScreen", getInitData());
         } catch (IllegalStateException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+            showErrorMsgBox(ex.getMessage());
         }
     }
 
