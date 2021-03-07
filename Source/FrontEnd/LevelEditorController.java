@@ -583,9 +583,13 @@ public class LevelEditorController extends StateLoad {
         //Save Here
         setSilkBagData();
         editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
-        editor.saveFile();
-        WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
-        wl.load("MenuScreen", getInitData());
+        try {
+            editor.saveFile();
+            WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+            wl.load("MenuScreen", getInitData());
+        } catch (IllegalStateException ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
