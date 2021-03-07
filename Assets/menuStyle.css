@@ -12,13 +12,13 @@
 }
 
 @font-face {
-    font-family: 'Xenogears';
-    src: url('file:Assets/Xenogears.ttf') format('truetype');
+    font-family: 'WickedSeventies';
+    src: url("WickedSeventies.ttf");
 }
 
 .resetButton{
     -fx-pref-width: 75;
-    -fx-font-family: 'Xenogears';
+    -fx-font-family: 'WickedSeventies';
     -fx-background-color: #ff6666;
     -fx-text-fill: black;
     -fx-font-size: 15px;
@@ -34,24 +34,34 @@
 .label {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: 'Xenogears';
+    -fx-font-family: 'WickedSeventies';
     -fx-font-size: 20;
 }
 
+.menu-item {
+    -fx-background-color: #c634eb;
+    -fx-font-family: 'WickedSeventies';
+    -fx-font-size: 80px;
+}
+
+#GameSetup {
+    -fx-background-color: #c634eb;
+    -fx-font-family: 'WickedSeventies';
+    -fx-font-size: 100px;
+}
 
 .WindowName {
-    -fx-font-family: 'Xenogears';
-    -fx-font-size: 90px;
+    -fx-font-family: 'WickedSeventies';
+    -fx-font-size: 120px;
     -fx-fill: #c634eb;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .7), 20, .5, 10, 10);
 }
-
 
 .MessageOfTheDay {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
     -fx-font-family: Consolas;
-    -fx-font-size: 20;
+    -fx-font-size: 20px;
 }
 
 .QuitScreen {
@@ -92,9 +102,9 @@
     -fx-background-color: black;
 }
 
-.menu-item {
-    -fx-background-color: #c634eb;
-    -fx-font-family: 'Xenogears';
+.editor {
+    -fx-font-family: Consolas;
+    -fx-font-size: 10;
 }
 
 .menu .menu-item:focused {

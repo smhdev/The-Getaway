@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="1000.0" prefWidth="1800.0" style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorController">
+<BorderPane prefHeight="1000.0" prefWidth="1800.0" style="-fx-background-image: url('//Assets/board.png'); -fx-background-size: cover; -fx-background-position: center;" stylesheets="@/menuStyle.css" styleClass="editor" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorController">
    <bottom>
       <fx:define>
          <ToggleGroup fx:id="floorActionPlayerSet"/>

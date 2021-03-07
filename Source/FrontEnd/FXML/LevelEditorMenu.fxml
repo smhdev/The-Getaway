@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-position: center; -fx-background-size: cover;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-position: center; -fx-background-size: cover;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="LEVEL EDITOR" textAlignment="CENTER" wrappingWidth="568.55078125" BorderPane.alignment="BOTTOM_CENTER">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="LEVEL EDITOR" textAlignment="CENTER" wrappingWidth="780.55078125" BorderPane.alignment="BOTTOM_CENTER">
          <BorderPane.margin>
             <Insets top="50.0" />
          </BorderPane.margin>

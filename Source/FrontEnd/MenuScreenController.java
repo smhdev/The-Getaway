@@ -11,8 +11,11 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.StageStyle;
+import sun.font.FontScalerException;
 
+import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,7 +52,12 @@ public class MenuScreenController extends StateLoad {
             message = "Error with Server" + e.getCause();
         }
         MoTD.setText(message);
-        Header.setFont(Font.loadFont("file:Assets/Xenogears.ttf", 50));
+        try {
+            Header.setFont(Font.loadFont("file:Assets/WickedSeventies.ttf", 20));
+            System.out.println(Header.getFont());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
