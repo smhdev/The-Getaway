@@ -1,6 +1,10 @@
 package FrontEnd;
 
 import BackEnd.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -9,6 +13,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
+import javafx.util.Duration;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -25,31 +30,31 @@ public class LevelEditorController extends StateLoad {
     @FXML
     private Slider straightSlider;
     @FXML
-    private Spinner<Integer> straightSpinner;
+    private TextField straightInBox;
     @FXML
     private Slider tshapeSlider;
     @FXML
-    private Spinner<Integer> tshapeSpinner;
+    private TextField tshapeInBox;
     @FXML
     private Slider conerSlider;
     @FXML
-    private Spinner<Integer> cornerSpinner;
+    private TextField cornerInBox;
     @FXML
     private Slider fireSlider;
     @FXML
-    private Spinner<Integer> fireSpinner;
+    private TextField fireInBox;
     @FXML
     private Slider iceSlider;
     @FXML
-    private Spinner<Integer> iceSpinner;
+    private TextField iceInBox;
     @FXML
     private Slider doublemoveSlider;
     @FXML
-    private Spinner<Integer> doublemoveSpinner;
+    private TextField doublemoveInBox;
     @FXML
     private Slider backtrackSlider;
     @FXML
-    private Spinner<Integer> backtrackSpinner;
+    private TextField backtrackInBox;
 
 
     @FXML
@@ -284,26 +289,26 @@ public class LevelEditorController extends StateLoad {
             }
 
             straightSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    straightSpinner.getValueFactory().setValue(newValue.intValue()));
+                    straightInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             conerSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    cornerSpinner.getValueFactory().setValue(newValue.intValue()));
+                    cornerInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             tshapeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    tshapeSpinner.getValueFactory().setValue(newValue.intValue()));
+                    tshapeInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             fireSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    fireSpinner.getValueFactory().setValue(newValue.intValue()));
+                    fireInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             iceSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    iceSpinner.getValueFactory().setValue(newValue.intValue()));
+                    iceInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
 
             backtrackSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    backtrackSpinner.getValueFactory().setValue(newValue.intValue()));
+                    backtrackInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             doublemoveSlider.valueProperty().addListener((observable, oldValue, newValue) ->
-                    doublemoveSpinner.getValueFactory().setValue(newValue.intValue()));
+                    doublemoveInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             straightSlider.setValue(customBoard.getNumOfTileTypes(TileType.STRAIGHT));
             conerSlider.setValue((customBoard.getNumOfTileTypes(TileType.CORNER)));
@@ -413,14 +418,35 @@ public class LevelEditorController extends StateLoad {
     }
 
     private void setSilkBagData() {
-        customBoard.setSilkBagMapElement(TileType.STRAIGHT, straightSpinner.getValue());
-        customBoard.setSilkBagMapElement(TileType.CORNER, cornerSpinner.getValue());
-        customBoard.setSilkBagMapElement(TileType.T_SHAPE, tshapeSpinner.getValue());
+        if (straightInBox.getText().equals("")) {
+            straightInBox.setText("10");
+        }
+        if (cornerInBox.getText().equals("")) {
+            cornerInBox.setText("10");
+        }
+        if (tshapeInBox.getText().equals("")) {
+            tshapeInBox.setText("10");
+        }
+        if (iceInBox.getText().equals("")) {
+            iceInBox.setText("10");
+        }
+        if (fireInBox.getText().equals("")) {
+            fireInBox.setText("10");
+        }
+        if (backtrackInBox.getText().equals("")) {
+            backtrackInBox.setText("10");
+        }
+        if (doublemoveInBox.getText().equals("")) {
+            doublemoveInBox.setText("10");
+        }
+        customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.CORNER, Integer.parseInt(cornerInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.T_SHAPE, Integer.parseInt(tshapeInBox.getText()));
         customBoard.setSilkBagMapElement(TileType.GOAL, 0);
-        customBoard.setSilkBagMapElement(TileType.FIRE, fireSpinner.getValue());
-        customBoard.setSilkBagMapElement(TileType.FROZEN, iceSpinner.getValue());
-        customBoard.setSilkBagMapElement(TileType.BACKTRACK, backtrackSpinner.getValue());
-        customBoard.setSilkBagMapElement(TileType.DOUBLE_MOVE, doublemoveSpinner.getValue());
+        customBoard.setSilkBagMapElement(TileType.FIRE, Integer.parseInt(fireInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.FROZEN, Integer.parseInt(iceInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.BACKTRACK, Integer.parseInt(backtrackInBox.getText()));
+        customBoard.setSilkBagMapElement(TileType.DOUBLE_MOVE, Integer.parseInt(doublemoveInBox.getText()));
     }
 
     /**
