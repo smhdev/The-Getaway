@@ -1,10 +1,7 @@
 package FrontEnd;
 
 import BackEnd.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -13,7 +10,6 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
-import javafx.util.Duration;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -317,7 +313,24 @@ public class LevelEditorController extends StateLoad {
             iceSlider.setValue((customBoard.getNumOfTileTypes(TileType.FROZEN)));
             backtrackSlider.setValue((customBoard.getNumOfTileTypes(TileType.BACKTRACK)));
             doublemoveSlider.setValue((customBoard.getNumOfTileTypes(TileType.DOUBLE_MOVE)));
+
+            // Ensure all input is numeric only
+            setNumericInputOnly(straightInBox);
+            setNumericInputOnly(cornerInBox);
+            setNumericInputOnly(tshapeInBox);
+            setNumericInputOnly(fireInBox);
+            setNumericInputOnly(iceInBox);
+            setNumericInputOnly(backtrackInBox);
+            setNumericInputOnly(doublemoveInBox);
         }
+    }
+
+    private void setNumericInputOnly(TextField t) {
+        t.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                t.setText(oldValue);
+            }
+        });
     }
 
     /**
@@ -439,14 +452,18 @@ public class LevelEditorController extends StateLoad {
         if (doublemoveInBox.getText().equals("")) {
             doublemoveInBox.setText("10");
         }
-        customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.CORNER, Integer.parseInt(cornerInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.T_SHAPE, Integer.parseInt(tshapeInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.GOAL, 0);
-        customBoard.setSilkBagMapElement(TileType.FIRE, Integer.parseInt(fireInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.FROZEN, Integer.parseInt(iceInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.BACKTRACK, Integer.parseInt(backtrackInBox.getText()));
-        customBoard.setSilkBagMapElement(TileType.DOUBLE_MOVE, Integer.parseInt(doublemoveInBox.getText()));
+        try {
+            customBoard.setSilkBagMapElement(TileType.STRAIGHT, Integer.parseInt(straightInBox.getText()));
+            customBoard.setSilkBagMapElement(TileType.CORNER, Integer.parseInt(cornerInBox.getText()));
+            customBoard.setSilkBagMapElement(TileType.T_SHAPE, Integer.parseInt(tshapeInBox.getText()));
+            customBoard.setSilkBagMapElement(TileType.GOAL, 0);
+            customBoard.setSilkBagMapElement(TileType.FIRE, Integer.parseInt(fireInBox.getText()));
+            customBoard.setSilkBagMapElement(TileType.FROZEN, Integer.parseInt(iceInBox.getText()));
+            customBoard.setSilkBagMapElement(TileType.BACKTRACK, Integer.parseInt(backtrackInBox.getText()));
+            customBoard.setSilkBagMapElement(TileType.DOUBLE_MOVE, Integer.parseInt(doublemoveInBox.getText()));
+        } catch (NumberFormatException ex) {
+            showErrorMsgBox("Silk bag tile count must be an integer above zero");
+        }
     }
 
     /**
