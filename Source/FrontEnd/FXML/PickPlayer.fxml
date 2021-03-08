@@ -15,10 +15,10 @@
       <VBox alignment="CENTER" layoutY="200.0" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <FlowPane alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
             <children>
-               <Label prefHeight="25.0" prefWidth="70.0" text="Player1" textFill="#009e05">
+               <Label prefHeight="25.0" prefWidth="90.0" text="Player 1:" textFill="#009e05">
                </Label>
                <ChoiceBox fx:id="playerList1" prefWidth="170.0" />
-               <Label fx:id="player2Text" prefHeight="25.0" prefWidth="70.0" text="Player2" textFill="#009e05" visible="false">
+               <Label fx:id="player2Text" prefHeight="25.0" prefWidth="90.0" text="Player 2:" textFill="#009e05" visible="false">
                   <FlowPane.margin>
                      <Insets left="50.0" />
                   </FlowPane.margin>
@@ -28,10 +28,10 @@
          </FlowPane>
          <FlowPane alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
             <children>
-               <Label fx:id="player3Text" prefHeight="25.0" prefWidth="70.0" text="Player3" textFill="#009e05" visible="false">
+               <Label fx:id="player3Text" prefHeight="25.0" prefWidth="90.0" text="Player 3:" textFill="#009e05" visible="false">
                </Label>
                <ChoiceBox fx:id="playerList3" prefWidth="170.0" />
-               <Label fx:id="player4Text" prefHeight="25.0" prefWidth="70.0" text="Player4" textFill="#009e05" visible="false">
+               <Label fx:id="player4Text" prefHeight="25.0" prefWidth="90.0" text="Player 4:" textFill="#009e05" visible="false">
                   <FlowPane.margin>
                      <Insets left="50.0" />
                   </FlowPane.margin>

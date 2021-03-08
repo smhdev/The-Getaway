@@ -57,7 +57,7 @@
    <bottom>
       <FlowPane alignment="TOP_CENTER" hgap="45.0" prefHeight="200.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButton" text="Back Button" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
             <Button fx:id="start" mnemonicParsing="false" onAction="#onStartButton" style="-fx-background-color: #b5b500;" text="Start" />
          </children>
       </FlowPane>
