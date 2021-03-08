@@ -105,7 +105,7 @@
                   <Insets right="20.0" />
                </FlowPane.margin>
             </Button>
-            <Button fx:id="startLevelButton" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onStartButton" style="-fx-background-color: #bfa638;" text="Start" textAlignment="CENTER" textFill="#bfa638">
+            <Button fx:id="startLevelButton" styleClass="iniButton" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onStartButton"  text="Start" textAlignment="CENTER" textFill="#bfa638">
                <FlowPane.margin>
                   <Insets left="20.0" />
                </FlowPane.margin>

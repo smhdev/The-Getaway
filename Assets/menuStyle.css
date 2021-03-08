@@ -1,6 +1,6 @@
 
 .button{
-    -fx-background-color: #333;
+    -fx-background-color: #1fcccc;
     -fx-text-fill: white;
     -fx-font-size: 19px;
     -fx-pref-width: 250;
@@ -9,6 +9,7 @@
 .button:hover{
     -fx-border-color: white;
     -fx-border-width: 1px;
+    -fx-background-color: #169191;
 }
 
 @font-face {
@@ -27,7 +28,7 @@
 .text {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Consolas;
+    -fx-font-family: "Helvetica ";
     -fx-font-size: 18;
 }
 
@@ -41,13 +42,13 @@
 .menu-item {
     -fx-background-color: #c634eb;
     -fx-font-family: 'WickedSeventies';
-    -fx-font-size: 80px;
+    -fx-font-size: 30px;
 }
 
 #GameSetup {
     -fx-background-color: #c634eb;
     -fx-font-family: 'WickedSeventies';
-    -fx-font-size: 100px;
+    -fx-font-size: 50px;
 }
 
 .WindowName {
@@ -74,8 +75,9 @@
 .HowToPlay {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Consolas;
-    -fx-font-size: 15;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 20;
+    -fx-background-color: #c634eb;
 }
 
 .choice-box{
@@ -93,7 +95,13 @@
     -fx-background-color: black ;
 }
 
+.iniButton {
+    -fx-background-color: #c634eb;
+}
 
+.iniButton:hover {
+    -fx-background-color: #83249c;
+}
 
 .menu-bar {
     -fx-background-color: #333;
@@ -116,14 +124,14 @@
 }
 
 .list-cell:even:filled:selected:focused, .list-cell:even:filled:selected {
-    -fx-background-color: linear-gradient(#333 0%, #b5b500 100%);
+    -fx-background-color: linear-gradient(#333 0%, #c634eb 100%);
     -fx-text-fill: white;
 }
 .list-cell:even {
     -fx-background-color: #333;
 }
 .list-cell:odd:filled:selected:focused, .list-cell:odd:filled:selected {
-    -fx-background-color: linear-gradient(#222 0%, #b5b500 100%);
+    -fx-background-color: linear-gradient(#222 0%, #c634eb 100%);
     -fx-text-fill: white;
 }
 .list-cell:odd {
