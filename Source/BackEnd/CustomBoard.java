@@ -191,6 +191,13 @@ public class CustomBoard {
     }
 
     /**
+     * Gets the number of tiles of a given type in the silk bag
+     * @param tileType The tile type to get the count for
+     * @return The number of tiles of that type
+     */
+    public int getSilkBagMapElement(TileType tileType) { return silkBagMap.get(tileType); }
+
+    /**
      * Changes the number of the elements at the silkbag
      *
      * @param tileType type of the tile to change the value
