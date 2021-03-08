@@ -110,9 +110,10 @@ public class GameboardEditor {
      * Save chosen file at the following path (also includes word custom at the beginning
      * s
      *
-     * @return true if saved successfully and false otherwise
+     * @throws IllegalStateException if the board is invalid
+     *                              (no goal tile, <4 player spawns or 0 tiles in silk bag)
      */
-    public boolean saveFile() {
+    public void saveFile() {
         // Check if the name contains word custom
         String lowPath = fileName.toLowerCase();
         String[] fileNameArray = fileName.split("/");
@@ -139,16 +140,24 @@ public class GameboardEditor {
         resultString = "./GameBoards/"+fileName;
 
         // Check if contain at least 1 goal tile and all player positions
-        // Will do it today
-        if (!containGoalTiles() || !checkIFAllPlayersExist()){
-            return false;
+        if (!containGoalTiles()) {
+            throw new IllegalStateException("Custom board requires at least 1 goal tile");
+        }
+
+        if (!checkIFAllPlayersExist()) {
+            throw new IllegalStateException("Custom board requires 4 player spawn points");
+        }
+
+        // Check if at least 1 tile is in silk bag
+        if (!checkIfSilkBagContainsTiles()) {
+            throw new IllegalStateException("Custom board requires at least 1 tile in the bag");
         }
 
             // Is it required?
             //if (!checkIfFileExist(path)) {
-            System.out.println("Saved at the path +" + resultString);
+        System.out.println("Saved at the path +" + resultString);
         CustomBoardSaveLoad.writeIniBoard(resultString, board);
-        return true;
+
         /*} else {
             System.out.println("Such file already exists");
         }*/
@@ -407,6 +416,19 @@ public class GameboardEditor {
             }
         }
         return true;
+    }
+
+    /**
+     * Check if the silk bag contains any floor tiles
+     * @return true if the silk bag contains at least 1 tile
+     */
+    private boolean checkIfSilkBagContainsTiles() {
+        for (TileType type : TileType.values()) {
+            if (board.getSilkBagMapElement(type) > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

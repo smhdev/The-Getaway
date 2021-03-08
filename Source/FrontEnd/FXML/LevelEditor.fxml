@@ -300,21 +300,18 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <Text fill="#d7bb58" layoutY="567.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Requirements" textAlignment="CENTER" wrappingWidth="358.466796875">
-               <font>
-                  <Font name="Impact" size="35.0" />
-               </font>
-            </Text>
-            <Text layoutX="2.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All requirements have to be met for a gameboard level to be valid." textAlignment="CENTER" wrappingWidth="354.0">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="-2.0" layoutY="767.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. " textAlignment="CENTER" wrappingWidth="354.0" />
-            <Text layoutX="-4.0" layoutY="742.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. " textAlignment="CENTER" wrappingWidth="354.0" />
-            <Text layoutX="-4.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. " textAlignment="CENTER" wrappingWidth="354.0" />
-            <Text layoutX="-2.0" layoutY="694.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. " textAlignment="CENTER" wrappingWidth="354.0" />
-            <Text layoutX="-2.0" layoutY="668.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. " textAlignment="CENTER" wrappingWidth="354.0" />
+            <VBox fx:id="errorMsgBox" AnchorPane.bottomAnchor="0" style="-fx-background-color: indianred;" visible="false">
+               <Text fill="#d7bb58" layoutY="567.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Requirements" textAlignment="CENTER" wrappingWidth="350.0">
+                  <font>
+                     <Font name="Impact" size="35.0" />
+                  </font>
+               </Text>
+               <Text fx:id="errorMsgText" fill="white" layoutX="2.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="350.0">
+                  <font>
+                     <Font name="Arial" size="18.0" />
+                  </font>
+               </Text>
+            </VBox>
          </children>
       </AnchorPane>
    </left>
