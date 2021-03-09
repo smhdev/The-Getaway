@@ -81,7 +81,7 @@ public class LeaderboardController extends StateLoad {
 
     public void onBoardChosen() {
         try {
-            changeLeaderboard(boardNameComboBox.getValue());
+            changeLeaderboard(boardNameComboBox.getValue() + ".txt");
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
