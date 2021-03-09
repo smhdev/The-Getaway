@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
- * @author Liam B
+ * @author Liam B, Samuel Fuller
  * @version 1.0
  * @since 1.0
  */
