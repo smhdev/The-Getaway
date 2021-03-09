@@ -146,25 +146,14 @@
    </bottom>
    <top>
       <MenuBar prefHeight="24.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
-         <menus>
-            <Menu mnemonicParsing="false" styleClass="menu-title" text="LEVEL EDITOR     " />
-            <Menu mnemonicParsing="false" text="    Edit    ">
-               <items>
-                  <RadioMenuItem id="silkBag" fx:id="silkBagToggleButton" mnemonicParsing="false" onAction="#onSilkBagToggle" selected="true" text="Silk Bag" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="   Help   ">
-               <items>
-                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButton" text="   About   " />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
+
+            <Menu mnemonicParsing="false" styleClass="menu-title" text="       LEVEL EDITOR       " />
+            <Menu mnemonicParsing="false" text="    SAVE &amp; EXIT   ">
                <items>
                   <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" text="Exit" />
                   <MenuItem fx:id="saveExitButton" mnemonicParsing="false" onAction="#onSaveExitButton" text="Save &amp; Exit" />
                </items>
             </Menu>
-         </menus>
       </MenuBar>
    </top>
    <center>

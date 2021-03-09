@@ -81,11 +81,7 @@ public class LevelEditorController extends StateLoad {
     private Text errorMsgText;
 
     @FXML
-    private RadioMenuItem silkBagToggleButton;
-
-    @FXML
     private Button resetPlayerPositionButton;
-    private boolean silkBag = true; //True for silk bag or false to remove option
 
     @FXML
     private GridPane boardGridPane;
@@ -576,29 +572,9 @@ public class LevelEditorController extends StateLoad {
     }
 
 
-    /**
-     * Toggles the values of the silk bag to the minimum amount of tiles
-     */
-    public void onSilkBagToggle() {
-        silkBag = !silkBag;
-        silkBagToggleButton.setSelected(silkBag);
-        if (!silkBag) {
-            straightInBox.setText("1");
-            cornerInBox.setText("0");
-            tshapeInBox.setText("0");
-            fireInBox.setText("0");
-            iceInBox.setText("0");
-            backtrackInBox.setText("0");
-            doublemoveInBox.setText("0");
-        }
-    }
-
-    public void onAboutButton() {
-        //Get the about page up
-    }
 
     public void onExitButton() {
-        WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+        WindowLoader wl = new WindowLoader(straightSlider);
         wl.load("MenuScreen", getInitData());
     }
 
@@ -607,7 +583,7 @@ public class LevelEditorController extends StateLoad {
         editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
         try {
             editor.saveFile();
-            WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+            WindowLoader wl = new WindowLoader(straightSlider);
             wl.load("MenuScreen", getInitData());
         } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());
