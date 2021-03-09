@@ -226,5 +226,5 @@ public class LevelEditorMenuController extends StateLoad{
         widthIn.setText("");
         heightIn.setText("");
     }
-    
+
 }

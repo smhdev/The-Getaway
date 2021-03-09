@@ -1,14 +1,12 @@
 
 .button{
     -fx-background-color: #1fcccc;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-size: 19px;
     -fx-pref-width: 250;
 }
 
 .button:hover{
-    -fx-border-color: white;
-    -fx-border-width: 1px;
     -fx-background-color: #169191;
 }
 
@@ -17,6 +15,7 @@
     src: url("WickedSeventies.ttf");
 }
 
+/* Not sure we need this */
 .resetButton{
     -fx-pref-width: 75;
     -fx-font-family: 'WickedSeventies';
