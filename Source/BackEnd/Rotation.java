@@ -7,8 +7,28 @@ package BackEnd;
  * @version 1.0
  */
 public enum Rotation {
-    UP, RIGHT, DOWN, LEFT;
+    /**
+     * Rotation value of 0&deg;.
+     */
+    UP,
+    /**
+     * Rotation value of 90&deg;.
+     */
+    RIGHT,
+    /**
+     * Rotation value of 180&deg;.
+     */
+    DOWN,
+    /**
+     * Rotation value of 270&deg;.
+     */
+    LEFT;
 
+    /**
+     * Converts this Rotation to a double representing
+     * the number of degrees clockwise from UP this rotation is.
+     * @return The degree value of this Rotation.
+     */
     public double degrees() {
         switch (this) {
             case UP:
@@ -24,6 +44,10 @@ public enum Rotation {
         }
     }
 
+    /**
+     * Gets the direction achieved by rotating 90 degrees clockwise.
+     * @return The Rotation value that is 90&deg; clockwise from this one.
+     */
     public Rotation clockwise() {
         switch (this) {
             case UP:
