@@ -4,6 +4,7 @@
     -fx-text-fill: white;
     -fx-font-size: 19px;
     -fx-pref-width: 250;
+
 }
 
 .button:hover{
@@ -30,6 +31,15 @@
     -fx-fill: white;
     -fx-font-family: "Helvetica ";
     -fx-font-size: 18;
+}
+
+.slider . thumb {
+    -fx-background-color: #1fcccc;
+    -fx-background-size: 40px;
+}
+
+.slider . track {
+    -fx-background-color: #c634eb;
 }
 
 .label {
@@ -115,7 +125,7 @@
 }
 
 .editor {
-    -fx-font-family: Consolas;
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 10;
 }
 
@@ -141,8 +151,6 @@
 .list-cell:odd {
     -fx-background-color: #222;
 }
-
-
 
 .table-view{
     -fx-background-color: transparent;
