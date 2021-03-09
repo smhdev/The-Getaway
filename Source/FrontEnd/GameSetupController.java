@@ -51,7 +51,7 @@ public class GameSetupController extends StateLoad {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String custom[];
+        String[] custom;
         String boardName = "";
         if (selectGameBoard.getValue() == null) {
             this.location = location;

@@ -16,8 +16,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
- *
- * @author Samuel, Liam B
+ * @author Liam B, Samuel Fuller
  * @version 1.0
  * @since 1.0
  */
@@ -80,9 +79,6 @@ public class LevelEditorController extends StateLoad {
     private VBox errorMsgBox;
     @FXML
     private Text errorMsgText;
-
-    @FXML
-    private Button resetPlayerPositionButton;
 
     @FXML
     private GridPane boardGridPane;
@@ -156,7 +152,7 @@ public class LevelEditorController extends StateLoad {
                         // No tile exists; create an image view with an empty tile
                         setPaneEmptyImage(pane, tileSize);
                     }
-                    pane.setUserData(new Pair<Integer, Integer>(x, y));
+
                     // Add the pane containing the images to the board grid pane
                     // at the given column and row
                     boardGridPane.add(pane, x, y);

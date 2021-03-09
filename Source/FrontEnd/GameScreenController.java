@@ -819,6 +819,10 @@ public class GameScreenController extends StateLoad {
 	public void onAboutMenuButton() {
 		try {
 			gameLogic.saveGame();
+			// Mark this save file as a "loaded" file
+			// so when returning to the game screen
+			// the GameScreenController will load file from disk
+			getInitData().put("isLoadedFile", "true");
 			WindowLoader wl = new WindowLoader(drawButton);
 			wl.load("/HowToPlay/InGameHowToPlay/InGameHowToPlay", getInitData());
 			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));

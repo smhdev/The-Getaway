@@ -181,7 +181,7 @@ public class FileReader {
         return new Pair<>(gameboard, players);
     }
 
-    /**
+    /*
      * This method takes in the custom given level format file, and checks to see that the file exists.
      *
      * @param gameBoard The name of the level file format text file.
