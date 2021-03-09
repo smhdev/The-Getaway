@@ -157,11 +157,7 @@
                   <RadioMenuItem id="silkBag" fx:id="silkBagToggleButton" mnemonicParsing="false" onAction="#onSilkBagToggle" selected="true" text="Silk Bag" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="   Help   ">
-               <items>
-                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#onAboutButton" text="   About   " />
-               </items>
-            </Menu>
+
             <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
                <items>
                   <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" text="Exit" />
