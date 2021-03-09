@@ -29,7 +29,7 @@
 .text {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: "Helvetica ";
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 18;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .slider . track {
-    -fx-background-color: #c634eb;
+    -fx-background-color: white;
 }
 
 .radio-button.radio {
@@ -79,14 +79,14 @@
 .MessageOfTheDay {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Consolas;
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 20px;
 }
 
 .QuitScreen {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Consolas;
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 15;
 }
 
@@ -128,7 +128,7 @@
     -fx-background-color: black;
 }
 
-.editor {
+.editor.text {
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 10;
 }

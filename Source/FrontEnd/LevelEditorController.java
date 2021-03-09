@@ -574,7 +574,7 @@ public class LevelEditorController extends StateLoad {
 
 
     public void onExitButton() {
-        WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+        WindowLoader wl = new WindowLoader(straightSlider);
         wl.load("MenuScreen", getInitData());
     }
 
@@ -583,7 +583,7 @@ public class LevelEditorController extends StateLoad {
         editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
         try {
             editor.saveFile();
-            WindowLoader wl = new WindowLoader(resetPlayerPositionButton);
+            WindowLoader wl = new WindowLoader(straightSlider);
             wl.load("MenuScreen", getInitData());
         } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());

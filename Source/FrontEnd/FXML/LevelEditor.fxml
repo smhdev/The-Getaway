@@ -15,7 +15,7 @@
          <children>
             <Text layoutX="413.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="goalImage" fitHeight="90.0" fitWidth="90.0" layoutX="435.0" layoutY="78.0" onDragDetected="#onDragGoalTile" onMouseDragEntered="#onMouseDragGoalTile" pickOnBounds="true" preserveRatio="true">
@@ -25,7 +25,7 @@
             </ImageView>
             <Text layoutX="291.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                        <Font name="Arial Bold" size="18.0" />
+                        <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="cornerImage" fitHeight="90.0" fitWidth="90.0" layoutX="310.0" layoutY="78.0" onDragDetected="#onDragCornerTile" onMouseDragEntered="#onMouseDragCornerTile" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +35,7 @@
             </ImageView>
             <Text layoutX="173.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="tshapeImage" fitHeight="90.0" fitWidth="90.0" layoutX="191.0" layoutY="78.0" onDragDetected="#onDragTShapeTile" onMouseDragEntered="#onMouseDragTShapeTile" pickOnBounds="true" preserveRatio="true">
@@ -45,7 +45,7 @@
             </ImageView>
             <Text layoutX="57.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="straightImage" fitHeight="90.0" fitWidth="90.0" layoutX="75.0" layoutY="78.0" onDragDetected="#onDragStraightTile" onMouseDragEntered="#onMouseDragStraightTile" pickOnBounds="true" preserveRatio="true">
@@ -55,12 +55,12 @@
             </ImageView>
             <Text  layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
-                  <Font name="" size="35.0" />
+                  <Font size="35.0" />
                </font>
             </Text>
             <Text  layoutX="652.0" layoutY="51.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
                <font>
-                  <Font name="" size="35.0" />
+                  <Font size="35.0" />
                </font>
             </Text>
             <RadioButton fx:id="fixRB" layoutX="639.0" layoutY="199.0" mnemonicParsing="false" onAction="#onFixRB" toggleGroup="$floorActionPlayerSet" />
@@ -71,7 +71,7 @@
             </ImageView>
             <Text layoutX="583.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="p1Image" fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onDragDetected="#onDragPlayer1" onMouseDragEntered="#onMouseDragPlayer1" pickOnBounds="true" preserveRatio="true">
@@ -81,12 +81,12 @@
             </ImageView>
             <Text layoutX="983.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Text layoutX="1185.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="p3Image" fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onDragDetected="#onDragPlayer3" onMouseDragEntered="#onMouseDragPlayer3" pickOnBounds="true" preserveRatio="true">
@@ -101,12 +101,12 @@
             </ImageView>
             <Text layoutX="1282.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Text layoutX="1089.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="p2Image" fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onDragDetected="#onDragPlayer2" onMouseDragEntered="#onMouseDragPlayer2" pickOnBounds="true" preserveRatio="true">
@@ -116,7 +116,7 @@
             </ImageView>
             <Text  layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
-                  <Font name="" size="35.0" />
+                  <Font size="35.0" />
                </font>
             </Text>
             <RadioButton fx:id="rotateRB" layoutX="758.0" layoutY="199.0" mnemonicParsing="false" onAction="#onRotateRB" toggleGroup="$floorActionPlayerSet" />
@@ -127,7 +127,7 @@
             </ImageView>
             <Text layoutX="702.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <RadioButton fx:id="removeRB" layoutX="875.0" layoutY="199.0" mnemonicParsing="false" onAction="#onRemoveRB" toggleGroup="$floorActionPlayerSet" />
@@ -138,7 +138,7 @@
             </ImageView>
             <Text layoutX="819.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
          </children>
@@ -147,14 +147,12 @@
    <top>
       <MenuBar prefHeight="24.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
          
-            <Menu mnemonicParsing="false" styleClass="menu-title" text="LEVEL EDITOR     " />
-            <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
+            <Menu mnemonicParsing="false" styleClass="menu-title" text="       LEVEL EDITOR       " />
             <Menu mnemonicParsing="false" text="    SAVE &amp; EXIT   ">
                <items>
                   <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" text="Exit" />
                   <MenuItem fx:id="saveExitButton" mnemonicParsing="false" onAction="#onSaveExitButton" text="Save &amp; Exit" />
                </items>
-            </Menu>
             </Menu>
       </MenuBar>
    </top>
@@ -165,16 +163,16 @@
       </Pane>
    </center>
    <left>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: #83249c;" BorderPane.alignment="CENTER">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: #c634eb" BorderPane.alignment="CENTER">
          <children>
             <Text  layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
-                  <Font name="" size="35.0" />
+                  <Font size="35.0" />
                </font>
             </Text>
             <Text layoutX="-4.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                <font>
-                  <Font name="" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Text>
             <Slider fx:id="straightSlider" blockIncrement="1.0" layoutX="196.0" layoutY="131.0">
@@ -189,7 +187,7 @@
             </TextField>
             <Text layoutX="26.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Slider fx:id="tshapeSlider" blockIncrement="1.0" layoutX="196.0" layoutY="209.0">
@@ -204,7 +202,7 @@
             </TextField>
             <Text layoutX="26.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Slider fx:id="conerSlider" blockIncrement="1.0" layoutX="196.0" layoutY="172.0">
@@ -219,7 +217,7 @@
             </TextField>
             <Text layoutX="26.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Slider fx:id="fireSlider" blockIncrement="1.0" layoutX="196.0" layoutY="343.0">
@@ -234,12 +232,12 @@
             </TextField>
             <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Text layoutX="-4.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                <font>
-                  <Font name="" size="24.0" />
+                  <Font size="24.0" />
                </font>
             </Text>
             <Slider fx:id="iceSlider" blockIncrement="1.0" layoutX="196.0" layoutY="380.0">
@@ -254,7 +252,7 @@
             </TextField>
             <Text layoutX="22.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Slider fx:id="doublemoveSlider" blockIncrement="1.0" layoutX="196.0" layoutY="420.0">
@@ -269,7 +267,7 @@
             </TextField>
             <Text layoutX="26.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double Move" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <Slider fx:id="backtrackSlider" blockIncrement="1.0" layoutX="196.0" layoutY="456.0">
@@ -284,18 +282,18 @@
             </TextField>
             <Text layoutX="26.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backtrack" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                  <Font name="Arial Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Text>
             <VBox fx:id="errorMsgBox" AnchorPane.bottomAnchor="0" style="-fx-background-color: indianred;" visible="false">
                <Text  layoutY="567.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Requirements" textAlignment="CENTER" wrappingWidth="350.0">
                   <font>
-                     <Font name="" size="35.0" />
+                     <Font size="35.0" />
                   </font>
                </Text>
                <Text fx:id="errorMsgText" fill="white" layoutX="2.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="350.0">
                   <font>
-                     <Font name="Arial" size="18.0" />
+                     <Font size="18.0" />
                   </font>
                </Text>
             </VBox>
