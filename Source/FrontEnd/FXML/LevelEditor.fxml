@@ -11,7 +11,7 @@
       <fx:define>
          <ToggleGroup fx:id="floorActionPlayerSet"/>
       </fx:define>
-      <AnchorPane prefHeight="250.0" prefWidth="1651.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane prefHeight="250.0" prefWidth="1651.0" style="-fx-background-color: #83249c;">
          <children>
             <Text layoutX="413.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
@@ -53,14 +53,14 @@
                   <Image url="@../../../Assets/straight.png" />
                </image>
             </ImageView>
-            <Text fill="#d7bb58" layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
+            <Text  layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
-                  <Font name="Impact" size="35.0" />
+                  <Font name="" size="35.0" />
                </font>
             </Text>
-            <Text fill="#d7bb58" layoutX="652.0" layoutY="51.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
+            <Text  layoutX="652.0" layoutY="51.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
                <font>
-                  <Font name="Impact" size="35.0" />
+                  <Font name="" size="35.0" />
                </font>
             </Text>
             <RadioButton fx:id="fixRB" layoutX="639.0" layoutY="199.0" mnemonicParsing="false" onAction="#onFixRB" toggleGroup="$floorActionPlayerSet" />
@@ -114,9 +114,9 @@
                   <Image url="@../../../Assets/player2.png" />
                </image>
             </ImageView>
-            <Text fill="#d7bb58" layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
+            <Text  layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
-                  <Font name="Impact" size="35.0" />
+                  <Font name="" size="35.0" />
                </font>
             </Text>
             <RadioButton fx:id="rotateRB" layoutX="758.0" layoutY="199.0" mnemonicParsing="false" onAction="#onRotateRB" toggleGroup="$floorActionPlayerSet" />
@@ -148,21 +148,14 @@
       <MenuBar prefHeight="24.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
          
             <Menu mnemonicParsing="false" styleClass="menu-title" text="LEVEL EDITOR     " />
-            <Menu mnemonicParsing="false" text="    Edit    ">
-               <items>
-                  <RadioMenuItem id="silkBag" fx:id="silkBagToggleButton" mnemonicParsing="false" onAction="#onSilkBagToggle" selected="true" text="Silk Bag" />
-               </items>
-            </Menu>
-
             <Menu mnemonicParsing="false" text="  Save &amp; Exit ">
-            <Menu mnemonicParsing="false" styleClass="menu-title" text="       LEVEL EDITOR       " />
             <Menu mnemonicParsing="false" text="    SAVE &amp; EXIT   ">
                <items>
                   <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButton" text="Exit" />
                   <MenuItem fx:id="saveExitButton" mnemonicParsing="false" onAction="#onSaveExitButton" text="Save &amp; Exit" />
                </items>
             </Menu>
-         </menus>
+            </Menu>
       </MenuBar>
    </top>
    <center>
@@ -172,16 +165,16 @@
       </Pane>
    </center>
    <left>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: #83249c;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#d7bb58" layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
+            <Text  layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
-                  <Font name="Impact" size="35.0" />
+                  <Font name="" size="35.0" />
                </font>
             </Text>
             <Text layoutX="-4.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                <font>
-                  <Font name="Impact" size="24.0" />
+                  <Font name="" size="24.0" />
                </font>
             </Text>
             <Slider fx:id="straightSlider" blockIncrement="1.0" layoutX="196.0" layoutY="131.0">
@@ -246,7 +239,7 @@
             </Text>
             <Text layoutX="-4.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                <font>
-                  <Font name="Impact" size="24.0" />
+                  <Font name="" size="24.0" />
                </font>
             </Text>
             <Slider fx:id="iceSlider" blockIncrement="1.0" layoutX="196.0" layoutY="380.0">
@@ -295,9 +288,9 @@
                </font>
             </Text>
             <VBox fx:id="errorMsgBox" AnchorPane.bottomAnchor="0" style="-fx-background-color: indianred;" visible="false">
-               <Text fill="#d7bb58" layoutY="567.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Requirements" textAlignment="CENTER" wrappingWidth="350.0">
+               <Text  layoutY="567.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Requirements" textAlignment="CENTER" wrappingWidth="350.0">
                   <font>
-                     <Font name="Impact" size="35.0" />
+                     <Font name="" size="35.0" />
                   </font>
                </Text>
                <Text fx:id="errorMsgText" fill="white" layoutX="2.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="350.0">
