@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-position: center; -fx-background-size: cover;" styleClass="editor" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
@@ -24,70 +23,43 @@
          <children>
             <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="66.0" prefWidth="1000.0">
                <children>
-                  <Text fill="WHITE" layoutX="425.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Board:" textAlignment="CENTER" wrappingWidth="202.0">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
+                  <Text fill="WHITE" layoutX="425.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Board:" textAlignment="CENTER" wrappingWidth="202.0" styleClass="backgroundText">
                   </Text>
                   <RadioButton fx:id="newLevel" mnemonicParsing="false" onAction="#onLevelEditorToggle" selected="true">
                   </RadioButton>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Board:" textAlignment="CENTER" wrappingWidth="235.0">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Board:" textAlignment="CENTER" wrappingWidth="235.0" styleClass="backgroundText">
                   </Text>
                   <RadioButton fx:id="existingLevel" mnemonicParsing="false" onAction="#onLevelEditorToggle" />
                </children>
             </FlowPane>
             <FlowPane fx:id="existingOption" alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="63.0" prefWidth="574.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Boards:" textAlignment="CENTER" wrappingWidth="235.0">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Boards:" textAlignment="CENTER" wrappingWidth="235.0" styleClass="backgroundText">
                   </Text>
                   <ChoiceBox id="selectGameBoard" fx:id="selectGameBoard" onAction="#boardSelect" prefHeight="45.0" prefWidth="250.0" />
                </children>
             </FlowPane>
             <FlowPane alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="574.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="235.0">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="235.0" styleClass="backgroundText">
                   </Text>
-                  <TextField id="boardNameIn" fx:id="nameIn" prefHeight="39.0" prefWidth="253.0" promptText="Game Name">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                  <TextField id="boardNameIn" fx:id="nameIn" prefHeight="39.0" prefWidth="253.0" promptText="Game Name" styleClass="inputText">
                   </TextField>
                </children>
             </FlowPane>
             <FlowPane alignment="CENTER" layoutX="10.0" layoutY="312.0" prefHeight="63.0" prefWidth="574.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Width:" textAlignment="CENTER" wrappingWidth="235.0">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Width:" textAlignment="CENTER" wrappingWidth="235.0" styleClass="backgroundText">
                   </Text>
-                  <TextField id="boardWidthIn" fx:id="widthIn" prefHeight="39.0" prefWidth="253.0" promptText="3 - 100">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                  <TextField id="boardWidthIn" fx:id="widthIn" prefHeight="39.0" prefWidth="253.0" styleClass="inputText">
                   </TextField>
                </children>
             </FlowPane>
             <FlowPane alignment="CENTER" layoutX="10.0" layoutY="344.0" prefHeight="63.0" prefWidth="574.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" textAlignment="CENTER" wrappingWidth="235.0">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" textAlignment="CENTER" wrappingWidth="235.0" styleClass="backgroundText">
                   </Text>
-                  <TextField id="boardHeightIn" fx:id="heightIn" prefHeight="39.0" prefWidth="253.0" promptText="3 - 100">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
+                  <TextField id="boardHeightIn" fx:id="heightIn" prefHeight="39.0" prefWidth="253.0" styleClass="inputText">
                   </TextField>
                </children>
             </FlowPane>

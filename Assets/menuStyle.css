@@ -32,7 +32,20 @@
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
     -fx-font-family: "Arial Rounded MT Bold";
-    -fx-font-size: 18;
+    -fx-font-size: 21;
+}
+
+.backgroundText {
+    -fx-text-fill: whitesmoke;
+    -fx-fill: white;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 25;
+}
+
+.inputText {
+    -fx-fill: black;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 21;
 }
 
 .slider . thumb {

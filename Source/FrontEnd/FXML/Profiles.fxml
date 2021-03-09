@@ -26,7 +26,7 @@
    <AnchorPane prefHeight="400.0" prefWidth="600.0" GridPane.rowIndex="1">
       <Button layoutX="451.0" layoutY="220.0" mnemonicParsing="false" onAction="#createFile" prefHeight="25.0" prefWidth="200.0" text="Create New Player" textFill="#009c05" />
       <Button layoutX="451.0" layoutY="259.0" mnemonicParsing="false" onAction="#deleteFile" prefHeight="25.0" prefWidth="200.0" text="Delete The Player" textFill="#9c0018" />
-      <TextField fx:id="input" layoutX="46.0" layoutY="78.0" prefHeight="34.0" prefWidth="200.0" promptText="type a name to start" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="78.0" />
+      <TextField fx:id="input" layoutX="46.0" layoutY="78.0" prefHeight="34.0" prefWidth="200.0" promptText="Type a name to start" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="78.0" styleClass="inputText"/>
       <Button fx:id="viewButton" layoutX="451.0" layoutY="297.0" mnemonicParsing="false" onAction="#viewData" prefHeight="25.0" prefWidth="200.0" text="View Player profile" textFill="#009c05" />
       <Accordion layoutX="61.0" layoutY="129.0" />
       <GridPane layoutX="133.0" layoutY="155.0">
