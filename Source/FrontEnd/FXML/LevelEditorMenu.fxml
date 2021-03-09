@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-position: center; -fx-background-size: cover;" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-image: url('//Assets/backgroundMenu.png'); -fx-background-position: center; -fx-background-size: cover;" styleClass="editor" stylesheets="@/menuStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.LevelEditorMenuController">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="LEVEL EDITOR" textAlignment="CENTER" wrappingWidth="780.55078125" BorderPane.alignment="BOTTOM_CENTER">
          <BorderPane.margin>
@@ -26,17 +26,14 @@
                <children>
                   <Text fill="WHITE" layoutX="425.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Board:" textAlignment="CENTER" wrappingWidth="202.0">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="Arial Rounded MT Bold" size="25.0" />
                      </font>
                   </Text>
                   <RadioButton fx:id="newLevel" mnemonicParsing="false" onAction="#onLevelEditorToggle" selected="true">
-                     <font>
-                        <Font name="Impact" size="22.0" />
-                     </font>
                   </RadioButton>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Board:" textAlignment="CENTER" wrappingWidth="235.0">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="Arial Rounded MT Bold" size="25.0" />
                      </font>
                   </Text>
                   <RadioButton fx:id="existingLevel" mnemonicParsing="false" onAction="#onLevelEditorToggle" />
@@ -46,7 +43,7 @@
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Boards:" textAlignment="CENTER" wrappingWidth="235.0">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="Arial Rounded MT Bold" size="25.0" />
                      </font>
                   </Text>
                   <ChoiceBox id="selectGameBoard" fx:id="selectGameBoard" onAction="#boardSelect" prefHeight="45.0" prefWidth="250.0" />
@@ -56,7 +53,7 @@
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="235.0">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="Arial Rounded MT Bold" size="25.0" />
                      </font>
                   </Text>
                   <TextField id="boardNameIn" fx:id="nameIn" prefHeight="39.0" prefWidth="253.0" promptText="Game Name">
@@ -70,7 +67,7 @@
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Width:" textAlignment="CENTER" wrappingWidth="235.0">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="Arial Rounded MT Bold" size="25.0" />
                      </font>
                   </Text>
                   <TextField id="boardWidthIn" fx:id="widthIn" prefHeight="39.0" prefWidth="253.0" promptText="3 - 100">
@@ -84,7 +81,7 @@
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" textAlignment="CENTER" wrappingWidth="235.0">
                      <font>
-                        <Font name="System Bold" size="25.0" />
+                        <Font name="Arial Rounded MT Bold" size="25.0" />
                      </font>
                   </Text>
                   <TextField id="boardHeightIn" fx:id="heightIn" prefHeight="39.0" prefWidth="253.0" promptText="3 - 100">
