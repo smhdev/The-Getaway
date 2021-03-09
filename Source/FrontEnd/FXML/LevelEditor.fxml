@@ -119,10 +119,6 @@
                   <Font name="Impact" size="35.0" />
                </font>
             </Text>
-            <Button id="resetPlayerPositionButton" fx:id="resetPlayerPositionButton" layoutX="1410.0" layoutY="91.0" mnemonicParsing="false" onAction="#resetPlayerPosition" prefHeight="70.0" prefWidth="70.0" styleClass="resetButton" text="Reset" textAlignment="CENTER" visible="false">
-               <font>
-                  <Font name="Impact" size="18.0" />
-               </font></Button>
             <RadioButton fx:id="rotateRB" layoutX="758.0" layoutY="199.0" mnemonicParsing="false" onAction="#onRotateRB" toggleGroup="$floorActionPlayerSet" />
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="726.0" layoutY="82.0" onMouseClicked="#onRotateRB" pickOnBounds="true" preserveRatio="true">
                <image>
