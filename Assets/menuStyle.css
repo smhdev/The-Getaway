@@ -7,6 +7,7 @@
 
 }
 
+
 .button:hover{
     -fx-border-color: white;
     -fx-border-width: 1px;
@@ -16,6 +17,8 @@
 @font-face {
     font-family: 'WickedSeventies';
     src: url("WickedSeventies.ttf");
+
+    font-family: 'Arial Rounded MT Bold';
 }
 
 .resetButton{
@@ -80,7 +83,7 @@
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
     -fx-font-family: "Arial Rounded MT Bold";
-    -fx-font-size: 20px;
+    -fx-font-size: 30;
 }
 
 .QuitScreen {
@@ -126,11 +129,6 @@
 }
 .menu:showing {
     -fx-background-color: black;
-}
-
-.editor.text {
-    -fx-font-family: "Arial Rounded MT Bold";
-    -fx-font-size: 10;
 }
 
 .menu .menu-item:focused {
