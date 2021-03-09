@@ -146,7 +146,7 @@ public class LevelEditorController extends StateLoad {
                         // No tile exists; create an image view with an empty tile
                         setPaneEmptyImage(pane, tileSize);
                     }
-                    pane.setUserData(new Pair<Integer, Integer>(x, y));
+
                     // Add the pane containing the images to the board grid pane
                     // at the given column and row
                     boardGridPane.add(pane, x, y);
