@@ -16,7 +16,8 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
- * @author Liam B
+ *
+ * @author Samuel, Liam B
  * @version 1.0
  * @since 1.0
  */
@@ -100,6 +101,12 @@ public class LevelEditorController extends StateLoad {
     private GameboardEditor editor;
     private CustomBoard customBoard;
 
+    /**
+     * Sets up the level editor
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  <tt>null</tt> if the location is not known.
+     * @param resources The resources used to localize the root object, or <tt>null</tt> if
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // initialize is called twice, once automatically by JavaFX and again
