@@ -81,9 +81,6 @@ public class LevelEditorController extends StateLoad {
     private Text errorMsgText;
 
     @FXML
-    private Button resetPlayerPositionButton;
-
-    @FXML
     private GridPane boardGridPane;
 
     private final Pane[] playerSpawnPanes = new Pane[4];
