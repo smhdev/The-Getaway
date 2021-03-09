@@ -1,7 +1,6 @@
 package FrontEnd;
 
 import BackEnd.*;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -75,8 +74,6 @@ public class LevelEditorController extends StateLoad {
     private ImageView p3Image;
     @FXML
     private ImageView p4Image;
-    @FXML
-    private ToggleGroup floorActionPlayerSet;
 
     @FXML
     private VBox errorMsgBox;
@@ -293,12 +290,12 @@ public class LevelEditorController extends StateLoad {
             tshapeSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     tshapeInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
+
             fireSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     fireInBox.setText(String.valueOf(Math.round((Double) newValue))));
 
             iceSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     iceInBox.setText(String.valueOf(Math.round((Double) newValue))));
-
 
             backtrackSlider.valueProperty().addListener((observable, oldValue, newValue) ->
                     backtrackInBox.setText(String.valueOf(Math.round((Double) newValue))));
@@ -549,34 +546,18 @@ public class LevelEditorController extends StateLoad {
     public void onFixRB() {
         hideErrorMsgBox();
         fixRB.setSelected(true);
-        checkVisRestPlayerButton();
     }
 
     public void onRotateRB() {
         hideErrorMsgBox();
         rotateRB.setSelected(true);
-        checkVisRestPlayerButton();
     }
 
     public void onRemoveRB() {
         hideErrorMsgBox();
         removeRB.setSelected(true);
-        checkVisRestPlayerButton();
     }
 
-    private void checkVisRestPlayerButton() {
-        switch (((RadioButton) floorActionPlayerSet.getSelectedToggle()).getId()) {
-            case "p1RB":
-            case "p2RB":
-            case "p3RB":
-            case "p4RB":
-                resetPlayerPositionButton.setVisible(true);
-                break;
-            default:
-                resetPlayerPositionButton.setVisible(false);
-                break;
-        }
-    }
 
     public void unselectActionRadioButtons() {
         fixRB.setSelected(false);
@@ -594,21 +575,22 @@ public class LevelEditorController extends StateLoad {
         errorMsgText.setText("");
     }
 
-    public void resetPlayerPosition() {
-        switch (((RadioButton) floorActionPlayerSet.getSelectedToggle()).getId()) {
-            case "p1RB":
-            case "p2RB":
-            case "p3RB":
-            case "p4RB":
-                //Rest Player
-                break;
-        }
-    }
 
-    //Menu Bar Controls
+    /**
+     * Toggles the values of the silk bag to the minimum amount of tiles
+     */
     public void onSilkBagToggle() {
         silkBag = !silkBag;
         silkBagToggleButton.setSelected(silkBag);
+        if (!silkBag) {
+            straightInBox.setText("1");
+            cornerInBox.setText("0");
+            tshapeInBox.setText("0");
+            fireInBox.setText("0");
+            iceInBox.setText("0");
+            backtrackInBox.setText("0");
+            doublemoveInBox.setText("0");
+        }
     }
 
     public void onAboutButton() {
@@ -621,7 +603,6 @@ public class LevelEditorController extends StateLoad {
     }
 
     public void onSaveExitButton() {
-        //Save Here
         setSilkBagData();
         editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
         try {
