@@ -30,9 +30,6 @@
                      </font>
                   </Text>
                   <RadioButton fx:id="newLevel" mnemonicParsing="false" onAction="#onLevelEditorToggle" selected="true">
-                     <font>
-                        <Font name="" size="22.0" />
-                     </font>
                   </RadioButton>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Existing Board:" textAlignment="CENTER" wrappingWidth="235.0">
                      <font>

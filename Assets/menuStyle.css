@@ -42,6 +42,10 @@
     -fx-background-color: #c634eb;
 }
 
+.radio-button.radio {
+    -fx-background-color: #c634eb;
+}
+
 .label {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
