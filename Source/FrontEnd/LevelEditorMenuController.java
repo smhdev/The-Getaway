@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class LevelEditorMenuController extends StateLoad{
 
-    private final int MINIMUM_CUSTOM_BOARD_SIZE = 4;
+    private final int MINIMUM_CUSTOM_BOARD_SIZE = 3;
     private final int MAXIMUM_CUSTOM_BOARD_SIZE = 10;
 
     private final String RETURN_SFX = "Assets\\SFX\\return.mp3";
