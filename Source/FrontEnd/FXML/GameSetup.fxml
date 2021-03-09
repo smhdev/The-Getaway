@@ -50,7 +50,7 @@
    <top>
       <FlowPane alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text id="GameSetup" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="GAME SETUP" wrappingWidth="630.4693603515625" />
+            <Text id="GameSetup" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="WindowName" text="GAME SETUP" textAlignment="CENTER" wrappingWidth="630.4693603515625" />
          </children>
       </FlowPane>
    </top>
