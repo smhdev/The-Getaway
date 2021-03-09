@@ -146,7 +146,6 @@
    </bottom>
    <top>
       <MenuBar prefHeight="24.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
-         
             <Menu mnemonicParsing="false" styleClass="menu-title" text="       LEVEL EDITOR       " />
             <Menu mnemonicParsing="false" text="    SAVE &amp; EXIT   ">
                <items>
