@@ -78,6 +78,17 @@
     -fx-font-size: 120px;
 }
 
+#profileName {
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 18;
+}
+
+#gameStateText {
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 18;
+}
+
+
 .MessageOfTheDay {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
