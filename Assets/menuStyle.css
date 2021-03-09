@@ -1,22 +1,25 @@
 
 .button{
     -fx-background-color: #1fcccc;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-size: 19px;
     -fx-pref-width: 250;
+
 }
 
+
 .button:hover{
-    -fx-border-color: white;
-    -fx-border-width: 1px;
     -fx-background-color: #169191;
 }
 
 @font-face {
     font-family: 'WickedSeventies';
     src: url("WickedSeventies.ttf");
+
+    font-family: 'Arial Rounded MT Bold';
 }
 
+/* Not sure we need this */
 .resetButton{
     -fx-pref-width: 75;
     -fx-font-family: 'WickedSeventies';
@@ -28,8 +31,34 @@
 .text {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: "Helvetica ";
-    -fx-font-size: 18;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 21;
+}
+
+.backgroundText {
+    -fx-text-fill: whitesmoke;
+    -fx-fill: white;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 25;
+}
+
+.inputText {
+    -fx-fill: black;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 21;
+}
+
+.slider . thumb {
+    -fx-background-color: #1fcccc;
+    -fx-background-size: 40px;
+}
+
+.slider . track {
+    -fx-background-color: white;
+}
+
+.radio-button.radio {
+    -fx-background-color: #c634eb;
 }
 
 .label {
@@ -62,17 +91,28 @@
     -fx-font-size: 120px;
 }
 
+#profileName {
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 18;
+}
+
+#gameStateText {
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 18;
+}
+
+
 .MessageOfTheDay {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Consolas;
-    -fx-font-size: 20px;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-font-size: 30;
 }
 
 .QuitScreen {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
-    -fx-font-family: Consolas;
+    -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 15;
 }
 
@@ -114,11 +154,6 @@
     -fx-background-color: black;
 }
 
-.editor {
-    -fx-font-family: Consolas;
-    -fx-font-size: 10;
-}
-
 .menu .menu-item:focused {
     -fx-background-color: black;
 }
@@ -141,8 +176,6 @@
 .list-cell:odd {
     -fx-background-color: #222;
 }
-
-
 
 .table-view{
     -fx-background-color: transparent;

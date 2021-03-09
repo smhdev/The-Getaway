@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
  */
 
 public class GameSetupController extends StateLoad {
-
     /* These final variables are used for the game's Sound Effects (SFX) */
     URL location;
     ResourceBundle resources;
@@ -123,7 +122,12 @@ public class GameSetupController extends StateLoad {
     public void onStartButton() {
         WindowLoader wl = new WindowLoader(backButton);
         getInitData().put("Seed", "" + ((new Random()).nextInt()));
-        String gameBoard = selectGameBoard.getValue() + ".txt";
+        String gameBoard;
+        if(isCustomBoard){
+            gameBoard = "Custom" + selectGameBoard.getValue() + ".txt";
+        }else {
+            gameBoard = selectGameBoard.getValue() + ".txt";
+        }
         getInitData().put("Board", gameBoard);
         getInitData().put("PlayerCount", ((RadioButton) playerCount.getSelectedToggle()).getText());
         getInitData().put("LoadFile", saveName.getText() + ".sav");

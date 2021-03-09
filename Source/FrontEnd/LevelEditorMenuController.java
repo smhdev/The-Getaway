@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class LevelEditorMenuController extends StateLoad{
 
-    private final int MINIMUM_CUSTOM_BOARD_SIZE = 4;
+    private final int MINIMUM_CUSTOM_BOARD_SIZE = 3;
     private final int MAXIMUM_CUSTOM_BOARD_SIZE = 10;
 
     private final String RETURN_SFX = "Assets\\SFX\\return.mp3";
@@ -84,15 +84,14 @@ public class LevelEditorMenuController extends StateLoad{
      */
     public void onBackButton() {
         WindowLoader wl = new WindowLoader(backButton);
-        wl.load("MenuScreen", getInitData());
         RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+        wl.load("MenuScreen", getInitData());
     }
 
     /**
      * Takes you to the level editor if requirements are met.
      */
     public void onStartButton() {
-
         boolean inputError = false; //True if error
 
         if (!correctBoardName(nameIn.getText())) {
@@ -100,7 +99,7 @@ public class LevelEditorMenuController extends StateLoad{
             nameIn.setStyle("-fx-prompt-text-fill:red;");
             inputError = true;
         }
-        if (GameboardEditor.checkIfFileExist("./GameBoards/Custom"+nameIn.getText()+".txt")){
+        if (GameboardEditor.checkIfFileExist("./GameBoards/Custom"+nameIn.getText()+".txt")) {
             nameIn.setText("");
             nameIn.setStyle("-fx-prompt-text-fill:red;");
             inputError=true;
@@ -132,10 +131,8 @@ public class LevelEditorMenuController extends StateLoad{
         getInitData().put("Custom Board Height", heightIn.getText());
 
         WindowLoader wl = new WindowLoader(backButton);
-        wl.load("LevelEditor", getInitData());
-        wl.setWindowFull();
         RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
-
+        wl.load("LevelEditor", getInitData());
     }
 
     /**
@@ -167,7 +164,6 @@ public class LevelEditorMenuController extends StateLoad{
      * @return True if size is valid, else False
      */
     private boolean correctBoardSize(String sizeIn) {
-
         int numIn = 0;
 
         try {
@@ -184,25 +180,23 @@ public class LevelEditorMenuController extends StateLoad{
      * @param nameIn The name of the new board level
      * @return True if the name is unique, else False
      */
-    private boolean correctBoardName(String nameIn) throws NullPointerException{
+    private boolean correctBoardName(String nameIn) throws NullPointerException {
         String[] gameBoards;
         File gameBoardLocation = new File("Gameboards");
         gameBoards = gameBoardLocation.list();
 
-        // If String is empty
-        if (nameIn.equalsIgnoreCase("")) {
+        if (nameIn.equalsIgnoreCase("")) { // If String is empty
             return false;
         }
 
-        //If true its a existing board so it already exists
-        if (!levelEditorOption) {
+        if (!levelEditorOption) { //If true its a existing board so it already exists
             return true;
         }
 
         for (String board : gameBoards) {
             board = board.substring(0, board.length() - 4);
 
-            if (nameIn.equalsIgnoreCase(board)){
+            if (nameIn.equalsIgnoreCase(board)) {
                 return false;
             }
         }
@@ -211,16 +205,15 @@ public class LevelEditorMenuController extends StateLoad{
     }
 
     /**
-     * Toggles
+     * Toggles variable, updates text boxes accordingly
      */
-    public void onLevelEditorToggle(){
+    public void onLevelEditorToggle() {
         levelEditorOption = !levelEditorOption;
         existingOption.setDisable(levelEditorOption);
 
         if (levelEditorOption) {
             emptyTextBoxes();
-
-        }else {
+        } else {
             boardSelect();
         }
     }
@@ -233,6 +226,5 @@ public class LevelEditorMenuController extends StateLoad{
         widthIn.setText("");
         heightIn.setText("");
     }
-
 
 }

@@ -55,7 +55,7 @@
       <FlowPane alignment="TOP_CENTER" hgap="50.0" prefHeight="155.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="200.0" text="Back" textFill="#009e05" />
-            <Button mnemonicParsing="false" onAction="#savePlayersAndStart" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: b5b500;" text="Start" textFill="#009e05" />
+            <Button mnemonicParsing="false" onAction="#savePlayersAndStart" styleClass="iniButton" prefHeight="25.0" prefWidth="200.0" text="Start" textFill="#009e05" />
          </children>
          <BorderPane.margin>
             <Insets top="20.0" />

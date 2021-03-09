@@ -46,19 +46,6 @@ public class GameLogic {
 		currentPlayerNo = 0;
 		phase = DRAW;
 		numberOfPlayers = 4;
-		String[] gameBoards;
-        File gameBoardLocation = new File("Gameboards");
-        gameBoards = gameBoardLocation.list();
-        for(int i=0;i<gameBoards.length;i++){
-            if(gameBoards[i].equals("Custom"+boardFile)){
-                while(!custom==true) {
-                    custom = true;
-                }
-            }
-        }
-        if(custom==true){
-            boardFile="Custom"+boardFile;
-        }
 		Pair<Gameboard, Player[]> gameItems = FileReader.gameSetup(boardFile, seed);
 		gameboard = gameItems.getKey();
 		players = gameItems.getValue();
