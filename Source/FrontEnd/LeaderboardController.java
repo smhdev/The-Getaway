@@ -2,17 +2,16 @@ package FrontEnd;
 
 import BackEnd.Leaderboard;
 import BackEnd.Score;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.media.AudioClip;
 
 import java.io.File;
 import java.io.IOException;
-
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.scene.layout.HBox;
-import javafx.scene.media.AudioClip;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,7 +30,7 @@ public class LeaderboardController extends StateLoad {
     @FXML
     private TableView<Score> highScore;
     @FXML
-    private HBox boardButtons;
+    private ComboBox<String> boardNameComboBox;
 
     /**
      * Changes which leaderboard is being shown
@@ -39,6 +38,7 @@ public class LeaderboardController extends StateLoad {
      * @throws IOException
      */
     public void changeLeaderboard(String board) throws IOException {
+        System.out.println("Loading leaderboard for: " + boardNameComboBox.getValue());
         BOARD_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
         Leaderboard leaderboard = new Leaderboard(board);
         leaderboard.loadFile();
@@ -71,21 +71,19 @@ public class LeaderboardController extends StateLoad {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File boardFolder = new File("Gameboards");
-        boardButtons.getChildren().clear();
+        boardNameComboBox.getItems().clear();
         for (String boardFile: boardFolder.list()) {
             String boardName = boardFile.substring(0, boardFile.length()-4);
             System.out.println(boardName);
-            Button newButton = new Button(boardName);
-            newButton.setMinWidth(150);
-            newButton.setOnAction((e) -> {
-                try {
-                    changeLeaderboard(boardFile);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-            });
-            boardButtons.getChildren().add(newButton);
+            boardNameComboBox.getItems().add(boardName);
+        }
+    }
 
+    public void onBoardChosen() {
+        try {
+            changeLeaderboard(boardNameComboBox.getValue());
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
     }
 }
