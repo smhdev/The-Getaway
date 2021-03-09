@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Class which represents not generated board for the game
- *
+ * A custom, user-generated board.
  * @author Mikhail Okrugov
  */
 
@@ -20,7 +19,7 @@ public class CustomBoard {
     private HashMap<TileType, Integer> silkBagMap; // Number of elements at the silkbag
 
     /**
-     * Default constructor with setting all the values to the default values/ initializing rest of the data
+     * Creates a custom board with default size, tile count and player positions.
      */
     public CustomBoard() {
         xSize = DEFAULT_X_SIZE;
@@ -37,13 +36,12 @@ public class CustomBoard {
     }
 
     /**
-     * Constructor with parameters to set value of the instance
-     *
-     * @param xSize      x size of the board
-     * @param ySize      y size of the board
+     * Creates a custom board with given parameters.
+     * @param xSize      width of the board
+     * @param ySize      height of the board
      * @param playerPos  positions of the players
      * @param tiles      tiles which will be in the board
-     * @param silkBagMap number of every element at generated list
+     * @param silkBagMap quantity of each tile type in the silk bag
      */
     public CustomBoard(int xSize, int ySize, Coordinate[] playerPos, ArrayList<FloorTile> tiles, HashMap<TileType, Integer> silkBagMap) {
         this.xSize = xSize;
@@ -58,21 +56,23 @@ public class CustomBoard {
     */
 
     /**
-     * @return x length of the board
+     * Gets the length of the board.
+     * @return the length of the board
      */
     public int getXSize() {
         return xSize;
     }
 
     /**
-     * @return y length of the board
+     * Gets the height of the board.
+     * @return the height of the board
      */
     public int getYSize() {
         return ySize;
     }
 
     /**
-     * Get the tile in the following position
+     * Gets the tile in the following position
      *
      * @param i x position of the tile
      * @param j y position of the tile
