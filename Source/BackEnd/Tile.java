@@ -3,7 +3,7 @@ package BackEnd;
 import static BackEnd.TileType.*;
 
 /**
- * This represents an abstract class, tile to be put on the which represent tiles to be put on to the Gameboard.
+ * A tile within the game.
  *
  * @author James Sam, Christian Sanger, Atif Ishaq and Joshua Oladitan.
  * @version 1.0
@@ -17,7 +17,7 @@ public abstract class Tile {
      * @return Floor or Action tile cast to Tile.
      */
     public static Tile createTile(TileType type) {
-        Tile result = null;
+        Tile result;
         if (isFloorTile(type)) {
             result = new FloorTile(type);
         } else {
@@ -36,6 +36,11 @@ public abstract class Tile {
         return tile instanceof FloorTile;
     }
 
+    /**
+     * Determines if the given tile type is that of a floor tile.
+     * @param type The tile type to check.
+     * @return True if the given type corresponds to a floor tile.
+     */
     static boolean isFloorTile(TileType type) {
         return type == CORNER || type == T_SHAPE || type == STRAIGHT || type == GOAL;
     }
