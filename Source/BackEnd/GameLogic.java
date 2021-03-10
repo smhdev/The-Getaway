@@ -38,6 +38,7 @@ public class GameLogic {
 	 * Creates a new game from the given board file
 	 *
 	 * @param boardFile Paths to board file
+     * @param gameSaver The game server to use
 	 * @throws Exception if issue with board file.
 	 */
 	public void newGame(String boardFile, GameSave gameSaver) throws Exception {
@@ -64,7 +65,7 @@ public class GameLogic {
     }
 
     /**
-     * Lets the current player draw a card
+     * Draws a tile for the current player.
      */
     public void draw() {
         gameSaver.draw();
@@ -88,7 +89,7 @@ public class GameLogic {
     }
 
     /**
-     * gets the current slide locations that the player
+     * Gets the current slide locations that the player
      * can push a tile in. All slide locations will be outside
      * of board.
      * ie. to push in from the left to the right on the top row
@@ -119,9 +120,11 @@ public class GameLogic {
     }
 
     /**
-     * Tells you which players have already been backtracked
+     * Returns an array detailing which players have already been backtracked.
+     * The array is such that if player i has been backtracked then
+     * {@code array[i] == true}.
      *
-     * @return array where each [0] is the first player.
+     * @return boolean array representing which players have been backtracked.
      */
     public boolean[] getPlayersThatCanBeBacktracked() {
         boolean[] result = new boolean[numberOfPlayers];
@@ -132,9 +135,9 @@ public class GameLogic {
     }
 
     /**
-     * array where each player is location, as a Coordinate.
+     * Gets the location of all players.
      *
-     * @return the current locations of the players
+     * @return array of coordinates containing the current locations of each player
      */
     public Coordinate[] getPlayerLocations() {
         Coordinate[] result = new Coordinate[getNumberOfPlayers()];
@@ -147,8 +150,8 @@ public class GameLogic {
     /**
      * Plays an Action tile at location.
      *
-     * @param tile       which tile to play
-     * @param coordinate where it would like to be played (if its played at a location)
+     * @param tile       the tile to play
+     * @param coordinate where to play the tile (if its played at a location)
      * @param playerNo   which player this card effect (if it does)
      */
     public void action(ActionTile tile, Coordinate coordinate, int playerNo) throws Exception {
@@ -173,16 +176,16 @@ public class GameLogic {
     /**
      * Returns all Action tiles the current player can use
      *
-     * @return array of all playable tiles.
+     * @return array of all playable action tiles.
      */
     public ActionTile[] getActionCards() {
         return currentPlayer.getInventory().toArray(new ActionTile[0]);
     }
 
     /**
-     * moves the current player to another location.
+     * Moves the current player to another location.
      *
-     * @param location where the player wishes to move.
+     * @param location the new location for the current player
      */
     public void move(Coordinate location) throws Exception {
         gameSaver.playerMove(location);
@@ -200,8 +203,10 @@ public class GameLogic {
     }
 
     /**
-     * Creates an empty game logic class, must run startNew or load before you
-     * can play.
+     * Creates an empty game logic class.
+     * To initialise the game, use the
+     * {@code newGame} method.
+     * @see #newGame(String, GameSave)
      *
      * @param seed seed used with random generator
      */
@@ -210,9 +215,9 @@ public class GameLogic {
     }
 
     /**
-     * Returns what floor tile is at a given location on the board.
+     * Gets the floor tile at a given location on the board.
      *
-     * @param location which tile you want.
+     * @param location the location of the tile
      * @return tile at location.
      */
     public FloorTile getTileAt(Coordinate location) {
@@ -220,7 +225,7 @@ public class GameLogic {
     }
 
     /**
-     * Returns the width of the board
+     * Gets the width of the board.
      *
      * @return the width of the board
      */
@@ -229,6 +234,8 @@ public class GameLogic {
     }
 
     /**
+     * Gets the height of the board.
+     *
      * @return the height of the board.
      */
     public int getHeight() {
@@ -245,9 +252,9 @@ public class GameLogic {
     }
 
     /**
-     * Updates the game to how many players are currently playing
+     * Sets how many players are currently playing
      *
-     * @param numberOfPlayers how many are playing
+     * @param numberOfPlayers number of players
      */
     public void setNumberOfPlayers(int numberOfPlayers) {
         gameboard.setNumOfPlayers(numberOfPlayers);
@@ -255,9 +262,9 @@ public class GameLogic {
 
 
     /**
-     * Finds out which players turn it is.
+     * Gets the index of the player whose turn it is.
      *
-     * @return 0-3 to mean which is the current player
+     * @return the current player's index
      */
     public int getPlayersTurn() {
         return currentPlayerNo;
@@ -282,25 +289,26 @@ public class GameLogic {
     }
 
     /**
-     * checks ig game is saved
+     * Gets whether the game is saved.
      *
-     * @return true or false depending on
+     * @return true if the game is saved; false otherwise
      */
     public boolean isGameSaved() {
         return gameSaver.isGameSaved();
     }
 
     /**
-     * gets the winner of the game
+     * Gets the winner of the game.
      *
-     * @return the player number of the winning player
+     * @return zero-based index of the winning player,
+     * or -1 if there is no winner.
      */
     public int getWinner() throws Exception {
         return gameboard.isPlayerOnGoal();
     }
 
     /**
-     * Clears the gameSaver of the history.
+     * Clears the history of the gameSaver.
      */
     public void emptyGameSaver() {
         gameSaver.emptyGameSaveString();

@@ -8,5 +8,24 @@ package BackEnd;
  */
 
 public enum Phase {
-    DRAW, FLOOR, ACTION, MOVE, WIN
+    /**
+     * A tile is being drawn.
+     */
+    DRAW,
+    /**
+     * A floor tile is being placed.
+     */
+    FLOOR,
+    /**
+     * An action tile is being used.
+     */
+    ACTION,
+    /**
+     * A player is moving.
+     */
+    MOVE,
+    /**
+     * A player has won.
+     */
+    WIN
 }

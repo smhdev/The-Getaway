@@ -4,7 +4,7 @@ package BackEnd;
  * The FloorTile class will be the floor tiles of the Game board. These will hold information about the floor tile
  * such as the tile type, if the tile is on fire and the rotaion of the tile.
  *
- * @author Atif Ishaq & Joshua Oladitan
+ * @author Atif Ishaq, Joshua Oladitan
  * @version 1.0
  */
 public class FloorTile extends Tile {

@@ -35,10 +35,10 @@ public class GameboardEditor {
     }*/
 
     /**
-     * Constructor with board and file name as parameter
+     * Constructs a new GameboardEditor with a given board and file name.
      *
-     * @param board
-     * @param fileName
+     * @param board the board to use in this editor
+     * @param fileName the name of the board
      */
     public GameboardEditor(CustomBoard board, String fileName) {
         this.board = board;
@@ -70,16 +70,16 @@ public class GameboardEditor {
     }
 
     /**
-     * Returns name of the file with which the board will be saved
+     * Gets the name of the file with which the board will be saved
      *
-     * @return
+     * @return The board's filename
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * Settter for the file name
+     * Sets the name of the custom board
      *
      * @param fileName new name of the board file
      */
@@ -111,7 +111,7 @@ public class GameboardEditor {
      * s
      *
      * @throws IllegalStateException if the board is invalid
-     *                              (no goal tile, <4 player spawns or 0 tiles in silk bag)
+     *                              (no goal tile, &lt;4 player spawns or 0 tiles in silk bag)
      */
     public void saveFile() {
         // Check if the name contains word custom
