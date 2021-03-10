@@ -44,7 +44,6 @@ public class FileReader {
         int nonFixedMax = -1;
         String fixed;
         boolean nonFixed = false;
-        Random rd = new Random();
         String unFix;
         File input = new File("Gameboards\\" + filename);
         if (!input.exists()) {
@@ -103,8 +102,7 @@ public class FileReader {
             }
             for (int x = 0; x <= (gameboard.getWidth())-1; x++) {
                 for (int y = 0; y <= (gameboard.getHeight())-1; y++) {
-                    rand = rd.nextInt(3);
-                    tileRand = rd.nextInt(3);
+                    tileRand = r.nextInt(3);
                     FloorTile tile = null;
                     switch (tileRand) {
                         case 0:
