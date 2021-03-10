@@ -26,8 +26,8 @@ public class WindowLoader {
     double width = inSize.getWidth() * 0.8; //Stage Width - initially 80%
 
     /***
-     * Creates a window loader that changes the scene shown to the user.
-     * @param window any Node object on the stage that you wish control.
+     * Creates a window loader from a given node.
+     * @param window A node in the window that the new scene is to be loaded into.
      */
     public WindowLoader(Node window) {
         w = (Stage) window.getScene().getWindow();
@@ -84,6 +84,9 @@ public class WindowLoader {
         System.out.println("load");
     }
 
+    /**
+     * Maximizes the current window.
+     */
     public void setWindowFull() {
         w.setMaximized(true);
     }
