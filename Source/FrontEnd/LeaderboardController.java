@@ -50,6 +50,10 @@ public class LeaderboardController extends StateLoad {
         TableColumn<Score, String> lossesColumn = new TableColumn<>("Losses");
         lossesColumn.setCellValueFactory(new PropertyValueFactory<>("loss"));
         highScore.getColumns().setAll(nameColumn, winsColumn, lossesColumn);
+
+        nameColumn.setPrefWidth(250);
+        winsColumn.setPrefWidth(100);
+        lossesColumn.setPrefWidth(100);
     }
 
     /**

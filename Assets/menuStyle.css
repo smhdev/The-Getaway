@@ -7,7 +7,6 @@
 
 }
 
-
 .button:hover{
     -fx-background-color: #169191;
 }
@@ -15,7 +14,6 @@
 @font-face {
     font-family: 'WickedSeventies';
     src: url("WickedSeventies.ttf");
-
     font-family: 'Arial Rounded MT Bold';
 }
 
@@ -33,6 +31,7 @@
     -fx-fill: white;
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 21;
+    -fx-font-weight: bold;
 }
 
 .backgroundText {
@@ -179,6 +178,10 @@
 
 .table-view{
     -fx-background-color: transparent;
+}
+
+.table-view .table-column{
+    -fx-alignment:center;
 }
 
 .table-row-cell:odd{
