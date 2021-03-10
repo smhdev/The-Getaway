@@ -1,16 +1,4 @@
 
-.button{
-    -fx-background-color: #1fcccc;
-    -fx-text-fill: black;
-    -fx-font-size: 19px;
-    -fx-pref-width: 250;
-
-}
-
-.button:hover{
-    -fx-background-color: #169191;
-}
-
 @font-face {
     font-family: 'WickedSeventies';
     src: url("WickedSeventies.ttf");
@@ -31,7 +19,6 @@
     -fx-fill: white;
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 21;
-    -fx-font-weight: bold;
 }
 
 .backgroundText {
@@ -40,6 +27,28 @@
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 25;
 }
+
+
+.button{
+    -fx-background-color: #1fcccc;
+    -fx-pref-width: 250;
+    -fx-text-fill: black;
+    -fx-font-size: 19px;
+}
+
+.button .text {
+    -fx-text-fill: whitesmoke;
+    -fx-fill: black;
+    -fx-font-size: 19;
+    -fx-font-weight: bold;
+    -fx-stroke: white;
+    -fx-stroke-width: 0.2;
+}
+
+.button:hover{
+    -fx-background-color: #169191;
+}
+
 
 .inputText {
     -fx-fill: black;
@@ -195,4 +204,32 @@
 }
 .table-view .column-header {
     -fx-background-color: #222;
+}
+
+
+/* Level Editor Styling */
+
+#levelEditorHeading {
+    -fx-font-weight: bold;
+    -fx-stroke: white;
+    -fx-stroke-width: 0.5;
+    -fx-padding-bottom: 25;
+}
+
+#levelEditorSubHeading {
+    -fx-font-weight: bold;
+    -fx-stroke: white;
+    -fx-stroke-width: 0.2;
+}
+
+#levelEditorNameText {
+    -fx-font-weight: bold;
+}
+
+#levelEditorAnchorLeft {
+    -fx-background-color: rgba(210, 210, 210, 0.85);
+}
+
+#levelEditorAnchorBottom {
+    -fx-background-color: rgba(210, 210, 210, 0.85);
 }

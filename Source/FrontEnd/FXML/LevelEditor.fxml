@@ -11,9 +11,9 @@
       <fx:define>
          <ToggleGroup fx:id="floorActionPlayerSet"/>
       </fx:define>
-      <AnchorPane prefHeight="250.0" prefWidth="1651.0" style="-fx-background-color: #83249c">
+      <AnchorPane id="levelEditorAnchorBottom" prefHeight="250.0" prefWidth="1651.0" >
          <children>
-            <Text layoutX="413.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="413.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -23,9 +23,9 @@
                   <Image url="@../../../Assets/goal.png" />
                </image>
             </ImageView>
-            <Text layoutX="291.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="291.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Text>
             <ImageView fx:id="cornerImage" fitHeight="90.0" fitWidth="90.0" layoutX="310.0" layoutY="78.0" onDragDetected="#onDragCornerTile" onMouseDragEntered="#onMouseDragCornerTile" pickOnBounds="true" preserveRatio="true">
@@ -33,7 +33,7 @@
                   <Image url="@../../../Assets/corner.png" />
                </image>
             </ImageView>
-            <Text layoutX="173.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="173.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -43,7 +43,7 @@
                   <Image url="@../../../Assets/t_shape.png" />
                </image>
             </ImageView>
-            <Text layoutX="57.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="57.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -53,12 +53,12 @@
                   <Image url="@../../../Assets/straight.png" />
                </image>
             </ImageView>
-            <Text  layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
+            <Text id="levelEditorHeading" layoutX="122.0" layoutY="48.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="35.0" />
                </font>
             </Text>
-            <Text  layoutX="652.0" layoutY="51.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
+            <Text id="levelEditorHeading" layoutX="652.0" layoutY="51.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Actions" textAlignment="CENTER" wrappingWidth="233.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="35.0" />
                </font>
@@ -69,7 +69,7 @@
                   <Image url="@../../../Assets/fixed.png" />
                </image>
             </ImageView>
-            <Text layoutX="583.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="583.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fix" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -79,12 +79,12 @@
                   <Image url="@../../../Assets/player1.png" />
                </image>
             </ImageView>
-            <Text layoutX="983.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="983.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="1185.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="1185.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -99,12 +99,12 @@
                   <Image url="@../../../Assets/player4.png" />
                </image>
             </ImageView>
-            <Text layoutX="1282.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="1282.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="1089.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="1089.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -114,7 +114,7 @@
                   <Image url="@../../../Assets/player2.png" />
                </image>
             </ImageView>
-            <Text  layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
+            <Text id="levelEditorHeading" layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="35.0" />
                </font>
@@ -125,7 +125,7 @@
                   <Image url="@../../../Assets/rotateArrow.png" />
                </image>
             </ImageView>
-            <Text layoutX="702.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="702.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rotate" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -136,7 +136,7 @@
                   <Image url="@../../../Assets/bin.png" />
                </image>
             </ImageView>
-            <Text layoutX="819.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="819.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -162,14 +162,14 @@
       </Pane>
    </center>
    <left>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" style="-fx-background-color: #c634eb" BorderPane.alignment="CENTER">
+    <AnchorPane id="levelEditorAnchorLeft" minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Text  layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
+            <Text id="levelEditorHeading" layoutX="-4.0" layoutY="57.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Silk Bag" textAlignment="CENTER" wrappingWidth="358.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="35.0" />
                </font>
             </Text>
-            <Text layoutX="-4.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
+            <Text id="levelEditorSubHeading" layoutX="-4.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
@@ -179,12 +179,12 @@
                   <Insets left="15.0" />
                </padding>
             </Slider>
-            <TextField id="straightIn" fx:id="straightInBox" alignment="CENTER" layoutX="155.0" layoutY="127.0" prefHeight="18.0" prefWidth="45.0" promptText="10">
+            <TextField fx:id="straightInBox" alignment="CENTER" layoutX="155.0" layoutY="127.0" prefHeight="18.0" prefWidth="45.0" promptText="10">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="26.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="26.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Straight" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -199,7 +199,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="26.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="26.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T - Shape" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -214,7 +214,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="26.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="26.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Corner" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -229,12 +229,12 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="26.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fire" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="-4.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
+            <Text id="levelEditorSubHeading" layoutX="-4.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action Tiles" textAlignment="CENTER" underline="true" wrappingWidth="358.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
@@ -249,7 +249,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="22.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="22.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ice" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -264,7 +264,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="26.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double Move" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="26.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double Move" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -279,7 +279,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
-            <Text layoutX="26.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backtrack" textAlignment="CENTER" wrappingWidth="128.466796875">
+            <Text id="levelEditorNameText" layoutX="26.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backtrack" textAlignment="CENTER" wrappingWidth="128.466796875">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
