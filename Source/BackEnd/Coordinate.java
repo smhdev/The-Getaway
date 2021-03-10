@@ -2,7 +2,7 @@ package BackEnd;
 
 /**
  * Represents a two dimensional point with X and Y integer components.
- * @author Atif Ishaq & Joshua Oladitan
+ * @author Atif Ishaq, Joshua Oladitan
  * @version 1.0
  */
 

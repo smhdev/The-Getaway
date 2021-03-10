@@ -111,7 +111,7 @@ public class GameboardEditor {
      * s
      *
      * @throws IllegalStateException if the board is invalid
-     *                              (no goal tile, <4 player spawns or 0 tiles in silk bag)
+     *                              (no goal tile, &lt;4 player spawns or 0 tiles in silk bag)
      */
     public void saveFile() {
         // Check if the name contains word custom

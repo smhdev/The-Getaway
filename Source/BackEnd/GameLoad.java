@@ -13,7 +13,7 @@ import static BackEnd.TileType.FROZEN;
  * This class loads a game by reading the save file and running the inputs of the save file
  * through the gameLogic to re-create the game.
  *
- * @author David Langmaid & George Sanger
+ * @author David Langmaid, George Sanger
  * @version 1.0
  */
 public class GameLoad {

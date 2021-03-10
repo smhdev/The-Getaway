@@ -38,6 +38,7 @@ public class GameLogic {
 	 * Creates a new game from the given board file
 	 *
 	 * @param boardFile Paths to board file
+     * @param gameSaver The game server to use
 	 * @throws Exception if issue with board file.
 	 */
 	public void newGame(String boardFile, GameSave gameSaver) throws Exception {

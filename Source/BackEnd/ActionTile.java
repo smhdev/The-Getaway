@@ -4,7 +4,7 @@ package BackEnd;
  * This class represents an Action Tile in the game. An action tile is a tile that the player can use to affect
  * the state of either the floor tiles, other players, or themselves.
  *
- * @author Joshua Oladitan & Atif Ishaq.
+ * @author Joshua Oladitan, Atif Ishaq
  * @version 1.0
  */
 
