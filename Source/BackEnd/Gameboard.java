@@ -542,7 +542,7 @@ public class Gameboard {
      * and the previous location is not on fire and there is not a player on that tile. Then backtrack is valid.
      * The player will move back one or two positions if backtrack is played on the player.
      *
-     * @param player
+     * @param player the zero-based index of the player to backtrack
      */
     public void backtrack(int player) {
         //gets the players current position.

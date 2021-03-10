@@ -125,20 +125,20 @@ public class CustomBoard {
     }
 
     /**
-     * Get position of the selected player will be spawned
+     * Gets the location of the spawn point of the given player
      *
-     * @param playerNum number of player to get position for
-     * @return
+     * @param playerNum zero-based index of player
+     * @return The spawn point of the given player
      */
     public Coordinate getPlayerSpawnPoint(int playerNum) {
         return playerPos[playerNum];
     }
 
     /**
-     * Set position for the selected player spawn
+     * Set position for the selected player's spawn
      *
-     * @param playerNum position of the player in the array
-     * @param position  position of the selected player
+     * @param playerNum zero-based index of the player
+     * @param position  the new spawn position
      */
     public void setPlayerSpawnPoint(int playerNum, Coordinate position) {
         if (checkPosition(position)) {
@@ -151,7 +151,7 @@ public class CustomBoard {
     /**
      * Returns all the info about custom board content
      *
-     * @return string with all the data
+     * @return the board data as a String
      */
     public String toString() {
         String result = new String();
@@ -180,7 +180,7 @@ public class CustomBoard {
     /**
      * Checks if such coordinate is valid
      *
-     * @param position to check
+     * @param position the position to check
      * @return is such position is valid or not
      */
     public static boolean checkPosition(Coordinate position) {

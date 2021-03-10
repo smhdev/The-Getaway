@@ -35,7 +35,7 @@ public class LeaderboardController extends StateLoad {
     /**
      * Changes which leaderboard is being shown
      * @param board the leaderboard to show
-     * @throws IOException
+     * @throws IOException if the leaderboard file can't be created
      */
     public void changeLeaderboard(String board) throws IOException {
         System.out.println("Loading leaderboard for: " + boardNameComboBox.getValue());

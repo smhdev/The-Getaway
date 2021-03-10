@@ -74,7 +74,7 @@ public class Leaderboard {
     /**
      * This method increments the win of a player.
      * @param name the name of the player to add a win.
-     * @throws IOException
+     * @throws IOException if the leaderboard file is invalid
      */
     public void addWin(String name) throws IOException {
         Score toUpdate = find(name);
@@ -88,7 +88,7 @@ public class Leaderboard {
     /**
      * This method increments a loss of the player.
      * @param name the player to increment the loss.
-     * @throws IOException
+     * @throws IOException if the leaderboard file is invalid
      */
     public void addLoss(String name) throws IOException {
         Score toUpdate = find(name);
