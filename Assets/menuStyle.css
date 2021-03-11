@@ -1,17 +1,8 @@
 
 @font-face {
-    font-family: 'WickedSeventies';
     src: url("WickedSeventies.ttf");
-    font-family: 'Arial Rounded MT Bold';
-}
-
-/* Not sure we need this */
-.resetButton{
-    -fx-pref-width: 75;
-    -fx-font-family: 'WickedSeventies';
-    -fx-background-color: #ff6666;
-    -fx-text-fill: black;
-    -fx-font-size: 15px;
+    font-family: "WickedSeventies";
+    font-family: "Arial Rounded MT Bold";
 }
 
 .text {
@@ -227,9 +218,9 @@
 }
 
 #levelEditorAnchorLeft {
-    -fx-background-color: rgba(210, 210, 210, 0.85);
+    -fx-background-color: rgba(31, 204, 204, 0.85);
 }
 
 #levelEditorAnchorBottom {
-    -fx-background-color: rgba(210, 210, 210, 0.85);
+    -fx-background-color: rgba(31, 204, 204, 0.85);
 }
