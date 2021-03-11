@@ -321,6 +321,10 @@ public class LevelEditorController extends StateLoad {
         }
     }
 
+    /**
+     * Forces a text field to accept numeric input only.
+     * @param t The text field to modify
+     */
     private void setNumericInputOnly(TextField t) {
         t.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -343,11 +347,22 @@ public class LevelEditorController extends StateLoad {
         return true;
     }
 
-
+    /**
+     * Sets the ImageView within a pane to be an empty tile.
+     * @param pane The pane to be emptied
+     * @param size The size of the empty image
+     */
     private void setPaneEmptyImage(Pane pane, int size) {
         setPaneTileImage(pane, "empty", size, Rotation.UP);
     }
 
+    /**
+     * Sets the ImageView within a pane to contain a floor tile.
+     * @param pane The pane to change the ImageView of
+     * @param newTile The name of the new floor tile
+     * @param size The size of the tile image
+     * @param rotation The rotation of the tile image
+     */
     private void setPaneTileImage(Pane pane, String newTile, int size, Rotation rotation) {
         // Remove the already existing ImageView
         ImageView currentImageView = imageViews.get(pane)[0];
@@ -361,6 +376,12 @@ public class LevelEditorController extends StateLoad {
         imageViews.get(pane)[0] = newImg;
     }
 
+    /**
+     * Shows or hides a fixed icon on a pane.
+     * @param pane The pane to show a fixed icon on
+     * @param isFixed True to show a fixed icon, false to hide it
+     * @param size The size of the fixed icon.
+     */
     private void setPaneFixedImage(Pane pane, boolean isFixed, int size) {
         if (isFixed) {
             if (imageViews.get(pane)[1] == null) {
@@ -426,6 +447,11 @@ public class LevelEditorController extends StateLoad {
         return tileImg;
     }
 
+    /**
+     * Attempts to set the custom board's silk bag contents
+     * using values from the TextFields. If an error occurs
+     * the error message box is shown.
+     */
     private void setSilkBagData() {
         if (straightInBox.getText().equals("")) {
             straightInBox.setText("10");
