@@ -478,109 +478,193 @@ public class LevelEditorController extends StateLoad {
         System.out.println("Starting a drag event for " + content.getString());
     }
 
+    /**
+     * Enables drag detection for the straight tile image
+     * @param event The source of the drag event.
+     */
     public void onMouseDragStraightTile(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for a straight tile.
+     */
     public void onDragStraightTile() {
         startDragAndDrop(straightImage, "straight");
     }
 
+    /**
+     * Enables drag detection for the t-shape tile image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragTShapeTile(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for a t-shape tile.
+     */
     public void onDragTShapeTile() {
         startDragAndDrop(tshapeImage, "t_shape");
     }
 
+    /**
+     * Enables drag detection for the corner tile image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragCornerTile(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for a corner tile.
+     */
     public void onDragCornerTile() {
         startDragAndDrop(cornerImage, "corner");
     }
 
+    /**
+     * Enables drag detection for the goal tile image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragGoalTile(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for a goal tile.
+     */
     public void onDragGoalTile() {
         startDragAndDrop(goalImage, "goal");
     }
 
+    /**
+     * Enables drag detection for player 1's spawn point image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragPlayer1(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for player 1's spawn point.
+     */
     public void onDragPlayer1() {
         startDragAndDrop(p1Image, "player 1");
     }
 
+    /**
+     * Enables drag detection for player 2's spawn point image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragPlayer2(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for player 2's spawn point.
+     */
     public void onDragPlayer2() {
         startDragAndDrop(p2Image, "player 2");
     }
 
+    /**
+     * Enables drag detection on player 3's spawn point image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragPlayer3(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for player 3's spawn point.
+     */
     public void onDragPlayer3() {
         startDragAndDrop(p3Image, "player 3");
     }
 
+    /**
+     * Enables drag detection on player 4's spawn point image.
+     * @param event The source of the drag event.
+     */
     public void onMouseDragPlayer4(MouseEvent event) {
         event.setDragDetect(true);
     }
 
+    /**
+     * Begins a drag event for player 4's spawn point.
+     */
     public void onDragPlayer4() {
         startDragAndDrop(p4Image, "player 4");
     }
 
+    /**
+     * Hides the error message box and selects the fix tile radio button.
+     * Called when the fix tile radio button is selected.
+     */
     public void onFixRB() {
         hideErrorMsgBox();
         fixRB.setSelected(true);
     }
 
+    /**
+     * Hides the error message box and selects the rotate tile radio button.
+     * Called when the rotate radio button is selected.
+     */
     public void onRotateRB() {
         hideErrorMsgBox();
         rotateRB.setSelected(true);
     }
 
+    /**
+     * Hides the error message box and selects the remove tile radio button.
+     * Called when the remove radio button is selected.
+     */
     public void onRemoveRB() {
         hideErrorMsgBox();
         removeRB.setSelected(true);
     }
 
-
+    /**
+     * Unselects the radio buttons.
+     */
     public void unselectActionRadioButtons() {
         fixRB.setSelected(false);
         rotateRB.setSelected(false);
         removeRB.setSelected(false);
     }
 
+    /**
+     * Shows the error message box.
+     * @param errorMessage The message to display.
+     */
     public void showErrorMsgBox(String errorMessage) {
         errorMsgText.setText(errorMessage);
         errorMsgBox.setVisible(true);
     }
 
+    /**
+     * Hides the error message box.
+     */
     public void hideErrorMsgBox() {
         errorMsgBox.setVisible(false);
         errorMsgText.setText("");
     }
 
-
-
+    /**
+     * Exits the level editor without saving.
+     * Called when Exit is clicked.
+     */
     public void onExitButton() {
         WindowLoader wl = new WindowLoader(straightSlider);
         wl.load("MenuScreen", getInitData());
     }
 
+    /**
+     * Attempts to save and exit the editor, or
+     * displays the error message that occurs.
+     * Called when Save & Exit is clicked.
+     */
     public void onSaveExitButton() {
         setSilkBagData();
         editor.setFileName("./Gameboards/Custom" + getInitData().get("Custom Board Name") + ".txt");
