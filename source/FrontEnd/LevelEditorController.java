@@ -689,7 +689,7 @@ public class LevelEditorController extends StateLoad {
     /**
      * Attempts to save and exit the editor, or
      * displays the error message that occurs.
-     * Called when Save & Exit is clicked.
+     * Called when Save &amp; Exit is clicked.
      */
     public void onSaveExitButton() {
         setSilkBagData();
