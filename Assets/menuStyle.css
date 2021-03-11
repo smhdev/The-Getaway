@@ -1,10 +1,4 @@
 
-@font-face {
-    src: url("WickedSeventies.ttf");
-    font-family: "WickedSeventies";
-    font-family: "Arial Rounded MT Bold";
-}
-
 .text {
     -fx-text-fill: whitesmoke;
     -fx-fill: white;
@@ -223,4 +217,11 @@
 
 #levelEditorAnchorBottom {
     -fx-background-color: rgba(31, 204, 204, 0.85);
+}
+
+
+@font-face {
+    font-family: 'WickedSeventies';
+    font-family: 'Arial Rounded MT Bold';
+    src: url("Assets/WickedSeventies.ttf");
 }
