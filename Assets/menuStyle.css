@@ -41,11 +41,6 @@
     -fx-font-size: 21;
 }
 
-.slider . thumb {
-    -fx-background-color: black;
-    -fx-background-size: 40px;
-}
-
 .slider . track {
     -fx-background-color: white;
 }
