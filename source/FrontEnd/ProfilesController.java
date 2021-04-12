@@ -1,6 +1,8 @@
 package FrontEnd;
 
 import BackEnd.Profile;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,8 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
+
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 /***
@@ -77,6 +82,16 @@ public class ProfilesController extends StateLoad {
 		}
 	}
 
+	public void onClickPlayer() {
+		playerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				playerIcon.setImage(newValue);
+			}
+		});
+
+	}
+
 	/**
 	 * the action on the button back, back to the menus screen.
 	 */
@@ -107,7 +122,7 @@ public class ProfilesController extends StateLoad {
 			input.setStyle("-fx-border-color: default");
 			playerList.getItems().addAll(newName);
 			PrintWriter newUser = new PrintWriter(new FileWriter("SaveData\\UserData\\" + newName + ".txt"));
-			newUser.write("0 0 0 icon" + currentIndex);
+			newUser.write("0 0 0 0 icon" + currentIndex);
 			newUser.close();
 			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 		}
@@ -145,9 +160,11 @@ public class ProfilesController extends StateLoad {
 							profile.getWins() +
 							" wins, " +
 							profile.getLosses() +
-							" losses and a win streak of " +
+							" losses, a win streak of " +
 							profile.getWinStreak() +
-							".");
+							" and they are level " +
+							profile.getLevel();
+
 			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 		} catch (IOException noPlayerFound) {
 			ERROR_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
