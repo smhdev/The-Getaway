@@ -178,8 +178,8 @@ public class GameLogic {
      *
      * @return array of all playable action tiles.
      */
-    public ActionTile[] getActionCards() {
-        return currentPlayer.getInventory().toArray(new ActionTile[0]);
+    public ArrayList<ActionTile> getActionCards() {
+        return currentPlayer.getInventory();
     }
 
     /**
