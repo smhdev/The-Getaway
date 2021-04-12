@@ -119,7 +119,8 @@ public class Player {
      *
      * @param tile The Action Tile to be removed
      */
-    private void removeFromInventory(ActionTile tile) {
+    public void removeFromInventory(ActionTile tile) {
         inventory.remove(tile);
+
     }
 }
