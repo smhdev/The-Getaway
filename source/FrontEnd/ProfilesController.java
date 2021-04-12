@@ -17,13 +17,14 @@ import java.io.*;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 /***
  * A controller class for profiles.fxml which allows a user to show the player profiles saved, create new player
  * profiles, delete player profiles and view player profiles.
  * It is loaded by clicking from it in the MenuScreen and allows the user to return to the MenuScreen with an action.
- * @author Zhan Zhang
- * @version 1.0
+ * @author Zhan Zhang, Sam Harry
+ * @version 1.1
  */
 public class ProfilesController extends StateLoad {
 
@@ -82,12 +83,23 @@ public class ProfilesController extends StateLoad {
 		}
 	}
 
+	/**
+	 * When a player in the list is clicked on, the player picture is updated to their picture
+	 */
 	public void onClickPlayer() {
-		playerList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				playerIcon.setImage(newValue);
+		playerList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			File user = new File("SaveData\\UserData\\" + newValue + ".txt");
+			try {
+				Scanner scanner = new Scanner(user);
+				System.out.println(scanner.nextInt());
+				System.out.println(scanner.nextInt());
+				System.out.println(scanner.nextInt());
+				File iconImage = new File("Assets\\" + scanner.next() + ".png");
+				playerIcon.setImage(new Image(iconImage.toURI().toString()));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
 			}
+
 		});
 
 	}
@@ -163,7 +175,7 @@ public class ProfilesController extends StateLoad {
 							" losses, a win streak of " +
 							profile.getWinStreak() +
 							" and they are level " +
-							profile.getLevel();
+							profile.getLevel());
 
 			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 		} catch (IOException noPlayerFound) {

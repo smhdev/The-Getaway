@@ -215,7 +215,6 @@ public class Profile {
 		int wins = reader.nextInt();
 		int losses = reader.nextInt();
 		int winStreak = reader.nextInt();
-		int level = reader.nextInt();
 		int xp = reader.nextInt();
 		String playerIcon = reader.next();
 
@@ -233,7 +232,6 @@ public class Profile {
 		int wins = profile.getWins();
 		int loss = profile.getLosses();
 		int winStreak = profile.getWinStreak();
-		int level = profile.getLevel();
 		int xp = profile.getXp();
 		String playerIcon = profile.getIcon();
 		FileWriter writer = new FileWriter("SaveData\\UserData\\" + name + ".txt");
