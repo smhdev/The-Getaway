@@ -502,7 +502,8 @@ public class GameScreenController extends StateLoad {
 
 	private void setupActionPhase() throws Exception {
 		cards.getChildren().clear();
-		ActionTile[] tiles = gameLogic.getActionCards();
+		ArrayList<ActionTile> tiles = new ArrayList<>();
+		tiles = gameLogic.getActionCards();
 		// Add a skip button
 
 		drawButton.setText("Skip");
@@ -521,6 +522,7 @@ public class GameScreenController extends StateLoad {
 			dim.setBrightness(0.6);
 			dim.setSaturation(0.5);
 			drawnCard.setEffect(dim);
+			//stops user from doing anything on eventclick etc
 			drawnCard.setOnMouseClicked((e) -> {
 			});
 			drawnCard.setOnMouseEntered((e) -> {
@@ -530,23 +532,20 @@ public class GameScreenController extends StateLoad {
 			cards.getChildren().add(drawnCard);
 		}
 		for (ActionTile tile : tiles) {
+			System.out.println(tile.getType().toString());
 			gameStateText.setText(profiles[gameLogic.getPlayersTurn()].getName() + ", you can use an action card!");
 			final Node vCard = Assets.createCard(tile);
-			vCard.setOnMouseClicked((e) -> {
-			});
 			cards.getChildren().add(vCard);
 			switch (tile.getType()) {
 				case DOUBLE_MOVE:
 					vCard.setOnMouseClicked((e) -> {
 						vCard.setEffect(new Bloom(0.03));
-						vCard.setOnMouseClicked(e2 -> {
 							try {
-								doubleMoveAction();
+								doubleMoveAction(tile);
 								DOUBLEMOVE_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 							} catch (Exception exception) {
 								exception.printStackTrace();
 							}
-						});
 					});
 					break;
 				case BACKTRACK:
@@ -569,7 +568,7 @@ public class GameScreenController extends StateLoad {
 								fakePlayer.setOnMouseClicked(e2 -> {
 									hideAllControls();
 									try {
-										gameLogic.action(new ActionTile(BACKTRACK), null, playerNumber);
+										gameLogic.action(tile, null, playerNumber);
 									} catch (Exception exception) {
 										exception.printStackTrace();
 									}
@@ -598,7 +597,7 @@ public class GameScreenController extends StateLoad {
 						controls.getChildren().add(fire);
 						FIRE_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 						controls.setOnMouseMoved((e2) -> {
-							LocationSelectOnClick(fire, e2, FIRE);
+							LocationSelectOnClick(fire, e2, FIRE, tile);
 						});
 
 					});
@@ -610,7 +609,7 @@ public class GameScreenController extends StateLoad {
 						controls.getChildren().add(frozen);
 						ICE_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 						controls.setOnMouseMoved((e2) -> {
-							LocationSelectOnClick(frozen, e2, FROZEN);
+							LocationSelectOnClick(frozen, e2, FROZEN, tile);
 						});
 					});
 					break;
@@ -626,7 +625,7 @@ public class GameScreenController extends StateLoad {
 	 * @param e2       the mouse event
 	 * @param tileType what tile type it is.
 	 */
-	private void LocationSelectOnClick(Node card, MouseEvent e2, TileType tileType) {
+	private void LocationSelectOnClick(Node card, MouseEvent e2, TileType tileType, ActionTile tile) {
 		int getX = (int) (e2.getX() / tileWidth);
 		int getY = (int) (e2.getY() / tileWidth);
 		if (getX < 1) {
@@ -660,7 +659,7 @@ public class GameScreenController extends StateLoad {
 		card.setTranslateY((getY - 1) * tileWidth);
 		card.setOnMouseClicked((e3) -> {
 			try {
-				gameLogic.action(new ActionTile(tileType), new Coordinate(x, y), -1);
+				gameLogic.action(tile, new Coordinate(x, y), -1);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -864,8 +863,8 @@ public class GameScreenController extends StateLoad {
 		SKIP_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 	}
 
-	private void doubleMoveAction() throws Exception {
-		gameLogic.action(new ActionTile(DOUBLE_MOVE), null, 0);
+	private void doubleMoveAction(ActionTile tile) throws Exception {
+		gameLogic.action(tile, null, 0);
 		for (Node player : players.getChildren()) {
 			player.setEffect(new Bloom(999));
 			player.setOnMouseClicked(e3 -> {
