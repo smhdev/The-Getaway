@@ -539,14 +539,12 @@ public class GameScreenController extends StateLoad {
 				case DOUBLE_MOVE:
 					vCard.setOnMouseClicked((e) -> {
 						vCard.setEffect(new Bloom(0.03));
-						vCard.setOnMouseClicked(e2 -> {
 							try {
 								doubleMoveAction();
 								DOUBLEMOVE_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 							} catch (Exception exception) {
 								exception.printStackTrace();
 							}
-						});
 					});
 					break;
 				case BACKTRACK:
