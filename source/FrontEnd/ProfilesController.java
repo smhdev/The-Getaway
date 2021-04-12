@@ -1,6 +1,8 @@
 package FrontEnd;
 
 import BackEnd.Profile;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,16 +11,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
+
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 /***
  * A controller class for profiles.fxml which allows a user to show the player profiles saved, create new player
  * profiles, delete player profiles and view player profiles.
  * It is loaded by clicking from it in the MenuScreen and allows the user to return to the MenuScreen with an action.
- * @author Zhan Zhang
- * @version 1.0
+ * @author Zhan Zhang, Sam Harry
+ * @version 1.1
  */
 public class ProfilesController extends StateLoad {
 
@@ -78,6 +84,27 @@ public class ProfilesController extends StateLoad {
 	}
 
 	/**
+	 * When a player in the list is clicked on, the player picture is updated to their picture
+	 */
+	public void onClickPlayer() {
+		playerList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			File user = new File("SaveData\\UserData\\" + newValue + ".txt");
+			try {
+				Scanner scanner = new Scanner(user);
+				System.out.println(scanner.nextInt());
+				System.out.println(scanner.nextInt());
+				System.out.println(scanner.nextInt());
+				File iconImage = new File("Assets\\" + scanner.next() + ".png");
+				playerIcon.setImage(new Image(iconImage.toURI().toString()));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		});
+
+	}
+
+	/**
 	 * the action on the button back, back to the menus screen.
 	 */
 	public void onBackButton() {
@@ -107,7 +134,7 @@ public class ProfilesController extends StateLoad {
 			input.setStyle("-fx-border-color: default");
 			playerList.getItems().addAll(newName);
 			PrintWriter newUser = new PrintWriter(new FileWriter("SaveData\\UserData\\" + newName + ".txt"));
-			newUser.write("0 0 0 icon" + currentIndex);
+			newUser.write("0 0 0 0 icon" + currentIndex);
 			newUser.close();
 			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 		}
@@ -145,9 +172,11 @@ public class ProfilesController extends StateLoad {
 							profile.getWins() +
 							" wins, " +
 							profile.getLosses() +
-							" losses and a win streak of " +
+							" losses, a win streak of " +
 							profile.getWinStreak() +
-							".");
+							" and they are level " +
+							profile.getLevel());
+
 			MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 		} catch (IOException noPlayerFound) {
 			ERROR_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
