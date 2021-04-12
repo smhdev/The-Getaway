@@ -6,8 +6,8 @@ import java.util.Scanner;
 /**
  * Stores the data about a player's profile such as their name or scores across maps.
  *
- * @author Brandon Chan
- * @version 1.0
+ * @author Brandon Chan, Sam Harry
+ * @version 1.1
  */
 public class Profile {
 
@@ -17,6 +17,8 @@ public class Profile {
 	private int wins;
 	private int winStreak;
 	private int losses;
+	private int level;
+	private int xp;
 	private String profileName;
 	private String profileIcon;
 
@@ -29,12 +31,14 @@ public class Profile {
 	 * @param losses     the amount of losses a player has.
 	 * @param winStreak  the current win streak of this player
 	 */
-	public Profile(String name, String playerIcon, int wins, int losses, int winStreak) {
+	public Profile(String name, String playerIcon, int wins, int losses, int xp, int winStreak) {
 		setName(name);
 		setIcon(playerIcon);
 		setWins(wins);
 		setLosses(losses);
 		setWinStreak(winStreak);
+		setLevel();
+		setXp(xp);
 	}
 
 	/**
@@ -87,8 +91,24 @@ public class Profile {
 	 *
 	 * @return the name of the player.
 	 */
+
 	public String getName() {
 		return this.profileName;
+	}
+
+	/**
+	 * Sets the level of the player
+	 */
+	public void setLevel() {
+		this.level = Math.round(this.xp / 400);
+	}
+
+	/**
+	 * a method to set the xp level of a player
+	 * @param xp to set
+	 */
+	public void setXp(int xp) {
+		this.xp = xp;
 	}
 
 	/**
@@ -98,6 +118,22 @@ public class Profile {
 	 */
 	public int getWins() {
 		return this.wins;
+	}
+
+	/**
+	 * This method gets the level of the player.
+	 * @return the player level
+	 */
+	public int getLevel() {
+		return level;
+	}
+
+	/**
+	 * A method to get the experience points of a player
+	 * @return the xp points
+	 */
+	public int getXp() {
+		return xp;
 	}
 
 	/**
@@ -140,6 +176,17 @@ public class Profile {
 	}
 
 	/**
+	 * This method increases the xp of a player by an arbitrary amount
+	 * @param xp to increase by
+	 */
+	public void incXP(int xp) {
+		this.xp += xp;
+	}
+
+	public void levelUp() {
+		this.level++;
+	}
+	/**
 	 * This method returns the icon of the player.
 	 *
 	 * @return the icon of the player.
@@ -168,9 +215,11 @@ public class Profile {
 		int wins = reader.nextInt();
 		int losses = reader.nextInt();
 		int winStreak = reader.nextInt();
+		int level = reader.nextInt();
+		int xp = reader.nextInt();
 		String playerIcon = reader.next();
 
-		return new Profile(profileFile, playerIcon, wins, losses, winStreak);
+		return new Profile(profileFile, playerIcon, wins, losses, winStreak, xp);
 	}
 
 	/**
@@ -184,13 +233,16 @@ public class Profile {
 		int wins = profile.getWins();
 		int loss = profile.getLosses();
 		int winStreak = profile.getWinStreak();
+		int level = profile.getLevel();
+		int xp = profile.getXp();
 		String playerIcon = profile.getIcon();
 		FileWriter writer = new FileWriter("SaveData\\UserData\\" + name + ".txt");
 
-		String information = String.format("%d %d %d %s",
+		String information = String.format("%d %d %d %d %s",
 				wins,
 				loss,
 				winStreak,
+				xp,
 				playerIcon);
 		System.out.println(information);
 		writer.write(information);
@@ -209,4 +261,9 @@ public class Profile {
 			writeProfile(profile);
 		}
 	}
+
+
+
+
+
 }
