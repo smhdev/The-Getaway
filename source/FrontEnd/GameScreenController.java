@@ -696,6 +696,7 @@ public class GameScreenController extends StateLoad {
 					"move to");
 			pointer.setOnMouseClicked(e -> {
 				Node currentPlayerNode = players.getChildren().get(gameLogic.getPlayersTurn());
+				MOVEMENT_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 				try {
 					gameLogic.move(coordinate);
 				} catch (Exception exception) {
@@ -733,9 +734,7 @@ public class GameScreenController extends StateLoad {
 						removeAll("locationarrow");
 						walk.setOnFinished((e3) -> {
 							try {
-								MOVEMENT_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 								playerRotations[currentPlayer] = rotate.getToAngle();
-
 								mainLoop();
 							} catch (IOException ioException) {
 								ioException.printStackTrace();
