@@ -4,10 +4,7 @@ import BackEnd.Profile;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
@@ -47,6 +44,12 @@ public class ProfilesController extends StateLoad {
     private TextField input;
     @FXML
     private ListView<String> playerList;
+    @FXML
+    private Label levelInfo;
+    @FXML
+    private Label xpInfo;
+    @FXML
+    private ProgressBar xpBar;
 
     int currentIndex = 0;
     final File iconImage0 = new File("Assets\\icon0.png");
@@ -89,10 +92,10 @@ public class ProfilesController extends StateLoad {
             File user = new File("SaveData\\UserData\\" + newValue + ".txt");
             try {
                 Scanner scanner = new Scanner(user);
-                System.out.println(scanner.nextInt());
-                System.out.println(scanner.nextInt());
-                System.out.println(scanner.nextInt());
-                System.out.println(scanner.nextInt());
+                scanner.nextInt();
+                scanner.nextInt();
+                scanner.nextInt();
+                scanner.nextInt();
                 File iconImage = new File("Assets\\" + scanner.next() + ".png");
                 playerIcon.setImage(new Image(iconImage.toURI().toString()));
 
@@ -118,7 +121,15 @@ public class ProfilesController extends StateLoad {
                             " and they are level " +
                             profile.getLevel());
 
-
+            profile.setLevel();
+            xpInfo.setText("XP: " + profile.getXp() + " / " + (profile.getLevel() + 1) * 400);
+            levelInfo.setText(profile.getName() + " is level: " + profile.getLevel());
+            if (profile.getXp() == 0) {
+                xpBar.progressProperty().set(0);
+            }
+            else {
+                xpBar.progressProperty().set((float)1/400 * (profile.getXp() - profile.getLevel() * 400));
+            }
         });
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
     }
