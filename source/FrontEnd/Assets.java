@@ -150,10 +150,10 @@ public class Assets {
         labels.put(FROZEN, "Police Block");
         labels.put(DOUBLE_MOVE, "NITRO");
         labels.put(BACKTRACK, "Misdirection");
-        labels.put(CORNER, "");
+        labels.put(CORNER, "Corner");
         labels.put(GOAL, "SafeHouse");
-        labels.put(STRAIGHT, "Bride Mayor");
-        labels.put(T_SHAPE, "You know a guy");
+        labels.put(STRAIGHT, "Straight");
+        labels.put(T_SHAPE, "T-Shape");
         newCard = FXMLLoader.load(Objects.requireNonNull(GameScreenController.class.getClassLoader().getResource("FrontEnd\\FXML\\Card.fxml")));
         ImageView newCardImage = ((ImageView) newCard.lookup("#image"));
         newCardImage.setImage(Assets.get(tile.getType().toString()));
