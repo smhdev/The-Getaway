@@ -174,11 +174,11 @@ public class Assets {
 	 * @return the imageView of the specified player.
 	 */
 	public static ImageView getPlayer(int playerNumber) {
-		Image playerModel = get("player" + (playerNumber+1));
+		Image playerModel = get("truck" + (playerNumber+1));
 		ImageView player = new ImageView(playerModel);
 		player.setFitHeight(GameScreenController.tileWidth);
 		player.setFitWidth(GameScreenController.tileWidth);
-		player.setId("player " + playerNumber);
+		player.setId("truck " + playerNumber);
 		return player;
 	}
 
@@ -235,11 +235,11 @@ public class Assets {
 	}
 
 	public static ImageView getCar(int playerNumber) {
-        Image carModel = get("player" + (playerNumber+1));
+        Image carModel = get("truck" + (playerNumber+1));
         ImageView car = new ImageView(carModel);
         car.setFitHeight(100);
         car.setFitWidth(100);
-        car.setId("player " + playerNumber);
+        car.setId("truck " + playerNumber);
         return car;
     }
 }

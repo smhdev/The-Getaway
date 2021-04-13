@@ -80,12 +80,14 @@ public class ProfilesController extends StateLoad {
                     playerList.getItems().addAll(filename.substring(0, filename.length() - 4));
                 }
                 playerList.getSelectionModel().selectFirst();
+
             }
         }
     }
 
     /**
-     * When a player in the list is clicked on, the player picture is updated to their picture
+     * When a player in the list is clicked on, the player picture is updated to their picture, their level and xp
+     * progress and win and lose stats
      */
     public void onClickPlayer() {
         playerList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

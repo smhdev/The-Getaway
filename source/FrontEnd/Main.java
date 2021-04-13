@@ -55,7 +55,7 @@ public class Main extends Application {
         Main.setVolume(backgroundVol);
         primaryStage.setFullScreen(false);
         primaryStage.setTitle("The Getaway");
-        primaryStage.getIcons().add(new Image("player2.png"));
+        primaryStage.getIcons().add(new Image("car2.png"));
         primaryStage.setResizable(true);
         primaryStage.initStyle(StageStyle.DECORATED);
 

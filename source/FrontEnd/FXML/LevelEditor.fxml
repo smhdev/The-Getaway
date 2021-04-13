@@ -76,7 +76,7 @@
             </Text>
             <ImageView fx:id="p1Image" fitHeight="80.0" fitWidth="80.0" layoutX="1008.0" layoutY="85.0" onDragDetected="#onDragPlayer1" onMouseDragEntered="#onMouseDragPlayer1" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player1.png" />
+                  <Image url="@../../../Assets/car1.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="983.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -91,12 +91,12 @@
             </Text>
             <ImageView fx:id="p3Image" fitHeight="80.0" fitWidth="80.0" layoutX="1210.0" layoutY="85.0" onDragDetected="#onDragPlayer3" onMouseDragEntered="#onMouseDragPlayer3" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player3.png" />
+                  <Image url="@../../../Assets/car3.png" />
                </image>
             </ImageView>
             <ImageView fx:id="p4Image" fitHeight="80.0" fitWidth="80.0" layoutX="1306.0" layoutY="85.0" onDragDetected="#onDragPlayer4" onMouseDragEntered="#onMouseDragPlayer4" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player4.png" />
+                  <Image url="@../../../Assets/car4.png" />
                </image>
             </ImageView>
             <Text id="levelEditorNameText" layoutX="1282.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="CENTER" wrappingWidth="128.466796875">
@@ -111,7 +111,7 @@
             </Text>
             <ImageView fx:id="p2Image" fitHeight="80.0" fitWidth="80.0" layoutX="1114.0" layoutY="85.0" onDragDetected="#onDragPlayer2" onMouseDragEntered="#onMouseDragPlayer2" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Assets/player2.png" />
+                  <Image url="@../../../Assets/car2.png" />
                </image>
             </ImageView>
             <Text id="levelEditorHeading" layoutX="1015.0" layoutY="49.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Player Position" textAlignment="CENTER" wrappingWidth="358.466796875">
