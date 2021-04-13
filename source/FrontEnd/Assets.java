@@ -150,10 +150,10 @@ public class Assets {
         labels.put(FROZEN, "Police Block");
         labels.put(DOUBLE_MOVE, "NITRO");
         labels.put(BACKTRACK, "Misdirection");
-        labels.put(CORNER, "");
+        labels.put(CORNER, "Corner");
         labels.put(GOAL, "SafeHouse");
-        labels.put(STRAIGHT, "Bride Mayor");
-        labels.put(T_SHAPE, "You know a guy");
+        labels.put(STRAIGHT, "Straight");
+        labels.put(T_SHAPE, "T-Shape");
         newCard = FXMLLoader.load(Objects.requireNonNull(GameScreenController.class.getClassLoader().getResource("FrontEnd\\FXML\\Card.fxml")));
         ImageView newCardImage = ((ImageView) newCard.lookup("#image"));
         newCardImage.setImage(Assets.get(tile.getType().toString()));
@@ -174,11 +174,11 @@ public class Assets {
 	 * @return the imageView of the specified player.
 	 */
 	public static ImageView getPlayer(int playerNumber) {
-		Image playerModel = get("player" + (playerNumber+1));
+		Image playerModel = get("truck" + (playerNumber+1));
 		ImageView player = new ImageView(playerModel);
 		player.setFitHeight(GameScreenController.tileWidth);
 		player.setFitWidth(GameScreenController.tileWidth);
-		player.setId("player " + playerNumber);
+		player.setId("truck " + playerNumber);
 		return player;
 	}
 
@@ -235,11 +235,11 @@ public class Assets {
 	}
 
 	public static ImageView getCar(int playerNumber) {
-        Image carModel = get("player" + (playerNumber+1));
+        Image carModel = get("truck" + (playerNumber+1));
         ImageView car = new ImageView(carModel);
         car.setFitHeight(100);
         car.setFitWidth(100);
-        car.setId("player " + playerNumber);
+        car.setId("truck " + playerNumber);
         return car;
     }
 }
