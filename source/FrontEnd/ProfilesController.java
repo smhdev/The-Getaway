@@ -111,6 +111,7 @@ public class ProfilesController extends StateLoad {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            profile.setLevel();
             playerRecord.setText(
                     profile.getName() + " has " +
                             profile.getWins() +
@@ -121,11 +122,14 @@ public class ProfilesController extends StateLoad {
                             " and they are level " +
                             profile.getLevel());
 
-            profile.setLevel();
+
             xpInfo.setText("XP: " + profile.getXp() + " / " + (profile.getLevel() + 1) * 400);
             levelInfo.setText(profile.getName() + " is level: " + profile.getLevel());
             if (profile.getXp() == 0) {
                 xpBar.progressProperty().set(0);
+            }
+            if (profile.getLevel() == 0) {
+                xpBar.progressProperty().set((float)1/400 * (profile.getXp()));
             }
             else {
                 xpBar.progressProperty().set((float)1/400 * (profile.getXp() - profile.getLevel() * 400));

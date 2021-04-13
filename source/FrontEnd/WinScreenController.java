@@ -61,8 +61,9 @@ public class WinScreenController extends StateLoad {
 						leaderboard.addWin(profiles[i].getName());
 						profiles[i].incWins();
 						profiles[i].incWinStreak();
-						//increment the xp by 200 times the number of players.
-						profiles[i].incXP(playerCount * 200);
+						//increment the xp by 200 times the number of other players.
+						profiles[i].incXP((playerCount) * 200);
+						profiles[i].setLevel();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
