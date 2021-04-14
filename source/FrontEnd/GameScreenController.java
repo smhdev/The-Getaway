@@ -145,7 +145,8 @@ public class GameScreenController extends StateLoad {
 		}
 		profile.getChildren().add(Assets.getProfile(profiles[gameLogic.getPlayersTurn()])); //the profile image
 		profileName.setText(profiles[gameLogic.getPlayersTurn()].getName()); //sets the current players turn to text
-		profilePic.getChildren().add(Assets.getCar(gameLogic.getPlayersTurn())); //adds car next to player
+		profilePic.getChildren().clear();
+		profilePic.getChildren().add(Assets.getCar(gameLogic.getPlayersTurn(), profiles[gameLogic.getPlayersTurn()].getCarIcon())); //adds car next to player
 		try {
 			updateBoard();
 		} catch (Exception e) {
@@ -452,7 +453,7 @@ public class GameScreenController extends StateLoad {
 		// showing the player locations
 		for (int i = 0; i < gameLogic.getPlayerLocations().length; i++) {
 			Coordinate location = gameLogic.getPlayerLocations()[i];
-			ImageView playerView = Assets.getPlayer(i);
+			ImageView playerView = Assets.getPlayer(i, profiles[i].getCarIcon());
 			playerView.setTranslateX(location.getX() * tileWidth);
 			playerView.setTranslateY(location.getY() * tileWidth);
 			playerView.setRotate(playerRotations[i]);
@@ -558,7 +559,7 @@ public class GameScreenController extends StateLoad {
 								// For each valid player
 								final int playerNumber = i;
 								// make them glow
-								Node fakePlayer = Assets.getPlayer(i);
+								Node fakePlayer = Assets.getPlayer(i, profiles[i].getCarIcon());
 								fakePlayer.setTranslateX(gameLogic.getPlayerLocations()[i].getX() * tileWidth);
 								fakePlayer.setTranslateY(gameLogic.getPlayerLocations()[i].getY() * tileWidth);
 								fakePlayer.setRotate(playerRotations[playerNumber]);
@@ -696,9 +697,9 @@ public class GameScreenController extends StateLoad {
 					"move to");
 			pointer.setOnMouseClicked(e -> {
 				Node currentPlayerNode = players.getChildren().get(gameLogic.getPlayersTurn());
-				MOVEMENT_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 				try {
 					gameLogic.move(coordinate);
+					MOVEMENT_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
 				} catch (Exception exception) {
 					exception.printStackTrace();
 				}
@@ -725,6 +726,7 @@ public class GameScreenController extends StateLoad {
 				rotate.setNode(currentPlayerNode);
 				rotate.setOnFinished((e2) -> {
 					try {
+
 						currentPlayerNode.setRotate((rotate.getToAngle()));
 						walk.setToX(coordinate.getX() * tileWidth);
 						walk.setToY(coordinate.getY() * tileWidth);
@@ -745,6 +747,7 @@ public class GameScreenController extends StateLoad {
 					}
 				});
 				rotate.play();
+
 			});
 			controls.getChildren().add(pointer);
 		}

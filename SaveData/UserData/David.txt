@@ -1,1 +1,1 @@
-3 5 566 0 icon2
+1 2 0 0 icon1 truck
