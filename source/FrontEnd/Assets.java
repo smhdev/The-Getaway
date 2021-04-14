@@ -173,12 +173,12 @@ public class Assets {
 	 * @param playerNumber The number of the player whose imageView is required.
 	 * @return the imageView of the specified player.
 	 */
-	public static ImageView getPlayer(int playerNumber) {
-		Image playerModel = get("truck" + (playerNumber+1));
+	public static ImageView getPlayer(int playerNumber, String vehicle) {
+		Image playerModel = get(vehicle + (playerNumber+1));
 		ImageView player = new ImageView(playerModel);
 		player.setFitHeight(GameScreenController.tileWidth);
 		player.setFitWidth(GameScreenController.tileWidth);
-		player.setId("truck " + playerNumber);
+		player.setId(vehicle + playerNumber);
 		return player;
 	}
 
@@ -234,12 +234,12 @@ public class Assets {
 		return profileView;
 	}
 
-	public static ImageView getCar(int playerNumber) {
-        Image carModel = get("truck" + (playerNumber+1));
+	public static ImageView getCar(int playerNumber, String vehicle) {
+        Image carModel = get(vehicle + (playerNumber+1));
         ImageView car = new ImageView(carModel);
         car.setFitHeight(100);
         car.setFitWidth(100);
-        car.setId("truck " + playerNumber);
+        car.setId(vehicle + playerNumber);
         return car;
     }
 }

@@ -84,6 +84,17 @@
     -fx-font-size: 18;
 }
 
+.profileButtons {
+    -fx-background-color: #c634eb;
+    -fx-pref-width: 250;
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+}
+
+.profileButtons:hover {
+    -fx-background-color: #83249c;
+}
+
 #gameStateText {
     -fx-font-family: "Arial Rounded MT Bold";
     -fx-font-size: 18;

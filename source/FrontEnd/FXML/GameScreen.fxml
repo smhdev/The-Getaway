@@ -33,8 +33,8 @@
                 </padding>
                 <Label alignment="CENTER" text="Some changes haven't been saved&#10;would you like the save now?" textAlignment="CENTER" />
                 <HBox alignment="CENTER">
-                    <Button mnemonicParsing="false" onAction="#onNo" text="No" />
-                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#onYes" text="Yes" />
+                    <Button mnemonicParsing="false" onAction="#onNo" text="No" textAlignment="CENTER" />
+                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#onYes" text="Yes" textAlignment="CENTER" />
                 </HBox>
             </VBox>
         </StackPane>

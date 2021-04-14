@@ -21,6 +21,7 @@ public class Profile {
 	private int xp;
 	private String profileName;
 	private String profileIcon;
+	private String carIcon;
 
 	/**
 	 * This constructor initialises attributes from the parameters provided.
@@ -31,7 +32,7 @@ public class Profile {
 	 * @param losses     the amount of losses a player has.
 	 * @param winStreak  the current win streak of this player
 	 */
-	public Profile(String name, String playerIcon, int wins, int losses, int xp, int winStreak) {
+	public Profile(String name, String playerIcon, String carIcon, int wins, int losses, int xp, int winStreak) {
 		setName(name);
 		setIcon(playerIcon);
 		setWins(wins);
@@ -39,6 +40,7 @@ public class Profile {
 		setWinStreak(winStreak);
 		setLevel();
 		setXp(xp);
+		setCarIcon(carIcon);
 	}
 
 	/**
@@ -109,6 +111,14 @@ public class Profile {
 	 */
 	public void setXp(int xp) {
 		this.xp = xp;
+	}
+
+	/**
+	 * Sets the car icon for a player
+	 * @param carIcon
+	 */
+	public void setCarIcon(String carIcon) {
+		this.carIcon = carIcon;
 	}
 
 	/**
@@ -183,6 +193,9 @@ public class Profile {
 		this.xp += xp;
 	}
 
+	/**
+	 * This method levels up a player
+	 */
 	public void levelUp() {
 		this.level++;
 	}
@@ -195,6 +208,13 @@ public class Profile {
 		return this.profileIcon;
 	}
 
+	/**
+	 * This method returns the car icon of the player.
+	 * @return the car icon of the player
+	 */
+	public String getCarIcon() {
+		return carIcon;
+	}
 	/**
 	 * This method resets the player's current win streak to 0.
 	 */
@@ -217,8 +237,9 @@ public class Profile {
 		int xp = reader.nextInt();
 		int winStreak = reader.nextInt();
 		String playerIcon = reader.next();
+		String carIcon = reader.next();
 
-		return new Profile(profileFile, playerIcon, wins, losses,  xp, winStreak);
+		return new Profile(profileFile, playerIcon, carIcon, wins, losses,  xp, winStreak);
 	}
 
 	/**
@@ -234,14 +255,16 @@ public class Profile {
 		int xp = profile.getXp();
 		int winStreak = profile.getWinStreak();
 		String playerIcon = profile.getIcon();
+		String carIcon = profile.getCarIcon();
 		FileWriter writer = new FileWriter("SaveData\\UserData\\" + name + ".txt");
 
-		String information = String.format("%d %d %d %d %s",
+		String information = String.format("%d %d %d %d %s %s",
 				wins,
 				loss,
 				xp,
 				winStreak,
-				playerIcon);
+				playerIcon,
+				carIcon);
 		System.out.println(information);
 		writer.write(information);
 		writer.flush();
