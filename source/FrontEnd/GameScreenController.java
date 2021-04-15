@@ -708,7 +708,7 @@ public class GameScreenController extends StateLoad {
 
 					Coordinate location = gameLogic.getPlayerLocations()[currentPlayer];
 					if (location.getX() > initLocation.getX()) {
-						rotate.setToAngle(270);
+						rotate.setToAngle(-90);
 						playerRotations[currentPlayer] = 270;
 					}
 					if (location.getX() < initLocation.getX()) {
@@ -720,7 +720,7 @@ public class GameScreenController extends StateLoad {
 						playerRotations[currentPlayer] = 180;
 					}
 					if (location.getY() > initLocation.getY()) {
-						rotate.setToAngle(0);
+						rotate.setToAngle( 0);
 						playerRotations[currentPlayer] = 0;
 					}
 				rotate.setNode(currentPlayerNode);
