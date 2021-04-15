@@ -139,4 +139,10 @@ public class MenuScreenController extends StateLoad {
 
     }
 
+    public void onUnlockables() {
+        wl = new WindowLoader(newGameButton);
+        wl.load("UnlockablesScreen", getInitData());
+        MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
+    }
+
 }

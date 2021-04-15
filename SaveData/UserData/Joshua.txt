@@ -1,1 +1,1 @@
-0 0 0 0 icon1 car
+0 0 0 0 icon0 car

@@ -117,7 +117,7 @@ public class ProfilesController extends StateLoad {
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
         try {
             Profile profile = Profile.readProfile(playerPicked);
-
+            profile.setLevel();
             if (profile.getIcon().equals("icon" + currentIndex)) {
                 playerRecord.setStyle("-fx-background-color:red");
                 playerRecord.setText(profile.getName() + " has already selected this player icon!");
@@ -133,8 +133,8 @@ public class ProfilesController extends StateLoad {
             playerRecord.setStyle("-fx-background-color: transparent");
             PrintWriter user = new PrintWriter(new FileWriter("SaveData\\UserData\\" + playerPicked + ".txt"));
             user.flush();
-            user.write(profile.getWins() + " " + profile.getLosses() + " " + profile.getWinStreak() + " "
-                    + profile.getLevel() + " icon" + currentIndex + " " + profile.getCarIcon());
+            user.write(profile.getWins() + " " + profile.getLosses() + " " + profile.getXp() + " "
+                    + profile.getWinStreak() + " icon" + currentIndex + " " + profile.getCarIcon());
             user.close();
             playerRecord.setText(profile.getName() + " has changed profile pictures.");
             MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
@@ -150,6 +150,7 @@ public class ProfilesController extends StateLoad {
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
         try {
             Profile profile = Profile.readProfile(playerPicked);
+            profile.setLevel();
             String carSelected = "car";
             switch(currentIndexCar) {
                 case 0:
@@ -181,8 +182,8 @@ public class ProfilesController extends StateLoad {
             playerRecord.setStyle("-fx-background-color: transparent");
             PrintWriter user = new PrintWriter(new FileWriter("SaveData\\UserData\\" + playerPicked + ".txt"));
             user.flush();
-            user.write(profile.getWins() + " " + profile.getLosses() + " " + profile.getWinStreak() + " "
-                    + profile.getLevel() + " " + profile.getIcon() + " " + carSelected);
+            user.write(profile.getWins() + " " + profile.getLosses() + " " + profile.getXp() + " "
+                    + profile.getWinStreak() + " " + profile.getIcon() + " " + carSelected);
             user.close();
             playerRecord.setText(profile.getName() + " has changed their vehicle to " + carSelected + ".");
             MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
@@ -254,6 +255,7 @@ public class ProfilesController extends StateLoad {
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
         try {
             profile = Profile.readProfile(playerPicked);
+            profile.setLevel();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -291,6 +293,7 @@ public class ProfilesController extends StateLoad {
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
         try {
             profile = Profile.readProfile(playerPicked);
+            profile.setLevel();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -361,15 +364,13 @@ public class ProfilesController extends StateLoad {
                         profile.getLevel());
 
 
-        xpInfo.setText("XP: " + profile.getXp() + " / " + (profile.getLevel() + 1) * 400);
+        xpInfo.setText("XP: " + profile.getXp() + " / " + profile.getLevel() * 400);
         levelInfo.setText(profile.getName() + " is level: " + profile.getLevel());
         if (profile.getXp() == 0) {
             xpBar.progressProperty().set(0);
         }
-        if (profile.getLevel() == 0) {
-            xpBar.progressProperty().set((float) 1 / 400 * (profile.getXp()));
-        } else {
-            xpBar.progressProperty().set((float) 1 / 400 * (profile.getXp() - profile.getLevel() * 400));
+        else {
+            xpBar.progressProperty().set((float) 1 / 400 * (profile.getXp() - ((profile.getLevel() - 1) * 400)));
         }
         int userCarIndex = 0;
         switch (userCarIcon) {
@@ -414,6 +415,7 @@ public class ProfilesController extends StateLoad {
                 break;
             case 1:
                 isUnlocked = true;
+                System.out.println(playerLevel);
                 break;
             case 2:
                 isUnlocked = true;
@@ -447,8 +449,10 @@ public class ProfilesController extends StateLoad {
                 isUnlocked = true;
                 break;
             case "truck":
+                System.out.println(playerLevel);
                 if (playerLevel >= 2) {
                     isUnlocked = true;
+
                 }
                 break;
             case "bike":

@@ -102,7 +102,7 @@ public class Profile {
 	 * Sets the level of the player
 	 */
 	public void setLevel() {
-		this.level = (int) Math.floor(this.xp / 400);
+		this.level = (int) Math.floor(this.xp / 400) + 1;
 	}
 
 	/**
