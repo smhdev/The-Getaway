@@ -1,1 +1,1 @@
-0 1 10050 0 icon1 sportscar
+0 1 850 0 icon1 truck

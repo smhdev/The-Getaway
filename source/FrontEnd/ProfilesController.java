@@ -20,6 +20,7 @@ import java.util.Scanner;
  * A controller class for profiles.fxml which allows a user to show the player profiles saved, create new player
  * profiles, delete player profiles and view player profiles.
  * It is loaded by clicking from it in the MenuScreen and allows the user to return to the MenuScreen with an action.
+ * Allows users to select their own player profiles, vehicles and check their progression in the game.
  * @author Zhan Zhang, Sam Harry
  * @version 1.1
  */
@@ -65,6 +66,13 @@ public class ProfilesController extends StateLoad {
     final Image icon2 = new Image(iconImage2.toURI().toString());
     final File iconImage3 = new File("Assets\\icon3.png");
     final Image icon3 = new Image(iconImage3.toURI().toString());
+    final File iconImage4 = new File("Assets\\icon4.png");
+    final Image icon4 = new Image(iconImage4.toURI().toString());
+    final File iconImage5 = new File("Assets\\icon5.png");
+    final Image icon5 = new Image(iconImage5.toURI().toString());
+    final File iconImage6 = new File("Assets\\icon6.png");
+    final Image icon6 = new Image(iconImage6.toURI().toString());
+
     final File carImage0 = new File("Assets\\car1.png");
     final Image carIcon0 = new Image(carImage0.toURI().toString());
     final File carImage1 = new File("Assets\\truck1.png");
@@ -113,6 +121,11 @@ public class ProfilesController extends StateLoad {
         MAIN_MENU_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
     }
 
+    /**
+     * When the select player profile picture button is pressed, read the players profile and check if they are a high
+     * enough level to be able to use the desired picture. If they are, then rewrite their file with the new updated
+     * profile picture.
+     */
     public void onSelectProfilePic() {
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
         try {
@@ -144,7 +157,8 @@ public class ProfilesController extends StateLoad {
     }
 
     /**
-     * When a player selects a car picture, write that to their player profile
+     * When a player selects a car picture, write that to their player profile. If they are not a high enough level,
+     * notify the user.
      */
     public void onSelectCarPic() {
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
@@ -248,7 +262,8 @@ public class ProfilesController extends StateLoad {
     }
 
     /**
-     * This button switch the player icon which will save in player profile created.
+     * This button switch the player icon which will save in player profile created. If the player is not a high enough
+     * level, grey out the image so that the users know they cannot select it.
      */
     public void nextIcon() {
         Profile profile = null;
@@ -275,6 +290,7 @@ public class ProfilesController extends StateLoad {
                 playerIcon.setOpacity(0.5);
             }
             playerIcon.setImage(icon2);
+
         } else if (currentIndex == 3) {
             playerIcon.setImage(icon3);
             if (!profilePicLevelCheck(currentIndex, profile.getLevel())) {
@@ -282,12 +298,34 @@ public class ProfilesController extends StateLoad {
             }
 
         } else if (currentIndex == 4) {
+            playerIcon.setImage(icon4);
+            if (!profilePicLevelCheck(currentIndex, profile.getLevel())) {
+                playerIcon.setOpacity(0.5);
+            }
+
+        } else if (currentIndex == 5) {
+            playerIcon.setImage(icon5);
+            if (!profilePicLevelCheck(currentIndex, profile.getLevel())) {
+                playerIcon.setOpacity(0.5);
+            }
+
+        } else if (currentIndex == 6) {
+            playerIcon.setImage(icon6);
+            if (!profilePicLevelCheck(currentIndex, profile.getLevel())) {
+                playerIcon.setOpacity(0.5);
+            }
+
+        } else if (currentIndex == 7) {
             playerIcon.setImage(icon0);
             currentIndex = 0;
             playerIcon.setOpacity(1);
         }
     }
 
+    /**
+     * This button allows the user to cycle through the available car icons for use in game. If they are not a
+     * high enough level to use a vehicle model, the item in the list will be greyed out for them.
+     */
     public void nextCarIcon() {
         Profile profile = null;
         String playerPicked = playerList.getSelectionModel().getSelectedItem();
@@ -323,8 +361,13 @@ public class ProfilesController extends StateLoad {
         }
     }
 
-    public void displayUserInfo(String newValue) {
-        File user = new File("SaveData\\UserData\\" + newValue + ".txt");
+    /**
+     * Displays the users details (wins, losses, winstreak and level) in the information box at the bottom of the
+     * screen. Also shows the xp progression details.
+     * @param username The name of the user to display the details of
+     */
+    public void displayUserInfo(String username) {
+        File user = new File("SaveData\\UserData\\" + username + ".txt");
         String userIcon = null;
         String userCarIcon = null;
         try {
@@ -364,15 +407,19 @@ public class ProfilesController extends StateLoad {
                         profile.getLevel());
 
 
-        xpInfo.setText("XP: " + profile.getXp() + " / " + profile.getLevel() * 400);
+        xpInfo.setText("XP: " + profile.getXp() + " / " + profile.getLevel() * 400 + "    " + "XP to next level: " +
+                ((profile.getLevel()) * 400 - profile.getXp()));
         levelInfo.setText(profile.getName() + " is level: " + profile.getLevel());
         if (profile.getXp() == 0) {
+            //if the user is brand new, no need for any bar progression
             xpBar.progressProperty().set(0);
         }
         else {
+            //formula to calculate the distance along the bar to set the players xp
             xpBar.progressProperty().set((float) 1 / 400 * (profile.getXp() - ((profile.getLevel() - 1) * 400)));
         }
         int userCarIndex = 0;
+        //convert the car icon used by the user in their file back into the index
         switch (userCarIcon) {
             case "car":
                 userCarIndex = 0;
@@ -387,8 +434,11 @@ public class ProfilesController extends StateLoad {
                 userCarIndex = 3;
                 break;
         }
+        //set the current index to the users current selected car's index, so that when cycled again, the index is
+        //corrected
         currentIndexCar = userCarIndex;
         int userIconIndex = 0;
+        //do the same for the user icons
         switch (userIcon) {
             case "icon0":
                 userIconIndex = 0;
@@ -402,11 +452,27 @@ public class ProfilesController extends StateLoad {
             case "icon3":
                 userIconIndex = 3;
                 break;
+            case "icon4":
+                userIconIndex = 4;
+                break;
+            case "icon5":
+                userIconIndex = 5;
+                break;
+            case "icon6":
+                userIconIndex = 6;
+                break;
         }
         currentIndex = userIconIndex;
+        //reset the player record style.
         playerRecord.setStyle("-fx-background-color: transparent");
     }
 
+    /**
+     * Checks whether a user is a high enough level to use a player profile picture
+     * @param pictureIndex the index of the player profile picture the user desires to select
+     * @param playerLevel the level of the player requesting use of the picture
+     * @return boolean of whether the player is a high enough level to use the desired profile picture
+     */
     public boolean profilePicLevelCheck(int pictureIndex, int playerLevel) {
         boolean isUnlocked = false;
         switch (pictureIndex) {
@@ -442,6 +508,12 @@ public class ProfilesController extends StateLoad {
         return isUnlocked;
     }
 
+    /**
+     * Checks to see whether a user is a high enough level to use a vehicle
+     * @param vehicle the user wants to select
+     * @param playerLevel of the player requesting to use the vehicle
+     * @return boolean of whether the player is a high enough level to use the requested vehicle
+     */
     public boolean carIconLevelCheck(String vehicle, int playerLevel) {
         boolean isUnlocked = false;
         switch(vehicle) {

@@ -170,6 +170,7 @@ public class Assets {
 	/**
 	 * Get an imageView of that player.
 	 *
+     * @param vehicle The vehicle used by the player
 	 * @param playerNumber The number of the player whose imageView is required.
 	 * @return the imageView of the specified player.
 	 */
@@ -234,6 +235,12 @@ public class Assets {
 		return profileView;
 	}
 
+    /**
+     * gets the vehicle of a player in the game
+     * @param playerNumber the player to get the car image of
+     * @param vehicle the vehicle used by the player
+     * @return ImageView of the players vehicle
+     */
 	public static ImageView getCar(int playerNumber, String vehicle) {
         Image carModel = get(vehicle + (playerNumber+1));
         ImageView car = new ImageView(carModel);

@@ -140,6 +140,7 @@
 
 .iniButton {
     -fx-background-color: #c634eb;
+    -fx-text-fill: white;
 }
 
 .iniButton:hover {

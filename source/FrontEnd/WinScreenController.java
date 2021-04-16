@@ -72,6 +72,7 @@ public class WinScreenController extends StateLoad {
 						leaderboard.addLoss(profiles[i].getName());
 						profiles[i].incLosses();
 						profiles[i].resetWinStreak();
+						//players receive 50 xp for the time played in the game.
 						profiles[i].incXP(50);
 						profiles[i].setLevel();
 					} catch (IOException e) {

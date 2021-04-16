@@ -139,6 +139,10 @@ public class MenuScreenController extends StateLoad {
 
     }
 
+    /**
+     * Called when the unlockable button is clicked
+     * allows the user to check the level that items are unlocked
+     */
     public void onUnlockables() {
         wl = new WindowLoader(newGameButton);
         wl.load("UnlockablesScreen", getInitData());

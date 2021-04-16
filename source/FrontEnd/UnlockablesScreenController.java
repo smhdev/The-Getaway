@@ -18,6 +18,7 @@ public class UnlockablesScreenController extends StateLoad {
     private final String RETURN_SFX = "Assets\\SFX\\return.mp3";
     private final AudioClip RETURN_AUDIO = new AudioClip(new File(RETURN_SFX).toURI().toString());
 
+    //Files and images of the unlockables
     File unlockable1File = new File("Assets\\truck1.png");
     private final Image unlockable1Image = new Image(unlockable1File.toURI().toString());
     File unlockable2File = new File("Assets\\icon4.png");
@@ -78,6 +79,10 @@ public class UnlockablesScreenController extends StateLoad {
         unlockableText6.setText("Level 10");
     }
 
+    /**
+     * Called when the player clicks on the 'Back to menu" button
+     * opens the menu screen
+     */
     public void onBack() {
         RETURN_AUDIO.play(Double.parseDouble(getInitData().get("SFXVol")));
         WindowLoader wl = new WindowLoader(backButton);

@@ -12,16 +12,25 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /***
- * FrontEnd.Main class for this app, starts the window and opens up the 'Start' window
+ * FrontEnd.Game class for this app, starts the window and opens up the 'Start' window
  * @author Christian Sanger
  *
  */
 
-public class Main extends Application {
+public class Game extends Application {
 
     private static MediaPlayer mediaPlayer;
     private static final double DEFAULT_SOUND_LEVEL = 10.0;
     private int track;
+
+    /**
+     * run method for the Main.java file to start the game
+     *
+     * @param args the main method arguments
+     */
+    public static void run(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -46,13 +55,13 @@ public class Main extends Application {
             System.out.println("Config file incorrect format:" + e.getMessage());
             backgroundVol = DEFAULT_SOUND_LEVEL;
             sfxVol = DEFAULT_SOUND_LEVEL;
-        } catch  (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Config not found, using defaults");
             backgroundVol = DEFAULT_SOUND_LEVEL;
             sfxVol = DEFAULT_SOUND_LEVEL;
         }
 
-        Main.setVolume(backgroundVol);
+        Game.setVolume(backgroundVol);
         primaryStage.setFullScreen(false);
         primaryStage.setTitle("The Getaway");
         primaryStage.getIcons().add(new Image("car2.png"));
@@ -60,7 +69,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.DECORATED);
 
         playMusic(backgroundVol);
-        Main.setVolume(backgroundVol);
+        Game.setVolume(backgroundVol);
 
         initData.put("BackgroundVol", String.valueOf(backgroundVol));
         initData.put("SFXVol", String.valueOf(sfxVol));
@@ -71,21 +80,23 @@ public class Main extends Application {
 
     /**
      * Set the volume of the background music
+     *
      * @param volume the volume level of the music
      */
     public static void setVolume(double volume) {
         if (mediaPlayer != null) {
-            mediaPlayer.setVolume(volume/200);
+            mediaPlayer.setVolume(volume / 200);
             mediaPlayer.play();
         }
     }
 
     /**
      * This method goes through a playlist and and plays each song after the previous ones finished.
+     *
      * @param volume Volume of the music.
      */
     public void playMusic(double volume) {
-        String [] musicFiles = {"Assets\\music.mp3","Assets\\music2.mp3","Assets\\music3.mp3", "Assets\\music4.mp3","Assets\\music5.mp3"};
+        String[] musicFiles = {"Assets\\music.mp3", "Assets\\music2.mp3", "Assets\\music3.mp3", "Assets\\music4.mp3", "Assets\\music5.mp3"};
         Media sound = new Media(new File(musicFiles[track]).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setCycleCount(0);
@@ -96,24 +107,14 @@ public class Main extends Application {
             @Override
             public void run() {
                 mediaPlayer.stop();
-                track = (track + 1) % musicFiles.length ;
+                track = (track + 1) % musicFiles.length;
                 playMusic(mediaPlayer.getVolume());
 
-                if (track > musicFiles.length){
+                if (track > musicFiles.length) {
                     track = 0;
                     playMusic(mediaPlayer.getVolume());
                 }
             }
         });
     }
-
-    /***
-     * Only starts javaFX
-     * @param args doesn't use any arguments right now.
-     */
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
 }

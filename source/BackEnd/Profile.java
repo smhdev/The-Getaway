@@ -31,6 +31,8 @@ public class Profile {
 	 * @param wins       the amount of wins a player has.
 	 * @param losses     the amount of losses a player has.
 	 * @param winStreak  the current win streak of this player
+	 * @param xp 	     the amount of xp a player has.
+	 * @param carIcon    the preferred vehicle used by a player in game.
 	 */
 	public Profile(String name, String playerIcon, String carIcon, int wins, int losses, int xp, int winStreak) {
 		setName(name);
@@ -258,6 +260,7 @@ public class Profile {
 		String carIcon = profile.getCarIcon();
 		FileWriter writer = new FileWriter("SaveData\\UserData\\" + name + ".txt");
 
+		//this is the file format of a profile
 		String information = String.format("%d %d %d %d %s %s",
 				wins,
 				loss,
