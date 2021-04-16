@@ -20,6 +20,10 @@ import java.util.ResourceBundle;
  * @version 1.0
  * @since 1.0
  */
+
+/**
+ * Controller for the LevelEditor FXML file
+ */
 public class LevelEditorController extends StateLoad {
 
     @FXML

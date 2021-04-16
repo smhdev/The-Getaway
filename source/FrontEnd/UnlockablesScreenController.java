@@ -11,6 +11,11 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the UnlockablesScreen FXML file, to display the unlockable items
+ * @author Sam Harry
+ * @version 1.0
+ */
 public class UnlockablesScreenController extends StateLoad {
 
     private final String MAIN_MENU_SFX = "Assets\\SFX\\mainmenu.mp3";
